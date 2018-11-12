@@ -5,6 +5,7 @@
 
 - General change: shift hierarchy so that concert is the controlling unit
     + remove 'program' object altogether
+    + ignore all original NYP ID fields
     + can add back later using distinct sets of selections from concerts
 
 - Hybrid 'Selection' object that is either a whole work or 'selections from'
@@ -13,7 +14,7 @@
 
 ## Data structure
 
-Basic Lookup Tables
+Basic Concert-level Lookup Tables
 - Orchestra
 - Event Type
 - Venue
@@ -42,8 +43,8 @@ Selection: a hybrid unit of a composition
 - one entry for a generic set of movements from a work
     + performing movements 1 and 4 from work X refers to the same selection record as performing movements 2 and 3
 
-Concert: a performance of a *Program*
-- unique by *Program* and a datetime 
+Concert: a performance of a set of *Selections*
+- unique by datetime and \_\_\_(?) 
 
 
 ### Relationships
@@ -65,18 +66,22 @@ ConcertSelectionPerformer
 - Data: 
     + matrix of selections by program and concert, with 1+ categorical features
 
-- Training
+- Training:
     + options for case weighting or non-linear probability adjustments
     + one sub-model per categorical feature
     + split feature, interpolate intermission and begin/end flags, collapse
 
-- Prediction
+- Prediction:
     + adjust weights by feature
     + sum weighted probabilities as predicted by sub-models
     + sample from the weighted probabilities
 
-- Sub-models
+- Sub-models:
     + Composer Nationality
     + Composer Era
     + Performer cluster/types
     + Piece seasonality
+
+- Dynamic Weighting:
+    + Down-weight recently chosen pieces
+    + Exclude for X number of programs and then recover to full weighting over Y generations
