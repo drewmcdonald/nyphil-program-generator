@@ -7,9 +7,9 @@ from nyp.program_parser import ProgramParser
 
 Base = declarative_base()
 
-engine = create_engine("sqlite:///data/db.db")
+engine = create_engine("sqlite:///data/raw.db")
 # Base.metadata.drop_all(engine)
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 Session = sessionmaker(engine)
 
 s = Session()

@@ -1,16 +1,16 @@
 # Notes
 
 
-## Changes
+## TODOs
 
-- General change: shift hierarchy so that concert is the controlling unit
-    + remove 'program' object altogether
-    + ignore all original NYP ID fields
-    + can add back later using distinct sets of selections from concerts
-
-- Hybrid 'Selection' object that is either a whole work or 'selections from'
-    + later, if a 'selections from' is predicted, take a set of movements from a real program
-
+- Clean up work title and movement name (spaces, punctuation)
+- parse work name on load
+    + Op #
+    + Piece type
+    + key
+    + arranger
+    + final parenthetical notes
+- set up musicbrainz composer scan and then work scan
 
 ## Data structure
 
@@ -26,18 +26,18 @@ Composer
 Performer: conductors, soloists, and accompanists
 - unique by name and instrument
 
-Movement: smallest unit of a composition
+Movement: subunit of a composition
 - unique by work and movement number
 - belongs to one *Work*
 
-Work: broadest unit of a composition
+Work: primary unit of a composition
 - unique by *Composer* and title
 - belongs to one *Composer*
 - has zero, one, or many *Movements*
 - has one or two *Selections*
 
 Selection: a hybrid unit of a composition
-- unique by *Work* and and entirety/movements flag
+- unique by *Work* and an is_full_work flag
 - belongs to one *Work*
 - one entry for a whole *Work*
 - one entry for a generic set of movements from a work
@@ -61,6 +61,11 @@ ConcertSelectionPerformer
 - *not* going to track the soloist per actual movement
 
 
+### Post-Processing
+
+- Delete Intermissions from concert_selection where intermission is last (because it splits movements of a complete work)
+
+
 ## Model Structure
 
 - Data: 
@@ -79,6 +84,7 @@ ConcertSelectionPerformer
 - Sub-models:
     + Composer Nationality
     + Composer Era
+    + Imputed Composer Nationality/Era
     + Performer cluster/types
     + Piece seasonality
 
