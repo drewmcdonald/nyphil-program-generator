@@ -5,7 +5,7 @@ from random import choices
 BREAK = '___BREAK__'
 INTERMISSION = '-- Intermission --'
 
-composers = pd.Series(pd.read_csv('testdata_composers.csv', index_col=0).name)
+composers = pd.Series(pd.read_csv('data/testdata_composers.csv', index_col=0).name)
 
 composers[composers == 'No Composer'] = INTERMISSION
 
