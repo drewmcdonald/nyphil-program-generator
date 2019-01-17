@@ -120,7 +120,7 @@ class ConcertSelection(Base):
     selection_id = Column(Integer, ForeignKey('selection.id'))
     concert_order = Column(Integer, nullable=False)
 
-    concert = relationship('Concert', back_populates='selections')
+    concert = relationship('Concert', back_populates='concert_selections')
     selection = relationship('Selection')
 
     performers = relationship('ConcertSelectionPerformer', back_populates='concert_selection')
@@ -181,10 +181,10 @@ class Concert(Base):
 
     season = Column(String)
 
-    selections = relationship('ConcertSelection', back_populates='concert')
+    concert_selections = relationship('ConcertSelection', back_populates='concert')
 
     def __repr__(self):
-        return f'<Concert {self.id}: {self.orchestra} at {self.venue} on {self.datetime.strftime("%x")}>'
+        return f'<Concert {self.id}: {self.orchestra} at {self.venue} on {self.datetime.strftime("%d/%m/%Yl")}>'
 
 
 class Movement(GetOrCreateMixin, Base):
