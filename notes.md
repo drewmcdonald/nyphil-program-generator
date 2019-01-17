@@ -4,11 +4,11 @@
 ## TODOs
 
 - Clean up work title and movement name (spaces, punctuation)
-- parse work name on load
+- Feature detectors for
     + Op #
     + Piece type
     + key
-    + arranger
+    + arranger/is arrangement
     + final parenthetical notes
 - set up musicbrainz composer scan and then work scan
 
