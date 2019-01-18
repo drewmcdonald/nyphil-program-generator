@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-from nyp.program_parser import ProgramParser
+from nyp.raw.parser import ProgramParser
 
 Base = declarative_base()
 
