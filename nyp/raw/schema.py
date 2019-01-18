@@ -18,6 +18,7 @@ class GetOrCreateMixin(object):
         existing = session.query(cls).filter_by(**kwargs).first()
         if existing:
             return existing
+        # noinspection PyArgumentList
         new_obj = cls(**kwargs)
         session.add(new_obj)
         session.commit()
@@ -163,30 +164,6 @@ class ConcertSelectionPerformer(Base):
 
 # Core Tables
 
-
-class Concert(Base):
-    __tablename__ = 'concert'
-
-    id = Column(Integer, primary_key=True)
-
-    orchestra_id = Column(Integer, ForeignKey('orchestra.id'))
-    venue_id = Column(Integer, ForeignKey('venue.id'))
-    eventtype_id = Column(Integer, ForeignKey('eventtype.id'))
-
-    orchestra = relationship('Orchestra')
-    venue = relationship('Venue', back_populates='concerts')
-    eventtype = relationship('EventType', back_populates='concerts')
-
-    datetime = Column(DateTime, nullable=False)
-
-    season = Column(String)
-
-    concert_selections = relationship('ConcertSelection', back_populates='concert')
-
-    def __repr__(self):
-        return f'<Concert {self.id}: {self.orchestra} at {self.venue} on {self.datetime.strftime("%d/%m/%Yl")}>'
-
-
 class Movement(GetOrCreateMixin, Base):
     __tablename__ = 'movement'
     __table_args__ = (Index('idx_movement_lookup', 'work_id', 'name'), )
@@ -239,3 +216,32 @@ class Selection(GetOrCreateMixin, Base):
     def __repr__(self):
         front = "Full work of" if self.is_full_work else "Selection(s) from"
         return f'<Selection {self.id}: {front} {self.work}>'
+
+
+class Concert(Base):
+    __tablename__ = 'concert'
+
+    id = Column(Integer, primary_key=True)
+
+    orchestra_id = Column(Integer, ForeignKey('orchestra.id'))
+    venue_id = Column(Integer, ForeignKey('venue.id'))
+    eventtype_id = Column(Integer, ForeignKey('eventtype.id'))
+
+    orchestra = relationship('Orchestra')
+    venue = relationship('Venue', back_populates='concerts')
+    eventtype = relationship('EventType', back_populates='concerts')
+
+    datetime = Column(DateTime, nullable=False)
+
+    season = Column(String)
+
+    concert_selections = relationship('ConcertSelection', back_populates='concert')
+
+    def __repr__(self):
+        return f'<Concert {self.id}: {self.orchestra} at {self.venue} on {self.datetime.strftime("%d/%m/%Yl")}>'
+
+    @property
+    def selections(self) -> [Selection]:
+        """shortcut to the actual selections instead of the concert_selection records (though this loses movements)"""
+        # noinspection PyTypeChecker
+        return [cs.selection for cs in self.concert_selections]
