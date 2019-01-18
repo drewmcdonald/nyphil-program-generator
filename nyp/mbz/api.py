@@ -26,14 +26,14 @@ class MBZAPI(object):
 
     @property
     def request_url(self):
-        return os.path.join(self.BASE_URL, self.endpoint, self.mbz_id)
+        return os.path.join(self.BASE_URL, self.endpoint, self.mbz_id or '')
 
     @property
-    def request_params(self):
-        raise NotImplementedError
+    def request_params(self) -> dict:
+        return {'fmt': 'json'}
 
     def post_retrieve(self):
-        raise NotImplementedError
+        pass
 
     def retrieve(self) -> int:
         """make an MBZ API Request, then call the class's post-retrieve method
@@ -51,48 +51,86 @@ class MBZAPI(object):
         return status
 
 
-class MBZSearch(MBZAPI):
+class MBZCounter(MBZAPI):
+    """Base class for counting the number of records of type 'endpoint' affiliated with
+    'index_mbz_id' of type 'index_endpoint'
     """
-    Base class for MBZ search queries
-    """
-    def __init__(self, endpoint: str):
-        super(MBZSearch, self).__init__(endpoint=endpoint)
-        self.records: dict = None
-        self.record_count: int = 0
-
-    def __repr__(self):
-        return f'<MBZSearch on {self.endpoint}>'
-
-    def post_retrieve(self) -> None:
-        """identify and count the records our search was interested in"""
-        if not self.is_retrieved:
-            raise ValueError('No data yet retrieved, can\'t run post-retrieve')
-        self.records = self.content.get(self.endpoint + 's')
-        self.record_count = self.content.get('count')
-        # TODO: instantiate an object of base_class per record?
-
-    @property
-    def request_params(self):
-        raise NotImplementedError
-
-
-class MBZLookup(MBZAPI):
-    """
-    Base class for MBZ lookup queries
-    """
-    # TODO: figure out how to type hint a variable representing a class
-    def __init__(self, endpoint: str, mbz_id: str = None, obj_class=None):
-        super(MBZLookup, self).__init__(endpoint=endpoint, mbz_id=mbz_id)
-        self.base_class = obj_class
-        self.obj: obj_class = None
+    def __init__(self, endpoint: str, index_endpoint: str, index_mbz_id: str):
+        super(MBZCounter, self).__init__(endpoint=endpoint)
+        self.index_endpoint: str = index_endpoint
+        self.index_mbz_id: str = index_mbz_id
+        self.record_count: int = None
+        self.retrieve()
 
     @property
     def request_params(self) -> dict:
-        return {'fmt': 'json'}
+        return {
+            'fmt': 'json',
+            'limit': 1,
+            'offset': 0,
+            self.index_endpoint: self.index_mbz_id
+        }
 
-    def post_retrieve(self) -> None:
-        """instantiate the appropriate class for the API response"""
+    def post_retrieve(self):
+        """extract the count of the target records"""
+        count_key = self.endpoint + '-count'
+        self.record_count = self.content[count_key]
+
+
+class MBZArea(MBZAPI):
+    """Object to represent an MBZ Area
+    recursively calls parent relationships to find the area's country
+    """
+
+    def __init__(self, mbz_id: str):
+        super(MBZArea, self).__init__(endpoint='area', mbz_id=mbz_id)
+        self.name = None
+        self.sort_name = None
+        self.iso_1_code: str = None
+        self.iso_2_code: str = None
+        self.retrieve()
+        self.recurse_parents()
+
+    def __repr__(self):
+        return f'<MBZAreaLookup for {self.name}>'
+
+    @property
+    def request_params(self) -> dict:
+        return {'fmt': 'json', 'inc': 'area-rels'}
+
+    def post_retrieve(self):
+        """Fill object attributes from the json response"""
+
         if not self.is_retrieved:
-            raise ValueError('No data yet retrieved, can\'t run post-retrieve')
-        if self.base_class:
-            self.obj = self.base_class(**self.content)
+            raise ValueError('No data yet retrieved')
+
+        self.name = self.content.get('name')
+        self.sort_name = self.content.get('sort-name')
+
+        iso_1_codes: list = self.content.get('iso-3166-1-codes', [])
+        iso_2_codes: list = self.content.get('iso-3166-2-codes', [])
+
+        if len(iso_1_codes) > 0:
+            self.iso_1_code = iso_1_codes[0]
+        if len(iso_2_codes) > 0:
+            self.iso_2_code = iso_2_codes[0]
+
+    def recurse_parents(self):
+        """go up the chain of parent areas until we can fill out
+        regional and country codes
+        """
+        # stop if we already have a country code
+        if self.iso_1_code:
+            return
+
+        # filter to up-hierarchy relationships
+        parent_rels = [x for x in self.content['relations'] if x['direction'] == 'backward']
+
+        # push down any iso codes found in the parent
+        for parent_rel in parent_rels:
+            parent_obj = MBZArea(parent_rel['area']['id'])
+
+            # country areas do not have regional codes, and vice versa, so we have to check
+            # these each independently to avoid overwriting data from further down the hierarchy
+            self.iso_1_code = self.iso_1_code or parent_obj.iso_1_code
+            self.iso_2_code = self.iso_2_code or parent_obj.iso_2_code
