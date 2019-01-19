@@ -1,17 +1,17 @@
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
+from nyp.raw.schema import Base
 from nyp.raw.parser import ProgramParser
 
-Base = declarative_base()
-
 engine = create_engine("sqlite:///data/raw.db")
+Base.metadata.bind = engine
+
 # Base.metadata.drop_all(engine)
 # Base.metadata.create_all(engine)
-Session = sessionmaker(engine)
 
+Session = sessionmaker(engine)
 s = Session()
 
 with open('complete.json') as f:

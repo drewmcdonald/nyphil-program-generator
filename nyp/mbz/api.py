@@ -1,6 +1,7 @@
 import requests
 import json
 import os.path
+import time
 
 
 class MBZAPI(object):
@@ -39,16 +40,19 @@ class MBZAPI(object):
         """make an MBZ API Request, then call the class's post-retrieve method
 
         :return: request's HTTP status code"""
+        time.sleep(.3)
+
         result = requests.get(self.request_url, params=self.request_params, headers=self.APP_HEADERS)
 
-        status = result.status_code
-        self.request_status_code = status
-
-        if status == 200:
+        if result.status_code == 200:
             self.content = json.loads(result.content)
+            self.request_status_code = 200
             self.post_retrieve()
+        if result.status_code == 503:
+            print('request rejected. sleeping .3 another seconds')
+            self.retrieve()
 
-        return status
+        return result.status_code
 
 
 class MBZCounter(MBZAPI):
@@ -72,7 +76,7 @@ class MBZCounter(MBZAPI):
         }
 
     def post_retrieve(self):
-        """extract the count of the target records"""
+        """extract the count of the composer records"""
         count_key = self.endpoint + '-count'
         self.record_count = self.content[count_key]
 
@@ -124,7 +128,10 @@ class MBZArea(MBZAPI):
             return
 
         # filter to up-hierarchy relationships
-        parent_rels = [x for x in self.content['relations'] if x['direction'] == 'backward']
+        if self.content.get('relations'):
+            parent_rels = [x for x in self.content['relations'] if x.get('direction') == 'backward']
+        else:
+            return
 
         # push down any iso codes found in the parent
         for parent_rel in parent_rels:

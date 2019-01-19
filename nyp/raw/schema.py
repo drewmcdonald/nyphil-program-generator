@@ -92,6 +92,7 @@ class Composer(GetOrCreateMixin, NameLookupMixin, Base):
     __tablename__ = 'composer'
 
     works = relationship('Work', back_populates='composer')
+    mbz_composer = relationship('MBZComposer', back_populates='composer')
 
     def __repr__(self):
         return f'<Composer {self.id}: {self.name}>'

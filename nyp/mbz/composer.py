@@ -5,14 +5,58 @@ from datetime import datetime as dt
 from nyp.raw.schema import Composer
 from .api import MBZAPI, MBZCounter, MBZArea
 
+from sqlalchemy import Column, String, Integer, Date, Boolean, Float, ForeignKey
+from sqlalchemy.orm import relationship
 
-class MBZComposer(object):
+from nyp.raw.schema import Base
+
+
+class MBZComposer(Base):
     """
     Object representation of MBZ composer search result
     """
-    # TODO: convert to sqlalchemy table
+
+    __tablename__ = 'mbz_composer'
+    id = Column(Integer, primary_key=True)
+    mbz_id = Column(String(36), nullable=False, index=True)
+    composer_id = Column(Integer, ForeignKey('composer.id'))
+    composer = relationship('Composer', back_populates='mbz_composer')
+    score = Column(Integer)
+    country = Column(String)
+    gender = Column(String)
+    sort_name = Column(String)
+    area_name = Column(String)
+    begin_area_name = Column(String)
+    end_area_name = Column(String)
+    area_id = Column(String(36))
+    begin_area_id = Column(String(36))
+    end_area_id = Column(String(36))
+    lifespan_begin = Column(Date)
+    lifespan_end = Column(Date)
+    lifespan_ended = Column(Boolean)
+
+    n_aliases = Column(Integer)
+    n_tags = Column(Integer)
+    disambiguated_composer = Column(Boolean)
+    tag_composer = Column(Boolean)
+    match_token_sort_ratio = Column(Float)
+    match_partial_ratio = Column(Float)
+    match_average_ratio = Column(Float)
+    area_iso_1_code = Column(String(2))
+    area_iso_2_code = Column(String(5))
+    begin_area_iso_1_code = Column(String(2))
+    begin_area_iso_2_code = Column(String(5))
+    end_area_iso_1_code = Column(String(2))
+    end_area_iso_2_code = Column(String(5))
+
+    is_best_match = Column(Boolean, default=False)
+
+    n_works = Column(Integer)
+    n_recordings = Column(Integer)
+    n_releases = Column(Integer)
+
     def __init__(self, target: Composer, record: dict):
-        self.target: Composer = target
+        self.composer: Composer = target
         self.mbz_id: str = None
         self.score: int = None
         self.country: str = None
@@ -27,10 +71,10 @@ class MBZComposer(object):
         self.lifespan_begin: dt.date = None
         self.lifespan_end: dt.date = None
         self.lifespan_ended: bool = None
-        self.n_aliases: int = 0
-        self.n_tags: int = 0
-        self.disambiguated_composer: bool = False
-        self.tag_composer: bool = False
+        self.n_aliases: int = None
+        self.n_tags: int = None
+        self.disambiguated_composer: bool = None
+        self.tag_composer: bool = None
 
         self.parse_base_record(record)
 
@@ -39,6 +83,8 @@ class MBZComposer(object):
         self.match_average_ratio: float = None
 
         self.score_name_match()
+
+        self.is_best_match: bool = False
 
         # these cost additional API calls, so we'll trigger them
         # in the calling code only if this record is the best passing match
@@ -54,14 +100,33 @@ class MBZComposer(object):
         self.n_releases: int = None
 
     def __repr__(self):
-        return f'<MBZComposer for {self.target.name} ({self.mbz_id})>'
+        return f'<MBZComposer for {self.composer.name} ({self.mbz_id})>'
 
     @classmethod
     def clean_name(cls, name: str) -> str:
         """remove commas and unicode from a name str input"""
-        clean = name.replace(',', '').lower()
+        clean = name.replace(',', '').replace('.', '').lower()
         norm = str(unicodedata.normalize('NFKD', clean).encode('ASCII', 'ignore'))
         return norm
+
+    @classmethod
+    def format_life_span(cls, life_span):
+
+        if not life_span:
+            return None
+
+        def do_format(format_string: str):
+            return dt.date(dt.strptime(life_span, format_string))
+
+        life_span_length = len(life_span)
+        if life_span_length == 4:
+            return do_format('%Y')
+        if life_span_length == 7:
+            return do_format("%Y-%m")
+        if life_span_length == 10:
+            return do_format("%Y-%m-%d")
+
+        return None
 
     def parse_base_record(self, record: dict) -> None:
         """parse a composer search api json result into a flattened object"""
@@ -85,19 +150,9 @@ class MBZComposer(object):
 
         ls = record.get('life-span')
         if ls:
-            ls_begin = ls.get('begin')
-            if ls_begin:
-                ls_begin_len = len(ls_begin)
-                ls_begin_fmt = '%Y' if ls_begin_len == 4 else '%Y-%m-%d'
-                self.lifespan_begin = dt.date(dt.strptime(ls_begin, ls_begin_fmt))
-
-            ls_end = ls.get('end')
-            if ls_end:
-                ls_end_len = len(ls_end)
-                ls_end_fmt = '%Y' if ls_end_len == 4 else '%Y-%m-%d'
-                self.lifespan_end = dt.date(dt.strptime(ls_end, ls_end_fmt))
-
-            self.lifespan_ended = ls.get('ended')
+            self.lifespan_begin = self.format_life_span(ls.get('begin'))
+            self.lifespan_end = self.format_life_span(ls.get('end'))
+            self.lifespan_ended = ls.get('ended', False)
 
         if record.get('aliases'):
             self.n_aliases = len(record['aliases'])
@@ -111,10 +166,10 @@ class MBZComposer(object):
         if disambiguation:
             self.disambiguated_composer = 'composer' in disambiguation
 
-    def score_name_match(self) -> str:
+    def score_name_match(self) -> None:
         """score the name match on two token comparisons, as well as their average
         """
-        composer_name = self.clean_name(self.target.name)
+        composer_name = self.clean_name(self.composer.name)
         match_name = self.clean_name(self.sort_name)
         self.match_token_sort_ratio = fuzz.token_sort_ratio(composer_name, match_name)
         self.match_partial_ratio = fuzz.partial_ratio(composer_name, match_name)
@@ -124,7 +179,9 @@ class MBZComposer(object):
         return MBZCounter(endpoint, index_endpoint='artist', index_mbz_id=self.mbz_id).record_count
 
     def fill_additional_data(self) -> None:
+
         # gather country and region codes from areas
+        # TODO: this could be faster and cheaper with a cache of mbz_id to iso codes or a table of Areas
         if self.area_id:
             area: MBZArea = MBZArea(self.area_id)
             self.area_iso_1_code, self.area_iso_2_code = area.iso_1_code, area.iso_2_code
@@ -144,7 +201,8 @@ class MBZComposer(object):
 
 
 class MBZComposerSearch(MBZAPI):
-    """MBZ Composer Lookup Data"""
+    """MBZ Composer Lookup Data
+    NOTE: does not page through results. assumes if a good match isn't in the top 25 results, it doesn't exist"""
 
     def __init__(self, composer: Composer):
         super(MBZComposerSearch, self).__init__(endpoint='artist')
@@ -175,10 +233,10 @@ class MBZComposerSearch(MBZAPI):
 
     @classmethod
     def acceptable_match_filter(cls, match: MBZComposer) -> bool:
-        """return true if both ratios are >= 70 and their average is >= 80"""
+        """return true if both ratios are >= 70 and their average is >= 85"""
         return match.match_token_sort_ratio >= 70 and\
             match.match_partial_ratio >= 70 and\
-            match.match_average_ratio >= 80
+            match.match_average_ratio >= 85
 
     def pick_best_match(self) -> MBZComposer:
         """pick the best match among mbz results; first by token comparison scores
@@ -186,31 +244,44 @@ class MBZComposerSearch(MBZAPI):
         then by whoever has a composer tag
         then by whoever has 'composer' in their disambiguation
         """
+
+        def exit_with_result(final_result):
+            """helper to finalize the result once we find it"""
+            if final_result:
+                final_result.fill_additional_data()
+                final_result.is_best_match = True
+            self.best_match = final_result
+            return final_result
+
         # TODO: check this logic
-        # filter by token comparison score
+
+        # filter to acceptable matches by token comparison scores
         acceptable_matches = list(filter(self.acceptable_match_filter, self.objects))
+
+        # Take the match if there is only one; give up if there are none
         if len(acceptable_matches) == 1:
-            result = acceptable_matches[0]
-        else:
-            max_n_aliases = max([rec.n_aliases for rec in acceptable_matches])
+            return exit_with_result(acceptable_matches[0])
+        if len(acceptable_matches) == 0:
+            return exit_with_result(None)
+
+        # list of all records' number of aliases
+        all_n_aliases = [rec.n_aliases for rec in acceptable_matches if rec.n_aliases]
+        # if any aliases at all, find the maximum number and filter to records with that number of aliases
+        if len(all_n_aliases) > 0:
+            max_n_aliases = max(all_n_aliases)
             most_aliases = list(filter(lambda rec: rec.n_aliases == max_n_aliases, acceptable_matches))
+            # if only one record with the max number of aliases, that's our best match
             if len(most_aliases) == 1:
-                result = most_aliases[0]
-            else:
-                # tagged composer and disambiguated composer will both just use the most_aliases set
-                tagged_composer = list(filter(lambda rec: rec.tag_composer, most_aliases))
-                if len(tagged_composer) == 1:
-                    result = tagged_composer[0]
-                else:
-                    disambiguated_composer = list(filter(lambda rec: rec.disambiguated_composer, most_aliases))
-                    if len(disambiguated_composer) == 1:
-                        result = disambiguated_composer[0]
-                    else:
-                        result = None
+                return exit_with_result(most_aliases[0])
 
-        if result:
-            result.fill_additional_data()
+        # prefer the one result that's tagged as a composer if possible
+        tagged_composer = list(filter(lambda rec: rec.tag_composer, acceptable_matches))
+        if len(tagged_composer) == 1:
+            return exit_with_result(tagged_composer[0])
 
-        self.best_match = result
+        # prefer the one result that's disambiguated as a composer if possible
+        disambiguated_composer = list(filter(lambda rec: rec.disambiguated_composer, acceptable_matches))
+        if len(disambiguated_composer) == 1:
+            return exit_with_result(disambiguated_composer[0])
 
-        return result
+        return exit_with_result(None)
