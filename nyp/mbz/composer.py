@@ -33,12 +33,12 @@ class MBZComposer(Base):
     end_area_id = Column(String(36))
     lifespan_begin = Column(Date)
     lifespan_end = Column(Date)
-    lifespan_ended = Column(Boolean)
+    lifespan_ended = Column(Boolean, default=False)
 
-    n_aliases = Column(Integer)
-    n_tags = Column(Integer)
-    disambiguated_composer = Column(Boolean)
-    tag_composer = Column(Boolean)
+    n_aliases = Column(Integer, default=0)
+    n_tags = Column(Integer, default=0)
+    disambiguated_composer = Column(Boolean, default=False)
+    tag_composer = Column(Boolean, default=False)
     match_token_sort_ratio = Column(Float)
     match_partial_ratio = Column(Float)
     match_average_ratio = Column(Float)
@@ -55,49 +55,10 @@ class MBZComposer(Base):
     n_recordings = Column(Integer)
     n_releases = Column(Integer)
 
-    def __init__(self, target: Composer, record: dict):
-        self.composer: Composer = target
-        self.mbz_id: str = None
-        self.score: int = None
-        self.country: str = None
-        self.gender: str = None
-        self.sort_name: str = None
-        self.area_name: str = None
-        self.begin_area_name: str = None
-        self.end_area_name: str = None
-        self.area_id: str = None
-        self.begin_area_id: str = None
-        self.end_area_id: str = None
-        self.lifespan_begin: dt.date = None
-        self.lifespan_end: dt.date = None
-        self.lifespan_ended: bool = None
-        self.n_aliases: int = None
-        self.n_tags: int = None
-        self.disambiguated_composer: bool = None
-        self.tag_composer: bool = None
-
+    def __init__(self, composer: Composer, record: dict):
+        self.composer: Composer = composer
         self.parse_base_record(record)
-
-        self.match_token_sort_ratio: float = None
-        self.match_partial_ratio: float = None
-        self.match_average_ratio: float = None
-
         self.score_name_match()
-
-        self.is_best_match: bool = False
-
-        # these cost additional API calls, so we'll trigger them
-        # in the calling code only if this record is the best passing match
-        self.area_iso_1_code: str = None
-        self.area_iso_2_code: str = None
-        self.begin_area_iso_1_code: str = None
-        self.begin_area_iso_2_code: str = None
-        self.end_area_iso_1_code: str = None
-        self.end_area_iso_2_code: str = None
-
-        self.n_works: int = None
-        self.n_recordings: int = None
-        self.n_releases: int = None
 
     def __repr__(self):
         return f'<MBZComposer for {self.composer.name} ({self.mbz_id})>'
@@ -252,8 +213,6 @@ class MBZComposerSearch(MBZAPI):
                 final_result.is_best_match = True
             self.best_match = final_result
             return final_result
-
-        # TODO: check this logic
 
         # filter to acceptable matches by token comparison scores
         acceptable_matches = list(filter(self.acceptable_match_filter, self.objects))

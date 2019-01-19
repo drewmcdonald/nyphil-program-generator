@@ -25,7 +25,7 @@ Session = sessionmaker(engine)
 s = Session()
 Base.metadata.create_all()
 
-for c in s.query(Composer).filter(Composer.id != 4).order_by(func.random()).limit(20):
+for c in s.query(Composer).filter(Composer.id != 4).order_by(func.random()).limit(5):
     print(c)
     search = MBZComposerSearch(c)
     search.pick_best_match()
