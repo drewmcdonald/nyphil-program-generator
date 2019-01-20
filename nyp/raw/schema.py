@@ -7,7 +7,7 @@ from datetime import datetime as dt
 from fuzzywuzzy import fuzz
 import re
 
-from nyp.mbz.api import MBZCounter, MBZArea
+from nyp.musicbrainz import MBZCounter, MBZArea
 
 Base = declarative_base()
 

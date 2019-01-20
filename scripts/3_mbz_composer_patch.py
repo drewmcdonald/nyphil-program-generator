@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import pandas as pd
 
 from nyp.raw.schema import Composer, MBZComposer
-from nyp.mbz.api import MBZAPI
+from nyp.musicbrainz import MBZAPI
 
 
 production_data = 'data/raw.db'

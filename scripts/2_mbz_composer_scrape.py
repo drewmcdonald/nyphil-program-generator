@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from nyp.raw.schema import Composer
-from nyp.mbz.composer import Base, MBZComposerSearch
+from nyp.raw.schema import Base, Composer
+from nyp.musicbrainz import MBZComposerSearch
 
 # from shutil import copy2
 # from os import remove
