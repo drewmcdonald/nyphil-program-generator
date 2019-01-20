@@ -1,0 +1,989 @@
+name	id	n_works	mbz_id
+Traditional	31	645	
+"Haydn, Franz Joseph"	15	116	c130b0fb-5dce-449d-9f40-1437f889f7fe
+"Stravinsky, Igor"	508	107	c278de2c-9696-4fdf-a919-0781cd945e2c
+"Chopin, Frédéric"	40	92	09ff1fe8-d61c-4b98-bb82-18487c74d7b7
+Anthem	118	54	
+Unspecified	398	53	
+"Rimsky-Korsakov, Nikolai"	294	43	4cfe7051-f649-4d07-83b3-7a732abe7249
+"Elgar, Sir Edward"	254	32	4e60a56a-514a-4a19-a3cc-49927c96b3cb
+"Glazunov, Alexander"	275	32	5a0988a4-695c-4bff-bc68-4f312427495e
+"Villa-Lobos, Heitor"	1051	32	a8dbf22f-9788-4cf6-a0df-c9244384f295
+"Hadley, Henry Kimball"	337	25	d622a6fc-e05a-4e26-a535-68993f7dfb73
+"Machado, Roger"	1440	25	
+Unknown	352	23	
+"MacDowell, Edward A."	247	18	6bcbe65a-f7cb-4088-9883-c817a6458d6e
+Demonstration	496	16	
+"Corigliano, John, Jr."	1645	16	ead4efb5-f8d3-44d1-8a3f-a1cf24a0ccc9
+"Pirani, Eugenio di"	321	15	
+"Lyadov, Anatoli"	350	15	27870fb6-347c-48b1-adf4-c7bf0f71513e
+"Sullivan, Sir Arthur Seymour"	256	14	4b466f5e-4620-4084-8841-3fe4ea38e689
+"Gretchaninoff, Alexander"	408	14	b1f170dd-cd12-4148-90f2-1e58aa5400f1
+"Dubensky, Arkady"	821	14	de23e4ed-8e87-4655-b978-9bcd90bcf1fb
+"Langley, Allan Lincoln"	697	13	
+"Previn, Sir André"	1622	13	06538137-47eb-4dd6-bb78-5c8afa1a1885
+"Gliere, Reinhold"	653	11	8b008af7-cdb9-4abe-baed-ba737622e310
+"Labate, Bruno"	655	11	
+Folk Song	388	10	
+VARIOUS	472	10	
+"Kalman, Emmerich"	1067	10	636ae5e2-15df-4046-8ba1-c30da6365447
+"Cella, Theodore"	882	9	
+"McDonald, Harl"	991	9	08a40499-1671-48dd-8ca4-dd00002fa5d5
+"Kay, Ulysses Simpson"	1197	9	ab65524d-c26c-478e-9c09-f4c243ff9779
+"Converse, Frederick S."	381	8	81785663-55f5-4507-a560-da8ac48db13c
+"Pizzetti, Ilderbando"	683	8	0ea32d88-f302-44e6-bd75-d73e4ad135a1
+"Roger-Ducasse, Jean"	493	7	1eba38b8-7056-47ae-9c07-d9e7b85142ee
+"Mercadante, Giuseppe Saverio"	30	6	f5509d70-5768-4701-bf6c-d1f91e0f24d4
+"Volkmann, Friedrich Robert"	138	6	55f78522-aceb-4487-948b-e9967363471f
+"Mackenzie, Alexander C."	199	6	04fb2fd5-0aa9-4c7f-b1d4-068edfd0458a
+"Kramer, Alex Walter"	552	6	f23da764-0c6f-4923-9282-93e3f30a2fd5
+"Rabaud, Henri"	576	6	7e4c5b76-d2e7-48f4-a46e-65d62c35288a
+"Powell, John"	624	6	0214a285-589c-4ead-ae13-feab602d8004
+"Rogers, Bernard"	631	6	cdd7eefd-c8d4-432e-9a01-45a4ecd93aba
+"Berezowsky, Nicolai"	844	6	
+"Gillis, Don"	1263	6	c17177b2-c596-4d86-8bb3-350d3368d460
+"Shchedrin, Rodion"	1653	6	09deb4a5-8746-47f8-b020-cde50023841d
+"Maxwell Davies, Sir Peter"	1707	6	db16dadb-0024-4758-b35e-111ca52c53ea
+"Dun, Tan"	2057	6	0a94a7ff-f7f4-4b07-8a3b-c3daa4ce2fb8
+"Chaplin, Charles"	2150	6	
+"Eisfeld, Theodore"	79	5	
+"Scharwenka, Franz Xaver"	179	5	9737c5c6-8613-4d38-81dc-07561a512bc7
+"Tommasini, Vincenzo"	645	5	b5fc52b9-114c-4804-be56-68335077ac29
+Vivaldi-Bach	771	5	
+"Kreutz, Arthur"	1218	5	
+"Scott, Raymond"	1246	5	1807480c-c81e-401a-8016-300758f51008
+"Davis, Katherine"	2010	5	0a58d67d-7701-4910-bebe-d912c64ea607
+"Dix, Brian"	2383	5	
+No Composer	4	4	
+"Kalliwoda, Johann W."	7	4	ca00fa99-1b7b-491f-824c-32b9b3c627ce
+"Schreiber, Louis"	81	4	
+"Ernst, Heinrich Wilhelm"	91	4	9777e544-cca0-45d7-b12a-eac58d8f38d7
+"Henschel, Sir George"	202	4	b9f54ebe-7142-4eab-aff1-1d24c5668b7e
+"Bayer, Joseph"	303	4	f139c412-10f9-484e-ab56-ae929aa23f7f
+"Stahlberg, Fritz"	399	4	
+"Stock, Frederick A."	420	4	e39863ed-0ab5-4dff-93b5-bf2adb121e7d
+"Stojowski, Sigismond"	432	4	88646e58-ed0e-45fb-9da6-3a3cb57425e7
+"Zimbalist, Efrem"	577	4	030c725e-f671-4c35-b283-8690ba6f3c4e
+"Wetzler, Hermann Hans"	707	4	
+"Balakirev, Mily Alekseyevich"	848	4	482dc0a4-0c39-40dc-9d6d-ca250a5ef833
+"Sanders, Robert L."	926	4	
+"Pregel, Boris"	1471	4	
+"Goodman, Saul"	1487	4	
+"McCartney, Sir Paul"	1666	4	
+"Crawford, Ruth Porter"	1694	4	bd108522-8856-4eba-8747-f38860a51818
+"Matthus, Siegfried"	1897	4	3138937a-6aee-4b56-82ed-96f39dcb11c2
+"Lunsqui, Alexandre"	2402	4	
+PUBLIQuartet	2711	4	
+"Ries, Ferdinand"	27	3	
+"Benedict, Jules"	55	3	
+"Mollenhauer, Friedrich"	83	3	
+"Ritter, Frederic Louis"	131	3	
+"Rheinberger, Joseph"	192	3	
+"Strong, George Templeton"	239	3	
+"Parry, Sir Charles Hubert H."	240	3	
+"Vilbac, Alphonse Charles Renaud de"	297	3	
+"Schenck, Elliott"	317	3	
+"Ries, Franz"	331	3	
+"Laucella, Nicola"	434	3	
+"Hue, Georges Adolphe"	451	3	
+"Leclair, Jean Marie"	459	3	
+"Green, Arthur N."	500	3	
+"Falck, Edward"	515	3	
+"Kalinnikov, Vassili"	545	3	
+"Horsman, Edward Imeson, Jr."	547	3	
+"Sibella, Gabrielle"	575	3	
+"Fourdrain, Félix Alfred"	599	3	
+"Willis, Wallis"	832	3	
+"Nin, Joachin"	900	3	
+"Fiorillo, Dante"	959	3	
+"Dittersdorf, Karl Von"	979	3	
+"Johnson, Horace"	1000	3	
+"Kurthy, Zoltan"	1071	3	
+"Alabieff, Alexander"	1111	3	
+"Mohaupt, Richard"	1124	3	
+"Piket, Frederick"	1338	3	
+"Gaburo, Kenneth"	1466	3	
+"Harkness, Rebecca"	1472	3	
+"Arnold, Sir Malcolm"	1536	3	
+"Baker, David J."	1737	3	
+"Picker, Tobias"	1941	3	
+"Tsypin, Vladimir"	2146	3	
+"Aizenstadt, David"	2175	3	
+"Sichel, John"	2190	3	
+"Rosenblatt, Y."	2202	3	
+"LeFrak, Karen"	2262	3	
+"Richard, Douglas A."	2264	3	
+"Galesi, Julian"	2357	3	
+"Kurtag, Georgy"	2382	3	
+"Hague, Albert"	2400	3	
+"Adolphe, Julia"	2542	3	
+"Herold, Louis Joseph Ferdinand"	21	2	
+"Maurer, Ludwig Wilhelm"	54	2	
+"Fuchs, H."	56	2	
+Wallace	113	2	
+"Bulow, Hans Von"	161	2	
+"Bronsart, Hans Von"	169	2	
+"Wilhelmj, August Daniel Ferdinand"	170	2	
+"Van Der Stucken, Frank"	285	2	
+"Loewe, Johann Carl"	295	2	
+"Burckhardt, J."	324	2	
+"Johns, Clayton"	329	2	
+Improvisation	357	2	
+"Vidal, Paul Antonin"	371	2	
+"Lvov, Alexey"	389	2	
+"Broome, Edward"	443	2	
+"Nowowiejski, Felix"	450	2	
+"Rubetz, A. T."	505	2	
+"Rogers, James H."	531	2	
+"Dargomiszky, Alexander"	535	2	
+"Chiaffarelli, Albert"	605	2	
+"Sweet, Reginald"	616	2	
+"Yon, Pietro Alessandro"	656	2	
+"Berners, Lord"	668	2	
+"Vittoria, Tomasso"	679	2	
+"Hosmer, Lucius"	692	2	
+"Novick, Nathan"	719	2	
+"Schroeder, William"	726	2	
+"Mengelberg, Rudolf"	735	2	
+"Raisin, A."	787	2	
+"Striegler, Kurt"	814	2	
+"Nanino, Giovanni Maria"	823	2	
+"De Lamarter, Eric"	857	2	
+"Riegel, Heinrich Joseph"	862	2	
+"Joslyn, Henry"	870	2	
+"Stringham, Edwin S."	936	2	
+"Kelley, Daniel"	940	2	
+"Sonzogno, Giulio Cesare"	942	2	
+"Palau Boix, Manuel"	943	2	
+"Kozeluch, Leopold Anton"	963	2	
+"White, Paul"	969	2	
+"Stamitz, Johann Wenzel Anton"	978	2	
+"Andrico, Michel G."	1013	2	
+"Lee, Dai-Keong"	1115	2	
+"Violette, Wesley La"	1150	2	
+"Lessner, George"	1163	2	
+"Cohan, George Michael"	1204	2	
+"Schuyler, Philippa Duke"	1220	2	
+"Rose, David"	1225	2	
+"Anderson, Paquita"	1248	2	
+"Rolla, Allesandro"	1272	2	
+"Benda, Jirí (Georg) Antonín (Anton)"	1331	2	
+"Barraud, Henri"	1343	2	
+"Minkus, Leon"	1353	2	
+"Perpessas, Harilaos"	1365	2	
+"Balendonck, Armand"	1375	2	
+"Clapp, Philip Greeley"	1393	2	
+"Lewis, George"	1488	2	
+"Zeller, Karl"	1574	2	
+"Smit, Leo"	1609	2	
+"Ran, Shulamit"	1627	2	
+"Chen, N."	1656	2	
+"Wilensky, Moshe"	1658	2	
+"Cunningham, Arthur"	1762	2	
+"Fisher, Fred"	1795	2	
+"King, Karl Lawrence"	1797	2	
+"Doppler, (Albert) Franz"	1813	2	
+"Holyoke, Samuel"	1825	2	
+"Hoeller, York"	1849	2	
+"Rex, Charles Gordon"	1908	2	
+"Dawson, Mary Cardwell"	2005	2	
+"Svane, Randall"	2055	2	
+"Shaw, Lowell"	2099	2	
+"Gannon, James ""Kim"""	2103	2	
+"Morricone, Andrea and Ennio"	2155	2	
+"Taslima, Farah"	2195	2	
+"Mendelssohn Hensel, Fanny"	2223	2	
+"Zelenaia, Margarita"	2254	2	
+"Carrick, Richard"	2271	2	
+"Bass, Randol Alan"	2333	2	
+Pola	2345	2	
+"Friedsell, Louis"	2379	2	
+Perlmutter	2380	2	
+"Poniewozik, Milo"	2410	2	
+"Hanson, Graydon"	2457	2	
+"Micic, Mia"	2458	2	
+"Sakho, Hawa"	2462	2	
+"Moske, Nina"	2502	2	
+"O'Brien, Jake"	2504	2	
+"Ozone, Makato"	2512	2	
+"Detrick, Zachary"	2539	2	
+"Nathan, Eric"	2549	2	
+"Cheung, Anthony"	2564	2	
+"Ezekwenna, Chibuzo ""Chi-chi"""	2595	2	
+"Ergun, Cenk"	2658	2	
+"Frankel, Ari"	2690	2	
+"Bochsa, Robert N. C."	22	1	
+"Loder, George, Jr."	34	1	
+"Reissiger, Karl Gottlieb"	36	1	
+"Schmitz, Henry"	50	1	
+"Heinemeyer, Ernst Wilhelm"	60	1	
+"Dancla, Jean Charles"	61	1	
+"Haase, Carl F.W."	65	1	
+"Gumbert, Friedrich Adolf"	67	1	
+"Lobe, Johann Christian"	70	1	
+"Gockel, August"	72	1	
+"Schneider, Johann C. Friedrich"	77	1	
+"Baumann, F."	78	1	
+"Rode, Jacques Pierre Joseph"	87	1	
+"Schindelmeisser, Ludwig"	90	1	
+Topliffe	96	1	
+"Napoleon, Arthur"	101	1	
+"Stigelli, Giorgio"	102	1	
+"Satter, Gustave"	103	1	
+"Haertel, A."	105	1	
+"Lubeck, Ernst"	109	1	
+"Saar, Wiiliam"	110	1	
+"Shaw, David T."	112	1	
+"Otten, William F."	115	1	
+Verzano	117	1	
+"Neukirchner, Wenzel"	121	1	
+"Lipinsky, Karl Joseph"	122	1	
+"Clapisson, Antoine Louis"	123	1	
+"Bergner, Frederick"	124	1	
+"Esser, Heinrich"	127	1	
+"Hohnstock, Carl"	130	1	
+"Prume, Jehin"	135	1	
+"Wehli, James M."	136	1	
+"Veit, Wenzel Heinrich"	140	1	
+"Bergmann, Carl"	148	1	
+"Dachauer, Louis"	150	1	
+"Heinefetter, Wilhelm"	151	1	
+"Frey, M."	153	1	
+"Erdmannsdorfer, Max Von"	154	1	
+Pinsoti	155	1	
+"Matzka, George"	156	1	
+"Dietrich, Albert Hermann"	158	1	
+"Pfeffer, Walter"	162	1	
+"Metzdorff, Richard"	163	1	
+"Kiel, Friedrich"	181	1	
+"Bruckler, Hugo"	185	1	
+"Fischer, Adolf"	189	1	
+"Gradener, Hermann"	197	1	
+"Scholz, Bernhard E."	213	1	
+"Franchetti, Baron Alberto"	218	1	
+"Koch, Friedrich E."	234	1	
+"Korbray, Francis Alexander"	241	1	
+"Haynes, Walter Battison"	245	1	
+Rucken	257	1	
+Storck	258	1	
+"Zoellner, Heinrich"	266	1	
+"Novacek, Ottokar (Eugen)"	273	1	
+Alsneff	286	1	
+"Saar, Louis Victor"	288	1	
+"Kretschmar, Edmund"	320	1	
+"Nesvadba, Josef"	326	1	
+Popp	328	1	
+"Klein, Bruno Oscar"	347	1	
+"Artsibushev, Nikolai Vassilievitch"	348	1	
+"De Fontenailles, Henri"	374	1	
+"Wekerlin, Jean-Baptiste"	375	1	
+Weber-Berlioz	377	1	
+"Metzl, Vladimir"	387	1	
+"Stewart, Humphrey J."	391	1	
+Wolff	394	1	
+"Glaassen, A."	395	1	
+"Wengert, Jules"	396	1	
+"Pache, J."	397	1	
+"Scudrei, Salvatore"	409	1	
+Pluddemann	417	1	
+"Corner, Dr. David Gregor"	423	1	
+"Schjelderup, Gerhard"	438	1	
+"Van Der Pals, Leopold"	439	1	
+"Tertius-Noble, Thomas"	441	1	
+"Pointer, John"	442	1	
+"Lie, Sigurd"	465	1	
+Glibert	466	1	
+"Rathbone, George"	475	1	
+"Harris, Joel Chandler"	486	1	
+"Rickett, Edmond"	488	1	
+"Ingraham, George"	489	1	
+"Lang, Margaret R."	495	1	
+"Fleck, Fritz"	497	1	
+"Costa, G."	501	1	
+"Sullivan, Archibald Beresford"	512	1	
+"Sendrey, Alfred"	513	1	
+Peel	516	1	
+"Burck, Henry"	521	1	
+"Wolff, Eric"	522	1	
+"Rummel, Walter Morse"	524	1	
+"Brewer, Sir Alfred Herbert"	527	1	
+"Maryon, Edward"	533	1	
+"Barnaby, Gunn"	537	1	
+"Sharp, Earl Cranston"	549	1	
+"Riedel, Karl Heinrich"	556	1	
+"Rogers, Frederic"	563	1	
+"Leroux, Xavier Henry Napoleon"	573	1	
+"Reinthaler, Karl"	579	1	
+"Elsenheimer, N. J."	581	1	
+"Vogrich, Max Wilhelm Karl"	583	1	
+"Otterstrom, Thorvald"	585	1	
+"McCabe, James J."	586	1	
+"Osgood, James R."	592	1	
+"Stillman-Kelley, Edgar"	598	1	
+McFadyen	602	1	
+"Sans Souci, Gertrude"	603	1	
+"Dvorsky, Michel"	607	1	
+"Lisle, Claude-Joseph R. De"	608	1	
+Geral	610	1	
+"Messager, Andre Charles Prosper"	612	1	
+"Bourk, Richard C."	614	1	
+"Lorenziti, Bernard"	618	1	
+"Morris, Harold"	626	1	
+"Cutler, Henry Stephen"	627	1	
+"Pierce, Seneca"	636	1	
+"Maxwell, Elsa"	640	1	
+"X, Alfonso"	642	1	
+"Maloof, A."	647	1	
+"Sachnowsky, G."	648	1	
+"Lieber, Arthur"	649	1	
+Kekeu	651	1	
+Parbury	659	1	
+"Williams, John Gerard"	673	1	
+Philippe	675	1	
+"Hammond, William G."	676	1	
+"Kallinnikof, Ivanof"	680	1	
+"Waddington, Samuel P."	681	1	
+Rogers	682	1	
+"Dopper, Cornelius"	684	1	
+"Goudoever, H.D. van"	686	1	
+"Watts, Wintter"	690	1	
+"Dunham, Henry M."	691	1	
+"Breil, Joseph C."	693	1	
+"Savine, Alexander"	699	1	
+"Donostia, Padre (San Sebastian, P. Jose Antonio ne Zulaica)"	704	1	
+"Romen, Louis"	705	1	
+"Burgmein, J."	709	1	
+"Kidder, Max"	717	1	
+"Marcelli, Nino"	720	1	
+"Bach, J. S. -Gounod"	721	1	
+"Dale, Benjamin James"	723	1	
+"Geissel, J."	727	1	
+"Gallico, Paolo"	733	1	
+"Luzzi, Luigi"	744	1	
+Lvovsky	745	1	
+"Bergson, Michal"	750	1	
+"Alvars, Paris"	753	1	
+"Ilgenfritz, McNair"	758	1	
+"Horst, Louis"	759	1	
+"Mowrey, Dent"	760	1	
+"Valverde, Joaquin"	762	1	
+"Frey, Hugo"	763	1	
+"Gebhard, Heinrich"	765	1	
+"Harling, William Franke"	777	1	
+Rehfeld	779	1	
+"Axt, William"	781	1	
+"McCoy, William J."	782	1	
+Edelshtadt	786	1	
+"Shaeffer, Joseph"	788	1	
+"Luther, Martin"	800	1	
+Sonnett	803	1	
+Tuerck	804	1	
+Sturm-Biel	805	1	
+Curti	806	1	
+"Mero, Yolanda"	809	1	
+"Brucken Fock, Gerardus Hubertus Galenus von"	813	1	
+"Stearns, Theodor"	815	1	
+"Bensman, M."	818	1	
+"Yasinowski, P."	819	1	
+"Schaeffer, J."	820	1	
+"Ehrenberg, Carl Emil Theodor"	822	1	
+"Darcieux, Francisque"	824	1	
+Goublier	836	1	
+"Stoughton, Roy Spaulding"	840	1	
+"Bergé, Irénée"	852	1	
+"Paer, Ferdinando"	856	1	
+"Clement, Charles Francois"	858	1	
+"Guion, David Wendel F."	860	1	
+"Cohen, Sol B"	866	1	
+"Maduro, Charles"	871	1	
+"Noskowski, Sigismund"	877	1	
+"Sammartini, Giovanni B."	878	1	
+"Hively, Wells"	885	1	
+"Stoughton, Roy"	886	1	
+"Strauss, Johann, Jr. & Josef"	887	1	
+"Eichheim, Henry"	888	1	
+"Corby, Mabelanna"	890	1	
+"Jensen, Ludwig Irgens"	898	1	
+"Ettinger, Max"	902	1	
+"Shepherd, Arthur"	904	1	
+"Weprik, Alexander"	906	1	
+"Braine, Robert"	909	1	
+"Barnett, David"	910	1	
+"Redman, Donald Matthew"	913	1	
+"Humphrey, Doris"	918	1	
+"Pimsleur, Solomon"	920	1	
+"Franckenstein, Clemens Freiherr von und zu"	927	1	
+"Blumer, Theodore"	929	1	
+"Gasco, Alberto"	934	1	
+"Barlow, Samuel Latham Mitchell"	938	1	
+"Noble, T. Tertius"	939	1	
+"Piccinni, Nicola"	951	1	
+"Helfter, Walter"	960	1	
+"Diamond, Walter"	961	1	
+"Curran, Pearl"	971	1	
+"Del Riego, Theresa Clotilde"	972	1	
+"Rosenmuller, Johannes"	976	1	
+"Otesco, Nonna"	984	1	
+"Nordoff, Paul"	986	1	
+"Blanchet, Emile R."	989	1	
+"Acqua, Eva dell'"	992	1	
+"Soler, Padre"	993	1	
+"Fuerst, Eugene"	994	1	
+"Kerr, Harrison"	998	1	
+"Camilieri, Lorenzo"	1009	1	
+"Alessandresco, Alfred"	1010	1	
+"Glantz, Harry"	1014	1	
+"Gilardi, Girado"	1017	1	
+"Rybicki, Wojciech"	1020	1	
+"Blose, Johann M"	1021	1	
+"Biber, Heinrich von"	1022	1	
+"Rosenthal, Moritz"	1024	1	
+"Gutman, Arthur H"	1026	1	
+"Schoenherr, Max"	1028	1	
+"Kearney, Peadar"	1030	1	
+"Pillois, Jacques"	1033	1	
+Gregorian Chant	1034	1	
+"Dragoi, Sabin V(asile)"	1039	1	
+"Bonner, Eugene MacDonald"	1043	1	
+"Cesana, Otto"	1044	1	
+"Wiechowicz, Stanislaw"	1048	1	
+"Zemachson, Arnold"	1064	1	
+"Robinson, Earl"	1073	1	
+Garcia-Estrada	1075	1	
+Troiani-Bandini	1076	1	
+Lopez-Buchardo	1077	1	
+"Oyanguren, Julio Martinez"	1078	1	
+"Ugarte, Floro M(elitón)"	1080	1	
+"Hummel, Ferdinand B."	1081	1	
+"Becker, John J."	1082	1	
+"Spier, La Salle"	1083	1	
+"Woltmann, Frederick"	1089	1	
+"Portnoff, Mischa"	1096	1	
+"Davies, Sir Walford"	1103	1	
+"Baxter, Phil"	1108	1	
+"Hasselmans, Alphonse Jean"	1119	1	
+"Vosgerchien, Luise"	1127	1	
+"Gooch, William"	1128	1	
+"Dodworth, Allen"	1129	1	
+"Sapp, Allen D."	1130	1	
+"Stor, Jean"	1133	1	
+"Garat, Pierre"	1135	1	
+"Elwell, Herbert"	1138	1	
+"Semmler, Alexander"	1140	1	
+"Enthoven, Henri Emile"	1142	1	
+"Tuthill, Burnet"	1143	1	
+"Tavares, Hekel"	1147	1	
+Nassara-Barroso	1148	1	
+"Crist, Bainbridge"	1155	1	
+"Leonard, Clair"	1156	1	
+"Borguno, A."	1164	1	
+"Font, M."	1167	1	
+"Proch, Heinrich"	1168	1	
+"Farnon, Robert J."	1169	1	
+"Mueller, Florian F."	1170	1	
+"Heusen, James Van"	1175	1	
+"Ganin, Kim"	1176	1	
+"Hill, Patty and Mildred"	1181	1	
+"Beckett, Wheeler"	1187	1	
+"Lutkin, Peter Christian"	1190	1	
+"Labunski, Felix"	1192	1	
+"Verley, Albert"	1194	1	
+"Tchesnokoff, Pavel"	1195	1	
+"Tajtchevitch, Marko"	1200	1	
+"Schenk, Robert C."	1203	1	
+"Wagner, Joseph"	1205	1	
+"Wooldridge, John"	1207	1	
+"Meck, Josef"	1209	1	
+"Menasce, Jacques De"	1215	1	
+"Earle, Edward"	1221	1	
+"Listov, K."	1223	1	
+"Turlet, A."	1233	1	
+Ravina	1235	1	
+"Malats, Joaquin"	1237	1	
+"Lorenz, Carl"	1239	1	
+"Adair, Dorothy W."	1241	1	
+"Barrymore, Lionel"	1243	1	
+"Amanuensis, A. N."	1244	1	
+Andre	1249	1	
+Gogliano	1250	1	
+"Penella, Manuel"	1257	1	
+"Larregla, Joaquin"	1259	1	
+Don Alfonso-Carriola	1262	1	
+"Kosakoff, Reuven"	1265	1	
+"Stix, Carl"	1267	1	
+"Napravnik (Nápravník), Eduard Frantsovitch"	1269	1	
+Bodge	1270	1	
+"Ronald, Langdon"	1274	1	
+"Tarenghi, Mario"	1276	1	
+"MacHugh, Jimmy"	1278	1	
+"Vitalis, George"	1279	1	
+"Meacham, Frank W."	1283	1	
+"Souvaine, Henry"	1284	1	
+"Reddick, William"	1288	1	
+Eiger	1290	1	
+Bettorini	1292	1	
+"Griselle, Thomas"	1301	1	
+"Kowal, M"	1304	1	
+"Chemberdji, Katya"	1305	1	
+"Miliutin, Georgii Sergeevich"	1306	1	
+"Lavalle, Paul"	1309	1	
+"Bachelet, Alfred (Georges)"	1316	1	
+"Anderson, Florence"	1321	1	
+"DuPage, Richard"	1322	1	
+"Ratner, Leonard"	1324	1	
+"Block, Frederick"	1325	1	
+"Mackenna, Carmela"	1326	1	
+"Bosmans, Arturo"	1327	1	
+"Haggerty, Richard"	1329	1	
+"Work, John"	1330	1	
+"Guenther, Felix"	1332	1	
+"Lucas, Mary Anderson"	1333	1	
+"Mattfeld, Julius"	1337	1	
+"Biloti, Anton"	1340	1	
+"Turner, Godfrey"	1345	1	
+Sakovich	1347	1	
+"Hardelot, Guy d'"	1348	1	
+Gargiulo	1350	1	
+"Grave, Maria"	1352	1	
+"Bauer, Marion Eugenie"	1356	1	
+"George, Earl"	1357	1	
+"Spielmann, Fritz"	1362	1	
+"Muradeli, Vano"	1367	1	
+"Baron, Maurice"	1368	1	
+"Starokadomsky, Michael L."	1371	1	
+"Vene, Ruggero"	1373	1	
+"Haussermann, John"	1374	1	
+"Panufnik, Sir Andrzej"	1379	1	
+"Fitch, Theodore"	1380	1	
+"Wesley, Mary Lou"	1381	1	
+Morganstern	1382	1	
+"Frazzi, Vito"	1396	1	
+Soarez-Saveno	1403	1	
+"Castellanos, Carlos"	1404	1	
+"Balazs, Frederic"	1405	1	
+"Firestone, Elizabeth"	1406	1	
+"Alexander, Josef"	1408	1	
+"Koutzen, Boris"	1410	1	
+"Travis, Roy Elihu"	1415	1	
+"Jackno, Ralph John"	1421	1	
+"Yaysnoff, June & Iris"	1425	1	
+"Gesensway, Louis"	1427	1	
+"Hill, Dorothy"	1431	1	
+"Blasco, Ricardo"	1439	1	
+"Lajarte, Theodore Eduard DuFaure"	1441	1	
+"Kassern, Tadeusz"	1445	1	
+"Dougherty, Celius (Hudson)"	1447	1	
+"Helm, Everett"	1449	1	
+"Dalgleish, James"	1450	1	
+"Godfrey, Kathryn"	1451	1	
+Font de Anda	1453	1	
+Miller	1455	1	
+"Zaritzky, Walt Barrows"	1462	1	
+"Sihanouk, King Norodom"	1467	1	
+"Ladmirault, Paul Emile"	1468	1	
+Sauter-Finegan	1473	1	
+"Yradier, Sebastian"	1477	1	
+"De Filippi, Amedeo"	1481	1	
+"Carrer [Karrer, Karreris], Pavlos"	1486	1	
+"Hall, Reginald"	1489	1	
+Marker	1490	1	
+"Di Candriano, Prince Camillo Ruspoli"	1491	1	
+"Bensussan, Menachem"	1492	1	
+Landes	1495	1	
+Goehr	1496	1	
+"Mamorsky, Morris"	1497	1	
+"Burgess, Lord"	1498	1	
+"De Banfield, Raffaello"	1500	1	
+"Williams, Hank"	1505	1	
+New Orleans Rhythm Kings	1506	1	
+"Marquina, Pasquale"	1513	1	
+"Mann, Robert"	1518	1	
+"Heiden, Bernhard"	1520	1	
+"Egge, Klauss"	1522	1	
+"Sherwood, Gordon"	1523	1	
+"Fernandez Arbos, Enrique"	1535	1	
+"Bondeville, Emmanuel"	1538	1	
+"Sicilianos, Yeorgo"	1545	1	
+"Merrick, Mahlon Legrand"	1546	1	
+"Borishansky, Elliot"	1549	1	
+"Yoder, Paul V."	1550	1	
+"Chapi (y Lorente), Ruperto"	1551	1	
+"Alamo, Lazaro del"	1553	1	
+"Arbo, Miguel Asins"	1554	1	
+Ferriz	1555	1	
+"Zafred, Mario"	1559	1	
+"Betti, Henry"	1564	1	
+"Franklin, Benjamin"	1568	1	
+"Beglarian, Grant"	1569	1	
+"Banfield, Raffaelo de"	1573	1	
+Merceron	1575	1	
+"Pugatchov, Emanuel"	1576	1	
+Monreal	1589	1	
+Solano	1590	1	
+Maciste	1591	1	
+Ovadia	1592	1	
+Ferrao	1593	1	
+"Parish, M"	1598	1	
+"Ripoll, Michael Douglas"	1600	1	
+"Blackburn, John M"	1601	1	
+"Dor, Dani"	1610	1	
+"Gold, Ernest"	1612	1	
+"Gottlieb, Jack"	1616	1	
+"Vetessy, George"	1625	1	
+Reif	1635	1	
+"Gesualdo, Don Carlo"	1647	1	
+"Amiran, Emanuel"	1659	1	
+"Navon, Yitzchak Eliyahu"	1660	1	
+"Bilik, Jerry"	1664	1	
+"Perusio, Matteus de"	1678	1	
+"Caserta, Anthonellus de"	1679	1	
+"Coperiario, Giovanni"	1681	1	
+"Li, Huanzhi"	1704	1	
+"Francoeur, François"	1727	1	
+"Taxin, Ira"	1732	1	
+"Raposo, Joe"	1733	1	
+"Jablonsky, Stephen"	1742	1	
+"Plante, Daniel"	1745	1	
+"Myers, Laurie"	1746	1	
+"Levine, Jeffrey"	1748	1	
+"Europe, James Reese"	1755	1	
+"Fillmore, John Comfort"	1757	1	
+"Hakim, Talib Rasul"	1760	1	
+"Anderson, T.J."	1761	1	
+"Saint-Georges, Joseph Bologne Chevalier de"	1764	1	
+"Davison, Harriette"	1767	1	
+"Dugger, Edwin"	1784	1	
+"Thomas, Andrew"	1787	1	
+"Cohen, Edward"	1788	1	
+"Romero, Angel"	1792	1	
+"Fischer, J."	1793	1	
+"Meyers, Billy, Schoebel, Elmer and"	1796	1	
+"Taneyev, Sergei"	1800	1	
+"Zagortsev, Vladimir"	1805	1	
+"Schultze, Johann Christian"	1814	1	
+"Kotzwara, Franz"	1822	1	
+"Herrick, Joseph"	1824	1	
+"Chowning, John MacLeod"	1853	1	
+"Albrechtsberger, Johann G."	1866	1	
+"Karmen, Steve"	1872	1	
+"Subramaniam, Lakshminarayana"	1873	1	
+"Warshaw, Dalit Paz"	1875	1	
+"Sinopoli, Giuseppe"	1877	1	
+"Novak, Jan"	1883	1	
+"May, Robert C."	1904	1	
+"Gastaldon, Stanislas"	1914	1	
+"Coolidge, Peggy Stuart"	1918	1	
+"Cerchio, Bruno"	1923	1	
+"Drattell, Deborah"	1927	1	
+"Ge, Gangru"	1936	1	
+Di Crescenza	1949	1	
+"Meisel, Edmund"	1952	1	
+"Berwald, Franz Adolf"	1960	1	
+"Blumenfeld, Felix"	1970	1	
+"Renwick, Wilke"	1976	1	
+"Milan, Luys"	1987	1	
+"Paz, Xavier de"	1992	1	
+"Pleyel, Ignaz"	1997	1	
+"Koper, Karl-Heinz (Köper)"	1998	1	
+"Hawkins, Walter"	1999	1	
+"Carter, Henry"	2006	1	
+"Holland, M. Roger, III"	2007	1	
+"Wright, Rayburn"	2012	1	
+"Cresswell & McNicholas, Luke & Steve"	2021	1	
+"McGrimsey, Robert"	2031	1	
+"Maltsby, Carl"	2032	1	
+Discussion	2042	1	
+"Hathaway and McKinnor, Donny and Nadine"	2049	1	
+"Premru, Raymond"	2050	1	
+"Flecha, Mateo, El Viejo"	2051	1	
+"Sussan, Leo"	2059	1	
+"Baum, Parker"	2060	1	
+"Blaudziunas, Gabija"	2061	1	
+"Mindlin, Samantha"	2062	1	
+"Spencer, Victoria"	2063	1	
+"Hoover, Duke"	2064	1	
+"Held, Ilana"	2065	1	
+"Boyle-Cole, Cheyenne"	2066	1	
+"Hirschhorn, Michelle"	2067	1	
+"Piot, Melhia"	2068	1	
+"Sable, Lindsay"	2069	1	
+"Esman, Ilan"	2070	1	
+"Gray, Aiesha"	2071	1	
+"Rosario, Janis"	2072	1	
+"Baum, Sabrina"	2073	1	
+"Simonson, Victor"	2081	1	
+"Becton, Shelton L."	2082	1	
+"Falcon Sanabria, Juan José"	2085	1	
+"Masson, Askell"	2089	1	
+"Bratton, John W."	2100	1	
+"Southall, Mitchell B."	2102	1	
+"Farrenc, Jeanne-Louise"	2109	1	
+"Tsintsadze, Sulkhan Fyodorovich"	2112	1	
+"Fruehling, Carl"	2113	1	
+Coldplay	2114	1	
+"Rodriguez, Jasmin"	2115	1	
+"James, Dijon"	2116	1	
+"Vega, Arianna"	2117	1	
+"Paulino, Carlos"	2118	1	
+"Vitrago, Roger"	2119	1	
+"Diaz, Stanly"	2121	1	
+"Gomez, Cynthia"	2122	1	
+"Leger, Anabel"	2123	1	
+"Lachert, Piotr"	2129	1	
+"Lloyd Webber, Lord Andrew"	2130	1	
+"Javits, Joan Ellen"	2131	1	
+"Silver, Frederick"	2133	1	
+"May, Billy & Kenton, Stan"	2137	1	
+"Harrison, Tim"	2139	1	
+"Elvey, Sir George"	2143	1	
+"Glisic, Živojin"	2163	1	
+"Valjean, Paul"	2167	1	
+"Perez Prado, Damaso"	2171	1	
+"Sobol, Dr. Mordechai"	2173	1	
+"Levinson, Y. D."	2174	1	
+"Odessaer, Bulgar"	2176	1	
+"Nowakowsky, D."	2177	1	
+"Koussevitzky, Moshe"	2178	1	
+"Alter, I"	2179	1	
+"Talmud, Yaakov"	2180	1	
+"Bogzester, William"	2181	1	
+"Grip, Eric"	2187	1	
+"Robinson, Kyla"	2191	1	
+"Nunez, Ivan"	2192	1	
+"Willis, Annabel"	2193	1	
+"Petronio, Camilla"	2194	1	
+"Fleming, Sarah"	2196	1	
+"Comstock, Jackson"	2197	1	
+"Wong & Xiao, Patrick & Vincent"	2198	1	
+"Wehrli, Werner"	2201	1	
+"Kwartin, Zevulun"	2203	1	
+"Schorr, Israel"	2204	1	
+"Chutiner, P."	2205	1	
+"Stern, I. & Moshe"	2206	1	
+"Brody, Josef"	2208	1	
+"Hely-Hutchinson, Victor"	2209	1	
+"Dworsky and Blaske, Richard and Lee"	2211	1	
+"Shand, Terry & Eaton, Jimmy"	2212	1	
+"Charles, Dick and Marks, Larry"	2217	1	
+"Bortz, Daniel"	2220	1	
+"Guang, Ren"	2225	1	
+"Gerber, Stephen"	2226	1	
+"Nissenson, Gloria"	2241	1	
+"Herbert, Rajon"	2243	1	
+"Pichardo, Edward"	2244	1	
+"Wegh, Claire"	2245	1	
+"Pagan, Abraham"	2247	1	
+"Zhang, Yijun"	2248	1	
+"Lu, Cindy"	2250	1	
+"Lu, Yiqing"	2251	1	
+"Zhang, Yusong"	2252	1	
+"Hoffman, Solomon"	2256	1	
+"Oberdier, Danielle Kerani"	2257	1	
+"Tokke, Justin P."	2258	1	
+"Schubert - Berio, Franz - Luciano"	2261	1	
+Dixieland Jazz Band	2269	1	
+"Louiguy, Louis"	2275	1	
+"Ramos, Ben"	2278	1	
+"Turano, Olivia"	2279	1	
+"Williams, Aleaster"	2281	1	
+"Hyland, Theoren"	2282	1	
+"Arotsky, Sheridan"	2283	1	
+"Frankle, George"	2284	1	
+"Quinlan, Caitlin"	2285	1	
+"Wilson, Paul"	2286	1	
+"Corghi, Azio"	2297	1	
+"Anastasio, Trey, and Hart, Don"	2299	1	
+"Watanabe, Harumi"	2301	1	
+"Tateno, Keito"	2302	1	
+"Ashimine, Shuono"	2303	1	
+"Tanabe, Aline Sauvegrain"	2304	1	
+"Hiramoto, Wataru"	2305	1	
+"Okuyama, Marin"	2306	1	
+"Sierra, Arlene Elizabeth"	2312	1	
+"Liang, Lei"	2313	1	
+"Winkler, David"	2316	1	
+"Rodgers, Mary"	2319	1	
+"Parsons, Michael"	2323	1	
+"Fiorenzoli, Stella"	2324	1	
+"D'Ver, Ethan"	2325	1	
+"Draper, Isaac"	2326	1	
+"Jimenez, Noah"	2327	1	
+"Durakovic, Amina"	2328	1	
+"Nikocevic, Elmir"	2329	1	
+"Samerson, Brooke"	2330	1	
+"Zhao, Guang"	2334	1	
+"Kazik, James"	2337	1	
+"Sydeman, William Jay"	2340	1	
+"Wildmans, Friedrich"	2341	1	
+"Jagoda, Flory"	2348	1	
+"Korzeniowsky, Julian"	2352	1	
+"Ding, Qin"	2353	1	
+"Jatta, Musa, Jr."	2355	1	
+"Dolby, Nuha"	2356	1	
+"Moors, Daniel"	2358	1	
+"Pino, Maya"	2359	1	
+"Balbi, Ashley"	2360	1	
+"Gaga, Lady"	2366	1	
+"Kim, Sae-Young"	2374	1	
+ACT	2375	1	
+"Gaunt, Percy"	2377	1	
+"Minkowsky, Giacomo"	2378	1	
+"Sager, Carol Bayer, Foster, David"	2387	1	
+"Choi, Sophia"	2391	1	
+"Kotkin, Henry"	2392	1	
+"Shmerler, Harry"	2393	1	
+"Kim-Suzuki, Saya"	2394	1	
+"Bryant, Calista"	2395	1	
+"Chough, Sara"	2396	1	
+"Gardner, Danielle"	2397	1	
+"Park, Jong Eun Sylvia"	2398	1	
+"Vistel, Douglas"	2399	1	
+"Bao, Yuankai"	2403	1	
+"Zhou, Chenglong"	2405	1	
+"Sun, Yiqian"	2406	1	
+"Tu, Emily"	2408	1	
+"Collings, Bryce"	2409	1	
+"Brooks, Calie"	2411	1	
+"Peterson, Timothy"	2412	1	
+"Landau, Jake"	2413	1	
+"Sifuentes, Carol"	2414	1	
+"Garcia, Jean-Carlos"	2415	1	
+"Alexander, Andre"	2416	1	
+"Valongo, Elijah"	2417	1	
+"Oliver, Melvin ""Sy"""	2422	1	
+"Kessler, James C."	2423	1	
+"Keillor/Dworsky/Stein, Garrison/Rich/Andy"	2425	1	
+"Fagin, Gary"	2426	1	
+"Shea, Michael J."	2428	1	
+"Robinson and White, William ""Smokey"" and Ronald"	2429	1	
+"Mendoza y Cortés, Quirino"	2431	1	
+"Stein, Andy"	2432	1	
+"Peace, A. L."	2433	1	
+"Shayne, Gloria"	2434	1	
+Beal	2436	1	
+"Vaclavik, Jude"	2441	1	
+"Zhang, Qianyi"	2444	1	
+"Sang, Ruocuo"	2445	1	
+"Ying, Qing"	2446	1	
+"Bozza, Eugene Joseph"	2448	1	
+"Espiritusanto, Ashanti"	2456	1	
+"Braun, Aliyana Tedi"	2459	1	
+"Irfan, Tengku Ahmad"	2460	1	
+"Gulielmetti, Jack"	2461	1	
+"Fig, Aaron Wolff"	2463	1	
+"Rissmann, Paul"	2465	1	
+"Duery, Louis"	2468	1	
+"Sandidge, Daniel"	2470	1	
+"Rechtman, Elan"	2475	1	
+"Taylor, Brooks & Stanley"	2483	1	
+"Kerr, Joseph Frizell"	2491	1	
+"Igudesman & Joo, Aleksey & Huyng-ki"	2493	1	
+"Perren, Fekaris, and Gaynor, Freddie, Dino, and Gloria"	2496	1	
+"Arancio, Julia"	2498	1	
+"Celestin, Austin"	2499	1	
+"Green, DeAnte"	2501	1	
+"Utagawa, Karin"	2505	1	
+"Iwamoto, Yuki"	2506	1	
+"Iwamoto, Hiroaki"	2507	1	
+"Bai, Chengren"	2508	1	
+"Luo, Xiuying"	2509	1	
+"Xu, Peidong"	2510	1	
+"Senk, Olga"	2526	1	
+"Acosta, Daniel"	2531	1	
+"Darris, Samantha"	2532	1	
+"Choi, Elli"	2533	1	
+Bridge to Nowhere	2534	1	
+"Jones, Jesse"	2545	1	
+"Wang, Lu"	2546	1	
+"McManus, Andrew"	2547	1	
+"Kapica, Chris"	2553	1	
+"Eotvos, Melody"	2558	1	
+"Rotolo, Kyle"	2561	1	
+"Stafylakis, Haralabos"	2562	1	
+"Green, Joe"	2565	1	
+"Ray, Don"	2566	1	
+"Brock, Timothy"	2574	1	
+"Le Roy, Henri Leon"	2583	1	
+"Liao, Shuwen"	2584	1	
+"Pato and Tong, Christina and Wu"	2587	1	
+"Yan, Hai-Deng"	2592	1	
+"Kravath, Lilly"	2596	1	
+"Lubetsky, Maya"	2597	1	
+"Siguencia, Marvin"	2598	1	
+"Tom, Emma"	2599	1	
+"Zivkovic, Djuro"	2601	1	
+"Liu, Tianhua"	2613	1	
+"Dessner and Parry, Bryce and Richard Reed"	2615	1	
+"Mallonee, Caroline"	2618	1	
+"Heidelberger, Nathan"	2621	1	
+"Handel/ Mason, George/Lowell"	2630	1	
+"Coletti, Christopher"	2631	1	
+"Hudson, Caleb"	2632	1	
+"Harris, Gavin"	2637	1	
+"Villegas, Mondriana"	2638	1	
+"Egan, Elizabeth"	2639	1	
+"Rodine, Saevar"	2640	1	
+"Paunio, Pyry"	2641	1	
+"Rankin, Rimari"	2642	1	
+"Juarez, Demicis"	2643	1	
+"Gang and He, Chen and Zhanhao"	2645	1	
+"Ewald, Victor"	2649	1	
+"Cohen, Lenoard"	2651	1	
+"Page, Plant, and Bonham, Jimmy, Robert, and John"	2653	1	
+"Mitchell, Willie"	2655	1	
+"Krawczyk, Franck"	2656	1	
+"Aucoin, Matthew"	2660	1	
+"Purrington, Hilary"	2666	1	
+"Johnson, John Rosamund"	2667	1	
+"Sivan, Noam"	2674	1	
+"Jacobson, Colin"	2680	1	
+"Hartonen, Aino"	2681	1	
+"Won, Taehyun"	2682	1	
+"Ng, Aidan"	2683	1	
+"Andrade, Angie"	2685	1	
+"Vakeva, Kari"	2688	1	
+"Evans, Eric"	2695	1	
+"Hirsch/Lanz, Shelley/Joke"	2698	1	
+"Dempster, Thomas"	2699	1	
+"Laub, Fernando"	2702	1	
+"Babcock, Andrew"	2703	1	
+"Hembree, Paul"	2705	1	
+"Patrono, Clelia"	2706	1	
+"Einbond, Aaron"	2708	1	
+"Schedel, Margaret"	2710	1	
+"Cline, Nicholas"	2714	1	
+"Howe, Hurbert"	2718	1	
+"von Reusner, Clemens"	2720	1	
+"Luhmann, Grant"	2721	1	
+"Hass, Jeffrey"	2722	1	
+"Nichols, John"	2723	1	
+"Cunningham, Stuart"	2725	1	
+"Dashow, James"	2726	1	
+"Wang, Tuo"	2728	1	
+"Gatti, Paolo"	2729	1	
+"Cerar/Borissov, Maja/Liubo"	2730	1	
+"Li, Wuan-chin"	2732	1	
+"Mailman, Joshua"	2733	1	
+"Gogins, Michael"	2734	1	
+"Kramer, Reiner"	2735	1	
+"Thomas, Paul David"	2737	1	
+"Clausen, Joshua"	2738	1	
+"Kotcheff, Thomas"	2739	1	
+"Alexander, Lucas"	2746	1	
+"Qian, Yibing"	2747	1	
+"Lenon/McCartney, John/Paul"	2749	1	
+"Pascuzzi, Gregory"	2752	1	
+"Gates, Dorothy"	2753	1	
+Anonymous	2754	1	
+"Araujo, Benjamin"	2756	1	
+"Estrella, Marisol"	2757	1	
+"Hata, Yusei"	2758	1	
+"Rabiu, Isai"	2759	1	
+"Weerakkody, Suvani"	2760	1	
+"Gontarcyk, Nikita"	2761	1	
+"Malin and Cordero, Leslie and Percaiz"	2762	1	
+"Tzu, Huang"	2764	1	
+"Li, Qingzhu"	2765	1	
+"Wubbels, Eric"	2771	1	
+"Feng, Shuya"	2776	1	
+"Klein, Gideon"	2779	1	

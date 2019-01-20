@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from nyp.raw.schema import Composer
@@ -22,7 +22,7 @@ Base.metadata.create_all()
 Session = sessionmaker(engine)
 s = Session()
 
-for c in s.query(Composer).filter(Composer.id != 4):
+for c in s.query(Composer).filter(Composer.id != 4):  # no intermission
     print(c)
     search = MBZComposerSearch(c)
     search.pick_best_match()
