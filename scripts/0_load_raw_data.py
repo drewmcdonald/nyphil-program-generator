@@ -2,8 +2,8 @@ import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from nyp.raw.schema import Base
-from nyp.raw.parser import ProgramParser
+from nyp.models import Base
+from nyp.parsers import ProgramParser
 
 engine = create_engine("sqlite:///data/raw.db")
 Base.metadata.bind = engine

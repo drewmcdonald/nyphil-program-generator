@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import re
 
-from nyp.raw.schema import (
+from nyp.models import (
     ConcertSelection, EventType
 )
 

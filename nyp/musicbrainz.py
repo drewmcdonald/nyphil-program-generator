@@ -3,7 +3,7 @@ import json
 import os.path
 import time
 
-from nyp.raw.schema import Composer, MBZComposer
+from nyp.models import Composer, MBZComposer
 
 
 class MBZAPI(object):

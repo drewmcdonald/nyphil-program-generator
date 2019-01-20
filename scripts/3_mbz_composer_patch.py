@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 
 import pandas as pd
 
-from nyp.raw.schema import Composer, MBZComposer
+from nyp.models import Composer, MBZComposer
 from nyp.musicbrainz import MBZAPI
 
 
