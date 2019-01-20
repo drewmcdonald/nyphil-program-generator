@@ -10,7 +10,7 @@
     + key
     + arranger/is arrangement
     + final parenthetical notes
-- set up musicbrainz composer scan and then work scan
+
 
 ## Data structure
 
@@ -46,6 +46,11 @@ Selection: a hybrid unit of a composition
 Concert: a performance of a set of *Selections*
 - unique by datetime and \_\_\_(?) 
 
+MBZComposer: MusicBrainz metadata for a composer
+- unique per *Composer* record
+- not available for all *Composers*
+- linked with composer_id field
+
 
 ### Relationships
 
@@ -69,17 +74,28 @@ ConcertSelectionPerformer
 ## Model Structure
 
 - Data: 
-    + matrix of selections by program and concert, with 1+ categorical features
+    + DataFrame of ConcertSelections (rows)
+    + indexed by \[Concert.id, Selection.id, ConcertSelection.id\]
+    + column for inclusion in final prediction
+    + 1 or more columns of categorical features to model
 
 - Training:
-    + options for case weighting or non-linear probability adjustments
-    + one sub-model per categorical feature
-    + split feature, interpolate intermission and begin/end flags, collapse
+    + for each categorical feature:
+        * split by concert, interpolate intermission and begin/end flags, collapse
+        * prune to feature values with adequate representation
+        * train a markov chain of counts, then convert to probabilities
+    + options for case weighting or non-linear probability adjustments?
 
 - Prediction:
-    + adjust weights by feature
-    + sum weighted probabilities as predicted by sub-models
-    + sample from the weighted probabilities
+    + Dedupe training data to unique selections marked for prediction
+    + for each feature/sub-model:
+        * apply model pruning
+        * apply (feature=value prediction) divided by (count of feature=value) to each feature=value record
+    + result is DataFrame of records with one column per each feature probability prediction
+    + Append record for BREAK
+    + sum weighted probabilities into a final record probability
+    + sample a record from the weighted probability sum
+    + repeat until BREAK marker predicted
 
 - Sub-models:
     + Composer Nationality
