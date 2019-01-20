@@ -15,6 +15,7 @@ class MBZAPI(object):
     def __init__(self, endpoint: str, mbz_id: str = None):
         self.endpoint: str = endpoint
         self.mbz_id: str = mbz_id
+        self.add_params: dict = {}
         self.request_status_code: int = None
         self.content: dict = None
 
@@ -31,7 +32,7 @@ class MBZAPI(object):
 
     @property
     def request_params(self) -> dict:
-        return {'fmt': 'json'}
+        return {**{'fmt': 'json'}, **self.add_params}
 
     def post_retrieve(self):
         pass
