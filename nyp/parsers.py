@@ -1,6 +1,6 @@
 
 from datetime import datetime as dt
-from nyp.models import (
+from .models import (
     Orchestra, EventType, Composer, Venue, Performer,
     Concert, ConcertSelection, ConcertSelectionMovement, 
     ConcertSelectionPerformer, Movement, Work, Selection
