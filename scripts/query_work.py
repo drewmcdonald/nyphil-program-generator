@@ -5,7 +5,6 @@ import re
 from nyp.raw.schema import (
     ConcertSelection, EventType
 )
-from nyp.mbz.composer import MBZComposer
 
 
 def matches_any(input_string: str, patterns: list) -> str:

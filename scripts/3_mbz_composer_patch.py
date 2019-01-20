@@ -3,14 +3,12 @@ from sqlalchemy.orm import sessionmaker
 
 import pandas as pd
 
-from nyp.raw.schema import Composer
-from nyp.mbz.composer import Base, MBZComposer
+from nyp.raw.schema import Composer, MBZComposer
 from nyp.mbz.api import MBZAPI
 
 
 production_data = 'data/raw.db'
 engine = create_engine(f"sqlite:///{production_data}", echo=False)
-Base.metadata.bind = engine
 
 Session = sessionmaker(engine)
 s = Session()
