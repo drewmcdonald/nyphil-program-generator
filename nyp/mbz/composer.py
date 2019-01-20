@@ -11,6 +11,7 @@ from sqlalchemy.orm import relationship
 from nyp.raw.schema import Base
 
 
+# TODO: resolve cross-dependencies with nyp.raw.schema objects
 class MBZComposer(Base):
     """
     Object representation of MBZ composer search result
