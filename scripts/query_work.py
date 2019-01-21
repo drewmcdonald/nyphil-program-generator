@@ -2,10 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import re
 
-from nyp.models import (
-    ConcertSelection, EventType
-)
-
+from nyp.models import ConcertSelection, EventType
 
 def matches_any(input_string: str, patterns: list) -> str:
     """detect if input_string matches any of patterns (return 'yes'), else return 'no'"""

@@ -3,9 +3,7 @@ from sqlalchemy.orm import sessionmaker
 
 import pandas as pd
 
-from nyp.models import Composer, MBZComposer
-from nyp.musicbrainz import MBZAPI
-
+from nyp.models import Composer, MBZComposer, MBZAPI
 
 production_data = 'data/raw.db'
 engine = create_engine(f"sqlite:///{production_data}", echo=False)
