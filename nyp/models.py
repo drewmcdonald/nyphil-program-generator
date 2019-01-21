@@ -70,6 +70,8 @@ class EventType(GetOrCreateMixin, Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False, index=True)
+    category = Column(String(15))
+    is_modelable = Column(Boolean)
 
     concerts = relationship('Concert', back_populates='eventtype')
 

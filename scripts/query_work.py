@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
 import re
 
 
@@ -21,25 +21,49 @@ def matches_which(input_string: str, patterns: OrderedDict) -> [str, None]:
     return None
 
 
+def categorize_soloists(instruments: list) -> str:
+    if len(instruments) == 0:
+        return 'No Instruments'
+    if 'Piano' in instruments:
+        return 'Keyboard'
+    if 'Harpsichord' in instruments:
+        return 'Keyboard'
+    if any(i in instruments for i in ['Violin', 'Viola', 'Cello', 'Double Bass']):
+        return 'String'
+    if any(i in instruments for i in ['Soprano', 'Mezzo-Soprano', 'Countertenor',
+                                      'Tenor', 'Baritone', 'Bass']):
+        return 'String'
+
+    return 'Other'
+
+
 if __name__ == '__main__':
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
-    from nyp.models import ConcertSelection, EventType
+    from nyp.models import Concert, ConcertSelection, EventType
 
-    Session = sessionmaker(create_engine("sqlite:///../data/raw.db"))
+    Session = sessionmaker(create_engine("sqlite:///../data/raw.db", echo=False))
 
     s = Session()
     q = s.query(ConcertSelection) \
-        .filter(EventType.name == 'Subscription Season') \
+        .join(Concert)\
+        .join(EventType)\
+        .filter(EventType.is_modelable) \
         .limit(10)
 
     work_types = OrderedDict({'symphony': ['SYMPHONY', 'SINFONI'],
                               'concerto': ['CONCERTO'],
-                              'overture': ['OVERTURE']})
+                              'overture': ['OVERTURE'],
+                              'march': ['MARCH']})
+
+    opus_markers = ['BWV \d+', 'K\. ?\d+', 'OP\. ?\d+']
 
     for r in q.all():
         result = (r.concert_id,
                   r.selection_id,
-                  matches_any(r.selection.work.title, ['BWV\. ?\d+', 'K\. ?\d+', 'OP\. ?\d+']),
-                  matches_which(r.selection.work.title, work_types))
+                  matches_any(r.selection.work.title, opus_markers),
+                  matches_which(r.selection.work.title, work_types),
+                  categorize_soloists([x.performer.instrument for x in r.performers if x.performer.instrument != 'Conductor']),
+                  [x.performer.instrument for x in r.performers if x.performer.instrument != 'Conductor']
+                  )
         print(result)
