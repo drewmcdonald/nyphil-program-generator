@@ -1,5 +1,8 @@
 from collections import OrderedDict, namedtuple
+from nyp.lookups import INSTRUMENT_CATEGORIES
+from nyp.models import Composer
 import re
+import math
 
 
 def matches_any(input_string: str, patterns: list) -> str:
@@ -22,19 +25,43 @@ def matches_which(input_string: str, patterns: OrderedDict) -> [str, None]:
 
 
 def categorize_soloists(instruments: list) -> str:
-    if len(instruments) == 0:
-        return 'No Instruments'
-    if 'Piano' in instruments:
-        return 'Keyboard'
-    if 'Harpsichord' in instruments:
-        return 'Keyboard'
-    if any(i in instruments for i in ['Violin', 'Viola', 'Cello', 'Double Bass']):
-        return 'String'
-    if any(i in instruments for i in ['Soprano', 'Mezzo-Soprano', 'Countertenor',
-                                      'Tenor', 'Baritone', 'Bass']):
-        return 'String'
+    n_features = len(instruments)
 
-    return 'Other'
+    if n_features == 0:
+        return 'No Featured Instruments'
+
+    features_list = [INSTRUMENT_CATEGORIES.get(i, 'Other') for i in instruments]
+
+    if n_features == 1:
+        return features_list[0]
+
+    features_set = set(features_list)
+    n_distinct_features = len(features_set)
+
+    if n_distinct_features == 1:
+        return "Multiple " + features_set.pop() + "s"
+
+    if 'Ensemble' in features_set:
+        return "Ensemble+"
+
+    return "Multiple"
+
+
+def coalesce_country(composer: Composer) -> [str, None]:
+    """coalesce a composer's mbz country codes if available"""
+    mbz = composer.mbz_composer
+    if not mbz:
+        return None
+    return mbz.area_iso_1_code or mbz.end_area_iso_1_code or mbz.begin_area_iso_1_code
+
+
+def composer_death_century(composer: Composer) -> [str, None]:
+    mbz = composer.mbz_composer
+    if not mbz:
+        return None
+    if mbz.lifespan_end:
+        return math.floor(mbz.lifespan_end.year / 100) + 1
+    return None
 
 
 if __name__ == '__main__':
@@ -46,24 +73,30 @@ if __name__ == '__main__':
 
     s = Session()
     q = s.query(ConcertSelection) \
-        .join(Concert)\
-        .join(EventType)\
-        .filter(EventType.is_modelable) \
-        .limit(10)
+        .join(Concert) \
+        .join(EventType) \
+        .filter(EventType.is_modelable)
 
     work_types = OrderedDict({'symphony': ['SYMPHONY', 'SINFONI'],
                               'concerto': ['CONCERTO'],
                               'overture': ['OVERTURE'],
                               'march': ['MARCH']})
 
-    opus_markers = ['BWV \d+', 'K\. ?\d+', 'OP\. ?\d+']
+    opus_markers = [r'BWV \d+', r'K\. ?\d+', r'OP\. ?\d+']
 
+    Row = namedtuple('Row', ['concert_id', 'selection_id', 'has_opus', 'is_arrangement', 'work_type',
+                             'composer_country', 'composer_death_century', 'soloist_type'])
+    data_list = []
     for r in q.all():
-        result = (r.concert_id,
-                  r.selection_id,
-                  matches_any(r.selection.work.title, opus_markers),
-                  matches_which(r.selection.work.title, work_types),
-                  categorize_soloists([x.performer.instrument for x in r.performers if x.performer.instrument != 'Conductor']),
-                  [x.performer.instrument for x in r.performers if x.performer.instrument != 'Conductor']
-                  )
-        print(result)
+        result = Row(
+            r.concert_id,
+            r.selection_id,
+            matches_any(r.selection.work.title, opus_markers),
+            matches_any(r.selection.work.title, [r'ARR\.']),
+            matches_which(r.selection.work.title, work_types),
+            coalesce_country(r.selection.work.composer),
+            composer_death_century(r.selection.work.composer),
+            categorize_soloists([x.performer.instrument for x in r.performers
+                                 if x.role == 'S' and x.performer.instrument != 'Conductor'])
+        )
+        data_list.append(result)

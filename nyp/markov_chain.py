@@ -121,6 +121,8 @@ class Chain(object):
         probas = self.get_probas(in_val)
         new_data = Series(new_data.values, index=new_data.values, name=new_data.name)
 
+        # TODO: divide probas by count of value in score
+
         # use our probas as a lookup
         new_data = new_data.map(probas)
 
