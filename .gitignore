@@ -5,3 +5,4 @@ venv/
 __pycache__/
 *credentials.py
 z_old/*
+*.ipynb_checkpoints
