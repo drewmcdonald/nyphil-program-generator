@@ -118,17 +118,27 @@ class Chain(object):
     def score_series(self, new_data: Series, in_val: tuple) -> Series:
         """apply the modeled scores to a new series of data"""
 
-        probas = self.get_probas(in_val)
+        # set up a series indexed by itself
         new_data = Series(new_data.values, index=new_data.values, name=new_data.name)
 
-        # TODO: divide probas by count of value in score
+        probas = self.get_probas(in_val)
+        counts = new_data.value_counts()
+
+        # distribute the minor share proportionally among all minor values
+        if MINOR in probas:
+            minor_proba = probas.pop(MINOR)
+            minor_total = counts[counts.index.isin(self.minor_values)].sum()
+            for minor_val in self.minor_values:
+                probas[minor_val] = counts[minor_val] / minor_total * minor_proba
+
+        probas = {k: v / counts[k] for k, v in probas.items()}
 
         # use our probas as a lookup
         new_data = new_data.map(probas)
-
-        # propagate the minor score to the actual minor values
-        if MINOR in probas:
-            new_data[new_data.index.isin(self.minor_values)] = probas[MINOR] / len(self.minor_values)
+        #
+        # # propagate the minor score to the actual minor values
+        # if MINOR in probas:
+        #     new_data[new_data.index.isin(self.minor_values)] = probas[MINOR] / len(self.minor_values)
 
         # probability is 0 if still unfilled
         new_data.fillna(0, inplace=True)
@@ -137,14 +147,15 @@ class Chain(object):
 
 
 if __name__ == '__main__':
-    data_train = 'a d a b a a b a b b c b a d e d f b c a e e b c b c a a c b c b a b d b d b b a c'.split()
-    data_score = ['a', 'b', 'c', 'd', 'e', 'f']
+    data_train = 'a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c'.split()
+    data_score = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']
     s_train = Series(data_train, index=[1]*len(data_train), name='training')
     s_score = Series(data_score, index=data_score, name='scoring')
-    x = Chain(s_train)
+    x = Chain(s_train, cull_threshold=4)
 
     in_value = ('d', )
     print(x.get_probas(in_value))
+    print(x.minor_values)
     print(x.score_series(s_score, in_value))
 
     import pandas as pd
