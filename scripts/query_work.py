@@ -66,19 +66,32 @@ def composer_death_century(composer: Composer) -> [str, None]:
 
 if __name__ == '__main__':
     from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    from nyp.models import Concert, ConcertSelection, EventType
+    from sqlalchemy.orm import sessionmaker, joinedload
+    from nyp.models import Concert, ConcertSelection, EventType, Selection, Work, \
+        Composer, MBZComposer, ConcertSelectionPerformer, Performer
 
     Session = sessionmaker(create_engine("sqlite:///../data/raw.db", echo=False))
 
     s = Session()
+
     q = s.query(ConcertSelection) \
         .join(Concert) \
         .join(EventType) \
-        .filter(EventType.is_modelable)
+        .filter(EventType.is_modelable) \
+        .options(joinedload(ConcertSelection.selection, innerjoin=True)
+                 .joinedload(Selection.work, innerjoin=True)
+                 .joinedload(Work.composer, innerjoin=True)
+                 .joinedload(Composer.mbz_composer, innerjoin=False),
+                 joinedload(ConcertSelection.performers, innerjoin=False)
+                 .joinedload(ConcertSelectionPerformer.performer, innerjoin=True)
+                 )
 
-    work_types = OrderedDict({'symphony': ['SYMPHONY', 'SINFONI'],
-                              'concerto': ['CONCERTO'],
+    work_types = OrderedDict({'symphony': ['SYMPHON(Y|I)'],
+                              'concerto': ['CONCI?ERTO'],
+                              'mass': ['MASS', 'REQUIEM'],
+                              'dance': [r'DAN(S|C)E', 'WALTZ', 'VALSE', 'MINUET', 'TANGO', r'GALL?OP', 'POLKA',
+                                        'TARANTELLA', 'BOLERO', 'BALLET'],
+                              'suite': ['SUITE'],
                               'overture': ['OVERTURE'],
                               'march': ['MARCH']})
 
@@ -87,7 +100,10 @@ if __name__ == '__main__':
     Row = namedtuple('Row', ['concert_id', 'selection_id', 'has_opus', 'is_arrangement', 'work_type',
                              'composer_country', 'composer_death_century', 'soloist_type'])
     data_list = []
+    i = 0
     for r in q.all():
+        if i % 1000 == 0:
+            print(i)
         result = Row(
             r.concert_id,
             r.selection_id,
@@ -100,3 +116,4 @@ if __name__ == '__main__':
                                  if x.role == 'S' and x.performer.instrument != 'Conductor'])
         )
         data_list.append(result)
+        i += 1
