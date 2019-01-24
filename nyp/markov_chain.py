@@ -106,12 +106,11 @@ class Chain(object):
         # replace minor values with placeholder
         in_val = tuple(i if i not in self.minor_values else MINOR for i in in_val)
 
-        try:
-            result = self.probas[in_val]
-        except KeyError:
+        # this has to be explicit since self.probas is now a default dict
+        if in_val not in self.probas:
             raise ValueError(f'Value {in_val} is not keyed in chain data for {self.name} chain')
 
-        return result
+        return self.probas[in_val]
 
     def score_series(self, new_data: Series, in_val: tuple) -> Series:
         """apply the modeled scores to a new series of data"""
