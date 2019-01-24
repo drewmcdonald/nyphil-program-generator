@@ -112,32 +112,26 @@ class Chain(object):
 
         return self.probas[in_val]
 
+    def transform_scoring_series(self, data: Series) -> Series:
+        """transform the values in the scoring series to accommodate culled minor value substitution"""
+        # TODO: is it ok to alter a view here?
+        data[data.isin(self.minor_values)] = MINOR
+        return data
+
     def score_series(self, new_data: Series, in_val: tuple) -> Series:
         """apply the modeled scores to a new series of data"""
 
-        # set up a series indexed by itself
+        # set up a series indexed by its own values
         new_data = Series(new_data.values, index=new_data.values, name=new_data.name)
 
         probas = self.get_probas(in_val)
         counts = new_data.value_counts()
 
-        # distribute the minor share proportionally among all minor values
-        if MINOR in probas:
-            minor_proba = probas.pop(MINOR)
-            minor_total = counts[counts.index.isin(self.minor_values)].sum()
-            for minor_val in self.minor_values:
-                probas[minor_val] = counts[minor_val] / minor_total * minor_proba
-
+        # divide each probability by the number of scoring cases
         probas = {k: v / counts[k] for k, v in probas.items()}
 
-        # use our probas as a lookup
+        # use our probas as a lookup, else 0 if that doesn't fill it
         new_data = new_data.map(probas)
-        #
-        # # propagate the minor score to the actual minor values
-        # if MINOR in probas:
-        #     new_data[new_data.index.isin(self.minor_values)] = probas[MINOR] / len(self.minor_values)
-
-        # probability is 0 if still unfilled
         new_data.fillna(0, inplace=True)
 
         return new_data
@@ -145,10 +139,9 @@ class Chain(object):
 
 if __name__ == '__main__':
     data_train = 'a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c'.split()
-    data_score = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']
     s_train = Series(data_train, index=[1]*len(data_train), name='training')
-    s_score = Series(data_score, index=data_score, name='scoring')
     x = Chain(s_train, cull_threshold=4)
+    s_score = x.transform_scoring_series(Series(['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']))
 
     in_value = ('d', )
     print(x.get_probas(in_value))
@@ -156,18 +149,15 @@ if __name__ == '__main__':
     print(x.score_series(s_score, in_value))
 
     import pandas as pd
-    composers = pd.Series(pd.read_csv('../testdata_composers.csv', index_col=0).name)
+    composers = pd.Series(pd.read_csv('../data/testdata_composers.csv', index_col=0).name)
     composers_score = pd.Series(composers.unique().tolist() + [BREAK])
     x = Chain(composers, state_size=2, cull=True, cull_threshold=4)
+    composers_score = x.transform_scoring_series(composers_score)
     in_value = ('Beethoven, Ludwig van', 'Mozart, Wolfgang Amadeus')
     print(x.get_probas(in_value))
-    print(x.score_series(composers_score, in_value).sort_values(ascending=False).head(20))
+    print(x.score_series(composers_score, in_value).sort_values(ascending=False).head(40))
 
     x = Chain(composers, state_size=1, cull=True, cull_threshold=4)
     in_value = ('Beethoven, Ludwig van',)
     print(x.get_probas(in_value))
     print(x.score_series(composers_score, in_value).sort_values(ascending=False).head(20))
-
-
-
-
