@@ -1,8 +1,13 @@
 from pandas import Series
+from collections import defaultdict
 from typing import Union
 
 BREAK = "___BREAK__"
 MINOR = "___MINOR__"
+
+
+def _internal_defaultdict_int():
+    return defaultdict(int)
 
 
 class Chain(object):
@@ -80,21 +85,14 @@ class Chain(object):
         loosely adapted from jsvine/markovify
         major difference is that this is set to accept a full corpus all at once with beginning/end markers interpolated
         """
-        lookup = {}
+        lookup = defaultdict(_internal_defaultdict_int)
 
         # accumulate counts of each input to output
         for i in range(len(self.data) - self.state_size):
 
-            in_val = tuple(self.data[i:(i + self.state_size)])
-            out_val = self.data[i + self.state_size]
+            in_val = tuple(self.data.iloc[i:(i + self.state_size)])
+            out_val = self.data.iloc[i + self.state_size]
 
-            if in_val not in lookup:
-                lookup[in_val] = {}
-
-            if out_val not in lookup[in_val]:
-                lookup[in_val][out_val] = 0
-
-            # increment
             lookup[in_val][out_val] += 1
 
         return lookup
