@@ -68,6 +68,7 @@ class WorkParser(object):
 
     @classmethod
     def clean_name(cls, name):
+        """TODO: this needs to strip multiple spaces as well"""
         if type(name) is dict:
             return f"{name.get('_', '').strip()} {name.get('em', '').strip()}"
         return name

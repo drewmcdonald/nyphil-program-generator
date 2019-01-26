@@ -1,4 +1,4 @@
-from pandas import Series, DataFrame
+import pandas as pd
 from collections import defaultdict
 from typing import Union
 
@@ -17,22 +17,25 @@ class Chain(object):
     
     - data: a pandas Series with an index that defines the unit of analysis (usually a concert)
     - state_size: MC depth (default 1)
+    - train_backwards: fit chain in reverse program order (recommended)
     - cull: impute an 'other' value in place of values with very little usage (default True)
     - cull_threshold: the floor below which a value is replaced with OTHER; interpreted as a percentage of total records
          if between 0 and .999; otherwise interpreted as a count of appearances if greater than or equal to 1
          (default .01)
     """
 
-    def __init__(self, data: Series, state_size: int = 1, cull: bool = True, cull_threshold: Union[int, float] = 0.01):
+    def __init__(self, data: pd.Series, state_size: int = 1, train_backwards: bool = True,
+                 cull: bool = True, cull_threshold: Union[int, float] = 0.01):
         self.name: str = data.name or 'unnamed'
         self.state_size: int = state_size
+        self.train_backwards: bool = train_backwards
         self.cull: bool = cull
         self.cull_threshold: Union[int, float] = cull_threshold
 
         self.minor_values: list = []
 
         new_data = data.copy()  # don't modify in place
-        self.data: Series = self.pre_process_data(new_data)
+        self.data: pd.Series = self.pre_process_data(new_data)
         self.counts: dict = self.fill_counts()
         self.probas: dict = {k: self.counts_to_probabilities(v)
                              for k, v in self.counts.items()}
@@ -47,7 +50,7 @@ class Chain(object):
             return ", ".join(self.data[:4].tolist() + ["..."])
         return ", ".join(self.data)
 
-    def pre_process_data(self, data: Series) -> Series:
+    def pre_process_data(self, data: pd.Series) -> pd.Series:
         """pre-process the data (including culling) into a clean character vector"""
 
         # initialize a receptacle and break values
@@ -57,7 +60,7 @@ class Chain(object):
         for i, d in data.groupby(level=0):
             values += d.values.tolist() + break_values
 
-        values = Series(values)
+        values = pd.Series(values)
 
         if self.cull:
 
@@ -73,6 +76,9 @@ class Chain(object):
             self.minor_values = summary.index[summary < self.cull_threshold].values
 
             values[values.isin(self.minor_values)] = MINOR
+
+        if self.train_backwards:
+            values = values[::-1]
 
         return values
 
@@ -113,17 +119,17 @@ class Chain(object):
 
         return self.probas[in_val]
 
-    def transform_scoring_series(self, data: Series) -> Series:
+    def transform_scoring_series(self, data: pd.Series) -> pd.Series:
         """transform the values in the scoring series to accommodate culled minor value substitution"""
         data = data.copy()
         data.loc[data.isin(self.minor_values)] = MINOR
         return data
 
-    def score_series(self, new_data: Series, in_val: tuple) -> Series:
+    def score_series(self, new_data: pd.Series, in_val: tuple) -> pd.Series:
         """apply the modeled scores to a new series of data"""
 
         # set up a series indexed by its own values
-        new_data = Series(new_data.values, index=new_data.values, name=new_data.name)
+        new_data = pd.Series(new_data.values, index=new_data.values, name=new_data.name)
 
         probas = self.get_probas(in_val)
         counts = new_data.value_counts()
@@ -140,25 +146,12 @@ class Chain(object):
 
 if __name__ == '__main__':
     data_train = 'a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c'.split()
-    s_train = Series(data_train, index=[1]*len(data_train), name='training')
+    s_train = pd.Series(data_train, index=[1]*len(data_train), name='training')
     x = Chain(s_train, cull_threshold=4)
-    s_score = x.transform_scoring_series(Series(['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']))
+    s_score = x.transform_scoring_series(pd.Series(['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']))
 
     in_value = ('d', )
     print(x.get_probas(in_value))
     print(x.minor_values)
     print(x.score_series(s_score, in_value))
 
-    import pandas as pd
-    composers = pd.Series(pd.read_csv('../data/testdata_composers.csv', index_col=0).name)
-    composers_score = pd.Series(composers.unique().tolist() + [BREAK])
-    x = Chain(composers, state_size=2, cull=True, cull_threshold=4)
-    composers_score = x.transform_scoring_series(composers_score)
-    in_value = ('Beethoven, Ludwig van', 'Mozart, Wolfgang Amadeus')
-    print(x.get_probas(in_value))
-    print(x.score_series(composers_score, in_value).sort_values(ascending=False).head(40))
-
-    x = Chain(composers, state_size=1, cull=True, cull_threshold=4)
-    in_value = ('Beethoven, Ludwig van',)
-    print(x.get_probas(in_value))
-    print(x.score_series(composers_score, in_value).sort_values(ascending=False).head(20))
