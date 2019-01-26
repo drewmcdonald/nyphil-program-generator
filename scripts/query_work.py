@@ -5,6 +5,18 @@ import re
 import math
 
 
+WORK_TYPES = OrderedDict({'symphony': ['SYMPHON(Y|I)'],
+                          'concerto': ['CONCI?ERTO'],
+                          'mass': ['MASS', 'REQUIEM', 'ORATORIO'],
+                          'dance': [r'DAN(S|C)E', 'WALTZ', 'VALSE', 'MINUET', 'TANGO', r'GALL?OP', 'POLKA',
+                                    'TARANTELLA', 'BOLERO', 'BALLET'],
+                          'suite': ['SUITE'],
+                          'overture': ['OVERTURE'],
+                          'march': ['MARCH']})
+
+OPUS_MARKERS = [r'BWV \d+', r'K\. ?\d+', r'OP\. ?\d+', r'D. ?\d+']
+
+
 def matches_any(input_string: str, patterns: list) -> str:
     """detect if input_string matches any of patterns (return 'yes'), else return 'no'"""
     for pattern in patterns:
@@ -60,7 +72,7 @@ def composer_death_century(composer: Composer) -> [str, None]:
     if not mbz:
         return None
     if mbz.lifespan_end:
-        return math.floor(mbz.lifespan_end.year / 100) + 1
+        return str(math.floor(mbz.lifespan_end.year / 100) + 1) + 'th'
     return None
 
 
@@ -68,11 +80,23 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker, joinedload
     from nyp.models import Concert, ConcertSelection, EventType, Selection, Work, \
-        Composer, MBZComposer, ConcertSelectionPerformer, Performer
+        Composer, ConcertSelectionPerformer
 
-    Session = sessionmaker(create_engine("sqlite:///../data/raw.db", echo=False))
+    engine = create_engine("sqlite:///../data/raw.db", echo=False)
+    Session = sessionmaker(engine)
 
     s = Session()
+
+    composer_concert_selection_counts = {
+        r[0]: r[2] for r in engine.execute('select * from composer_concert_selection_counts;').fetchall()
+    }
+    selection_performance_counts = {
+        r[0]: r[2] for r in engine.execute('select * from selection_performance_counts;').fetchall()
+    }
+    selection_position_stats = {
+        r[0]: {'percent_after_intermission_bin': r[1], 'avg_percent_of_concert_bin': r[2]}
+        for r in engine.execute('select * from selection_position_stats;').fetchall()
+    }
 
     q = s.query(ConcertSelection) \
         .join(Concert) \
@@ -86,34 +110,50 @@ if __name__ == '__main__':
                  .joinedload(ConcertSelectionPerformer.performer, innerjoin=True)
                  )
 
-    work_types = OrderedDict({'symphony': ['SYMPHON(Y|I)'],
-                              'concerto': ['CONCI?ERTO'],
-                              'mass': ['MASS', 'REQUIEM'],
-                              'dance': [r'DAN(S|C)E', 'WALTZ', 'VALSE', 'MINUET', 'TANGO', r'GALL?OP', 'POLKA',
-                                        'TARANTELLA', 'BOLERO', 'BALLET'],
-                              'suite': ['SUITE'],
-                              'overture': ['OVERTURE'],
-                              'march': ['MARCH']})
-
-    opus_markers = [r'BWV \d+', r'K\. ?\d+', r'OP\. ?\d+']
-
     Row = namedtuple('Row', ['concert_id', 'selection_id', 'has_opus', 'is_arrangement', 'work_type',
-                             'composer_country', 'composer_death_century', 'soloist_type'])
+                             'composer_country', 'composer_death_century', 'composer_concert_selections',
+                             'soloist_type', 'selection_performances', 'percent_after_intermission_bin',
+                             'avg_percent_of_concert_bin'])
     data_list = []
     i = 0
     for r in q.all():
         if i % 1000 == 0:
             print(i)
-        result = Row(
-            r.concert_id,
-            r.selection_id,
-            matches_any(r.selection.work.title, opus_markers),
-            matches_any(r.selection.work.title, [r'ARR\.']),
-            matches_which(r.selection.work.title, work_types),
-            coalesce_country(r.selection.work.composer),
-            composer_death_century(r.selection.work.composer),
-            categorize_soloists([x.performer.instrument for x in r.performers
-                                 if x.role == 'S' and x.performer.instrument != 'Conductor'])
-        )
+        if r.selection_id == 4:
+            result = Row(
+                r.concert_id,
+                r.selection_id,
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__',
+                '___INTERMISSION__'
+            )
+        else:
+            result = Row(
+                r.concert_id,
+                r.selection_id,
+                matches_any(r.selection.work.title, OPUS_MARKERS),
+                matches_any(r.selection.work.title, [r'ARR\.']),
+                matches_which(r.selection.work.title, WORK_TYPES),
+                coalesce_country(r.selection.work.composer),
+                composer_death_century(r.selection.work.composer),
+                composer_concert_selection_counts[r.selection.work.composer.id],
+                categorize_soloists([x.performer.instrument for x in r.performers
+                                     if x.role == 'S' and x.performer.instrument != 'Conductor']),
+                selection_performance_counts[r.selection_id],
+                selection_position_stats[r.selection_id]['percent_after_intermission_bin'],
+                selection_position_stats[r.selection_id]['avg_percent_of_concert_bin']
+            )
         data_list.append(result)
         i += 1
+
+    import pandas as pd
+    df = pd.DataFrame(data_list)
+    df = df.set_index(['concert_id', 'selection_id'])
+    df.to_csv('../data/testdata_20190125.txt', sep='\t', index=True)

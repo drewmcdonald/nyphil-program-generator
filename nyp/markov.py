@@ -1,4 +1,4 @@
-from pandas import Series
+from pandas import Series, DataFrame
 from collections import defaultdict
 from typing import Union
 
@@ -23,7 +23,7 @@ class Chain(object):
          (default .01)
     """
 
-    def __init__(self, data: Series, state_size: int=1, cull: bool=True, cull_threshold: Union[int, float]=0.01):
+    def __init__(self, data: Series, state_size: int = 1, cull: bool = True, cull_threshold: Union[int, float] = 0.01):
         self.name: str = data.name or 'unnamed'
         self.state_size: int = state_size
         self.cull: bool = cull
@@ -115,8 +115,8 @@ class Chain(object):
 
     def transform_scoring_series(self, data: Series) -> Series:
         """transform the values in the scoring series to accommodate culled minor value substitution"""
-        # TODO: is it ok to alter a view here?
-        data[data.isin(self.minor_values)] = MINOR
+        data = data.copy()
+        data.loc[data.isin(self.minor_values)] = MINOR
         return data
 
     def score_series(self, new_data: Series, in_val: tuple) -> Series:
