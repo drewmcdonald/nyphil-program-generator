@@ -67,12 +67,12 @@ def coalesce_country(composer: Composer) -> [str, None]:
     return mbz.area_iso_1_code or mbz.end_area_iso_1_code or mbz.begin_area_iso_1_code
 
 
-def composer_death_century(composer: Composer) -> [str, None]:
+def composer_birth_century(composer: Composer) -> [str, None]:
     mbz = composer.mbz_composer
     if not mbz:
         return None
-    if mbz.lifespan_end:
-        return str(math.floor(mbz.lifespan_end.year / 100) + 1) + 'th'
+    if mbz.lifespan_begin:
+        return str(math.floor(mbz.lifespan_begin.year / 100) + 1) + 'th'
     return None
 
 
@@ -111,7 +111,7 @@ if __name__ == '__main__':
                  )
 
     Row = namedtuple('Row', ['concert_id', 'selection_id', 'has_opus', 'is_arrangement', 'work_type',
-                             'composer_country', 'composer_death_century', 'composer_concert_selections',
+                             'composer_country', 'composer_birth_century', 'composer_concert_selections',
                              'soloist_type', 'selection_performances', 'percent_after_intermission_bin',
                              'avg_percent_of_concert_bin'])
     data_list = []
@@ -142,7 +142,7 @@ if __name__ == '__main__':
                 matches_any(r.selection.work.title, [r'ARR\.']),
                 matches_which(r.selection.work.title, WORK_TYPES),
                 coalesce_country(r.selection.work.composer),
-                composer_death_century(r.selection.work.composer),
+                composer_birth_century(r.selection.work.composer),
                 composer_concert_selection_counts[r.selection.work.composer.id],
                 categorize_soloists([x.performer.instrument for x in r.performers
                                      if x.role == 'S' and x.performer.instrument != 'Conductor']),
