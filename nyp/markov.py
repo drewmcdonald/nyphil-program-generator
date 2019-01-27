@@ -50,6 +50,10 @@ class Chain(object):
             return ", ".join(self.data[:4].tolist() + ["..."])
         return ", ".join(self.data)
 
+    @classmethod
+    def from_tuple(cls, arg_tuple):
+        return cls(arg_tuple[0], **arg_tuple[1])
+
     def pre_process_data(self, data: pd.Series) -> pd.Series:
         """pre-process the data (including culling) into a clean character vector"""
 
