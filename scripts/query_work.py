@@ -33,7 +33,7 @@ def matches_which(input_string: str, patterns: OrderedDict) -> [str, None]:
         for sub_pattern in patterns[pattern_name]:
             if re.search(sub_pattern, input_string):
                 return pattern_name
-    return None
+    return 'Other'
 
 
 def categorize_soloists(instruments: list) -> str:
@@ -63,17 +63,17 @@ def coalesce_country(composer: Composer) -> [str, None]:
     """coalesce a composer's mbz country codes if available"""
     mbz = composer.mbz_composer
     if not mbz:
-        return None
-    return mbz.area_iso_1_code or mbz.end_area_iso_1_code or mbz.begin_area_iso_1_code
+        return 'Unknown'
+    return mbz.area_iso_1_code or mbz.end_area_iso_1_code or mbz.begin_area_iso_1_code or 'Unknown'
 
 
 def composer_birth_century(composer: Composer) -> [str, None]:
     mbz = composer.mbz_composer
     if not mbz:
-        return None
+        return 'Other'
     if mbz.lifespan_begin:
         return str(math.floor(mbz.lifespan_begin.year / 100) + 1) + 'th'
-    return None
+    return 'Other'
 
 
 if __name__ == '__main__':
@@ -91,7 +91,8 @@ if __name__ == '__main__':
         r[0]: r[2] for r in engine.execute('select * from composer_concert_selection_counts;').fetchall()
     }
     selection_performance_counts = {
-        r[0]: r[2] for r in engine.execute('select * from selection_performance_counts;').fetchall()
+        r[0]: {'n_performances': r[1], 'n_performances_grp': r[2]}
+        for r in engine.execute('select * from selection_performance_counts;').fetchall()
     }
     selection_position_stats = {
         r[0]: {'percent_after_intermission_bin': r[1], 'avg_percent_of_concert_bin': r[2]}
@@ -110,8 +111,8 @@ if __name__ == '__main__':
                  .joinedload(ConcertSelectionPerformer.performer, innerjoin=True)
                  )
 
-    Row = namedtuple('Row', ['concert_id', 'selection_id', 'has_opus', 'is_arrangement', 'work_type',
-                             'composer_country', 'composer_birth_century', 'composer_concert_selections',
+    Row = namedtuple('Row', ['concert_id', 'selection_id', 'weight', 'full_work', 'has_opus', 'is_arrangement',
+                             'work_type', 'composer_country', 'composer_birth_century', 'composer_concert_selections',
                              'soloist_type', 'selection_performances', 'percent_after_intermission_bin',
                              'avg_percent_of_concert_bin'])
     data_list = []
@@ -123,6 +124,8 @@ if __name__ == '__main__':
             result = Row(
                 r.concert_id,
                 r.selection_id,
+                selection_performance_counts[r.selection_id]['n_performances'],
+                '___INTERMISSION__',
                 '___INTERMISSION__',
                 '___INTERMISSION__',
                 '___INTERMISSION__',
@@ -138,6 +141,8 @@ if __name__ == '__main__':
             result = Row(
                 r.concert_id,
                 r.selection_id,
+                selection_performance_counts[r.selection_id]['n_performances'],
+                "Full Work" if r.selection.is_full_work else "Selections",
                 matches_any(r.selection.work.title, OPUS_MARKERS),
                 matches_any(r.selection.work.title, [r'ARR\.']),
                 matches_which(r.selection.work.title, WORK_TYPES),
@@ -146,7 +151,7 @@ if __name__ == '__main__':
                 composer_concert_selection_counts[r.selection.work.composer.id],
                 categorize_soloists([x.performer.instrument for x in r.performers
                                      if x.role == 'S' and x.performer.instrument != 'Conductor']),
-                selection_performance_counts[r.selection_id],
+                selection_performance_counts[r.selection_id]['n_performances_grp'],
                 selection_position_stats[r.selection_id]['percent_after_intermission_bin'],
                 selection_position_stats[r.selection_id]['avg_percent_of_concert_bin']
             )
@@ -156,4 +161,4 @@ if __name__ == '__main__':
     import pandas as pd
     df = pd.DataFrame(data_list)
     df = df.set_index(['concert_id', 'selection_id'])
-    df.to_csv('../data/testdata_20190125.txt', sep='\t', index=True)
+    df.to_csv('../data/train_export.txt.gz', sep='\t', index=True, compression='gzip')
