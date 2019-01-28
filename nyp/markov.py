@@ -230,7 +230,7 @@ class ChainEnsembleScoreData(object):
 
         return self
 
-    def aggregate_final_score(self, case_weight_exponent: int = 1):
+    def aggregate_final_score(self, case_weight_exponent: float = 1.0):
         selection_usable_idx = (self.data[self.score_cols] == 0).sum(axis=1) == 0
         self.final_scores = (
                 self.data.loc[selection_usable_idx, self.score_cols].sum(axis=1)
@@ -305,7 +305,7 @@ class ChainEnsemble(object):
 
     def generate_program(self, feature_weights: dict,  # feature_limits: dict,
                          break_weight: int = 100,
-                         case_weight_exponent: int = 1):
+                         case_weight_exponent: float = 1.0):
 
         self.reset_state()
         self.score_data = ChainEnsembleScoreData(self.train_data, break_weight=break_weight)
