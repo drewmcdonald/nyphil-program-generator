@@ -104,6 +104,12 @@ class Composer(GetOrCreateMixin, NameLookupMixin, Base):
     def __repr__(self):
         return f'<Composer {self.id}: {self.name}>'
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
+
 
 class Performer(GetOrCreateMixin, NameLookupMixin, Base):
     """list of featured performers, including conductors"""
@@ -209,6 +215,13 @@ class Work(GetOrCreateMixin, Base):
     def __repr__(self):
         return f'<Work {self.id}: {self.title} by {self.composer}>'
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'composer': self.composer.to_dict()
+        }
+
 
 class Selection(GetOrCreateMixin, Base):
     __tablename__ = 'selection'
@@ -224,6 +237,13 @@ class Selection(GetOrCreateMixin, Base):
     def __repr__(self):
         front = "Full work of" if self.is_full_work else "Selection(s) from"
         return f'<Selection {self.id}: {front} {self.work}>'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'is_full_work': self.is_full_work,
+            'work': self.work.to_dict()
+        }
 
 
 class Concert(Base):
