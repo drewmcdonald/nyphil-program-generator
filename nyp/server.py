@@ -10,8 +10,16 @@ from typing import List
 
 import pickle
 
-model: ChainEnsemble = pickle.load(open('/Users/drew/Desktop/nyp/data/model_v1.p', 'rb'))
-Session = sessionmaker(create_engine('sqlite:////Users/drew/Desktop/nyp/data/raw.db'))
+from dotenv import load_dotenv
+from os import getenv
+
+load_dotenv()
+
+
+model: ChainEnsemble = pickle.load(open('../data/model_v1.p', 'rb'))
+Session = sessionmaker(create_engine(
+    f'mysql+pymysql://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASS")}@{getenv("MYSQL_HOST")}/{getenv("MYSQL_DB")}'
+))
 
 
 app = Flask(__name__)
