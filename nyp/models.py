@@ -1,4 +1,5 @@
-from sqlalchemy import Column, String, Integer, DateTime, Boolean, ForeignKey, UniqueConstraint, Index, Date, Float
+from sqlalchemy import Column, String, Text, Integer, DateTime, Boolean, \
+    ForeignKey, UniqueConstraint, Index, Date, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -14,6 +15,7 @@ import re
 Base = declarative_base()
 
 # Mix-Ins
+
 
 class GetOrCreateMixin(object):
     """adapted from https://stackoverflow.com/questions/2546207"""
@@ -34,8 +36,8 @@ class NameLookupMixin(object):
     """mixin for easy lookups by cls.get_or_create(raw_name=LOOKUP)"""
 
     id = Column(Integer, primary_key=True)
-    raw_name = Column(String, nullable=False, index=True)
-    name = Column(String, nullable=False)
+    raw_name = Column(String(100), nullable=False, index=True)
+    name = Column(String(100), nullable=False)
 
     def __init__(self, raw_name: str, *args, **kwargs):
         super(NameLookupMixin, self).__init__(*args, **kwargs)
@@ -69,7 +71,7 @@ class EventType(GetOrCreateMixin, Base):
     __tablename__ = 'eventtype'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False, index=True)
+    name = Column(String(100), nullable=False, index=True)
     category = Column(String(15))
     is_modelable = Column(Boolean)
 
@@ -85,8 +87,8 @@ class Venue(GetOrCreateMixin, Base):
     __table_args__ = (Index('idx_venue_lookup', 'location', 'venue'),)
 
     id = Column(Integer, primary_key=True)
-    location = Column(String, nullable=False)
-    venue = Column(String, nullable=False)
+    location = Column(String(100), nullable=False)
+    venue = Column(String(100), nullable=False)
 
     concerts = relationship('Concert', back_populates='venue')
 
@@ -115,7 +117,9 @@ class Performer(GetOrCreateMixin, NameLookupMixin, Base):
     """list of featured performers, including conductors"""
     __tablename__ = 'performer'
 
-    instrument = Column(String)
+    raw_name = Column(Text(1200), nullable=False)
+    name = Column(Text(1200), nullable=False)
+    instrument = Column(String(600))
 
     program_movements = relationship('ConcertSelectionPerformer', back_populates='performer')
 
@@ -166,7 +170,7 @@ class ConcertSelectionPerformer(Base):
 
     id = Column(Integer, primary_key=True)
     concert_selection_id = Column(Integer, ForeignKey('concert_selection.id'))
-    role = Column(String(1))
+    role = Column(String(5))
     performer_id = Column(Integer, ForeignKey('performer.id'))
     performer = relationship('Performer')
 
@@ -186,7 +190,7 @@ class Movement(GetOrCreateMixin, Base):
 
     work_id = Column(Integer, ForeignKey('work.id'), nullable=False)
     work_movement_id = Column(Integer, nullable=False)
-    name = Column(String, nullable=False)
+    name = Column(String(200), nullable=False)
 
     work = relationship('Work', back_populates='movements')
 
@@ -203,7 +207,7 @@ class Work(GetOrCreateMixin, Base):
 
     id = Column(Integer, primary_key=True)
 
-    title = Column(String, nullable=False)
+    title = Column(String(150), nullable=False)
     composer_id = Column(Integer, ForeignKey('composer.id'), nullable=False)
     composer = relationship('Composer', back_populates='works')
 
@@ -261,7 +265,7 @@ class Concert(Base):
 
     datetime = Column(DateTime, nullable=False)
 
-    season = Column(String)
+    season = Column(String(10))
 
     concert_selections = relationship('ConcertSelection', back_populates='concert')
 
@@ -426,12 +430,12 @@ class MBZComposer(Base):
     composer_id = Column(Integer, ForeignKey('composer.id'))
     composer = relationship('Composer', back_populates='mbz_composer')
     score = Column(Integer)
-    country = Column(String)
-    gender = Column(String)
-    sort_name = Column(String)
-    area_name = Column(String)
-    begin_area_name = Column(String)
-    end_area_name = Column(String)
+    country = Column(String(2))
+    gender = Column(String(6))
+    sort_name = Column(String(50))
+    area_name = Column(String(50))
+    begin_area_name = Column(String(50))
+    end_area_name = Column(String(50))
     area_id = Column(String(36))
     begin_area_id = Column(String(36))
     end_area_id = Column(String(36))
@@ -447,11 +451,11 @@ class MBZComposer(Base):
     match_partial_ratio = Column(Float)
     match_average_ratio = Column(Float)
     area_iso_1_code = Column(String(2))
-    area_iso_2_code = Column(String(5))
+    area_iso_2_code = Column(String(6))
     begin_area_iso_1_code = Column(String(2))
-    begin_area_iso_2_code = Column(String(5))
+    begin_area_iso_2_code = Column(String(6))
     end_area_iso_1_code = Column(String(2))
-    end_area_iso_2_code = Column(String(5))
+    end_area_iso_2_code = Column(String(6))
 
     is_best_match = Column(Boolean, default=False)
 
