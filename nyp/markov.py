@@ -230,17 +230,17 @@ class ChainEnsembleScoreData(object):
 
         return self
 
-    def aggregate_final_score(self, case_weight_exponent: float = 1.0):
+    def aggregate_final_score(self, weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0):
         selection_usable_idx = (self.data[self.score_cols] == 0).sum(axis=1) == 0
+        average_weighted_scores = self.data.loc[selection_usable_idx, self.score_cols].sum(axis=1) / self.total_weight
+        case_weights = self.data.loc[selection_usable_idx, 'weight']
         self.final_scores = (
-                self.data.loc[selection_usable_idx, self.score_cols].sum(axis=1)
-                / self.total_weight
-                * self.data.loc[selection_usable_idx, 'weight'].pow(case_weight_exponent)
+                average_weighted_scores.pow(weighted_average_exponent) * case_weights.pow(case_weight_exponent)
         )
         return self
 
     def sample(self) -> int:
-        return self.final_scores.sample(weights=self.final_scores).index[0]
+        return int(self.final_scores.sample(weights=self.final_scores).index[0])
 
 
 class ChainEnsemble(object):
@@ -305,18 +305,17 @@ class ChainEnsemble(object):
 
     def generate_program(self, feature_weights: dict,  # feature_limits: dict,
                          break_weight: int = 100,
+                         weighted_average_exponent: float = 1.0,
                          case_weight_exponent: float = 1.0):
 
         self.reset_state()
         self.score_data = ChainEnsembleScoreData(self.train_data, break_weight=break_weight)
         self.score_data.apply_chain_transformations(self.chains)
 
-        # self.score_data.fill_score_columns(self.state, self.chains, feature_weights)
-
         def next_idx() -> int:
             return self.score_data \
                 .fill_score_columns(self.state, self.chains, feature_weights) \
-                .aggregate_final_score(case_weight_exponent) \
+                .aggregate_final_score(weighted_average_exponent, case_weight_exponent) \
                 .sample()
 
         program: list = []

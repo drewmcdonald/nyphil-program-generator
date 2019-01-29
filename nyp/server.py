@@ -17,11 +17,11 @@ Session = sessionmaker(create_engine('sqlite:////Users/drew/Desktop/nyp/data/raw
 app = Flask(__name__)
 
 prediction_weights = {
-    'work_type': 2.0,
+    'work_type': 3.0,
     'composer_country': 1.0,
     'composer_birth_century': 1.0,
     'soloist_type': 2.0,
-    'percent_after_intermission_bin': 6.0
+    'percent_after_intermission_bin': 4.0
 }
 
 # this is pretty good!
@@ -37,13 +37,14 @@ def generate_program():
     weights = {k: int(v) for k, v in request.args.items()} or prediction_weights
 
     program = model.generate_program(weights,
-                                     break_weight=60,
+                                     break_weight=1,
+                                     weighted_average_exponent=1.5,
                                      case_weight_exponent=.8)
 
     final_program: List[Selection] = []  # receptacle
 
     for p in program:
-        selection = q.get(int(p))
+        selection = q.get(p)
         final_program.append(selection.to_dict())
 
     return jsonify(final_program)
