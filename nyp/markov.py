@@ -280,7 +280,8 @@ class ChainEnsembleScorer(object):
         return self
 
     def next_idx(self, feature_weights: dict,  # feature_limits: dict,
-                 weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0) -> int:
+                 weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
+                 random_state: int = None) -> int:
 
         if self.is_clean_start:
             self.is_clean_start = False
@@ -308,7 +309,7 @@ class ChainEnsembleScorer(object):
         )
 
         # sample an index
-        idx = int(final_scores.sample(weights=final_scores).index[0])
+        idx = int(final_scores.sample(weights=final_scores, random_state=random_state).index[0])
 
         # update state, scrub the index from the score data, and return
         # selection_features = self.get_selection_features(idx)  # for scrubbing later
@@ -319,7 +320,7 @@ class ChainEnsembleScorer(object):
 
     def generate_program(self, feature_weights: dict,  # feature_limits: dict,
                          weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                         break_weight: int = None):
+                         break_weight: int = None, random_state: int = None):
 
         # initialize if `next_idx` has been called since last initialized
         if not self.is_clean_start:
@@ -333,7 +334,8 @@ class ChainEnsembleScorer(object):
             """helper to not pass the same options around everywhere"""
             return self.next_idx(feature_weights=feature_weights,
                                  weighted_average_exponent=weighted_average_exponent,
-                                 case_weight_exponent=case_weight_exponent)
+                                 case_weight_exponent=case_weight_exponent,
+                                 random_state=random_state)
 
         program: list = []
 
