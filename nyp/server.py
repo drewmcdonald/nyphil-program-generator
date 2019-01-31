@@ -1,59 +1,58 @@
 from flask import Flask, jsonify, request
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 
-from nyp.markov import ChainEnsemble
+from nyp.markov import ChainEnsemble, ChainEnsembleScorer
 from nyp.models import Selection
 
-from typing import List
-
 import pickle
+from copy import deepcopy
 
 from dotenv import load_dotenv
 from os import getenv
 
 load_dotenv()
 
-
-model: ChainEnsemble = pickle.load(open('../data/model_v1.p', 'rb'))
-Session = sessionmaker(create_engine(
-    f'mysql+pymysql://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASS")}@{getenv("MYSQL_HOST")}/{getenv("MYSQL_DB")}'
-))
-
+Session = scoped_session(sessionmaker(create_engine(getenv('MYSQL_CON'))))
 
 app = Flask(__name__)
 
-prediction_weights = {
-    'work_type': 3.0,
+# shared objects
+
+model: ChainEnsemble = pickle.load(open('data/model_v1.p', 'rb'))
+scorer_template: ChainEnsembleScorer = ChainEnsembleScorer(model)
+
+default_prediction_weights = {
+    'work_type': 4.0,
     'composer_country': 1.0,
     'composer_birth_century': 1.0,
     'soloist_type': 2.0,
     'percent_after_intermission_bin': 4.0
 }
 
-# this is pretty good!
-# ?percent_after_intermission_bin=100&work_type=50&soloist_type=25&composer_birth_century=25&composer_country=25
+
+def make_scorer() -> ChainEnsembleScorer:
+    """get a copy of the clean, initialized scorer_template to avoid redundant computation
+    use a shallow copy so the model object tied to the scorer is not passed around unnecessarily"""
+    return deepcopy(scorer_template)
 
 
 @app.route('/generate', methods=['GET'])
 def generate_program():
-    session = Session()
-    q = session.query(Selection)
+    scorer = make_scorer()
+    program = scorer.generate_program(default_prediction_weights,
+                                      break_weight=1,
+                                      weighted_average_exponent=1.5,
+                                      case_weight_exponent=.25)
 
-    # parse request (just weights from command args for now)
-    weights = {k: int(v) for k, v in request.args.items()} or prediction_weights
+    s = Session
+    q = s.query(Selection)
 
-    program = model.generate_program(weights,
-                                     break_weight=1,
-                                     weighted_average_exponent=1.5,
-                                     case_weight_exponent=.8)
+    final_program = [q.get(s).to_dict() for s in program]
 
-    final_program: List[Selection] = []  # receptacle
-
-    for p in program:
-        selection = q.get(p)
-        final_program.append(selection.to_dict())
+    s.remove()
+    del scorer
 
     return jsonify(final_program)
 

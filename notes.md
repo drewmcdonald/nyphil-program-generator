@@ -4,12 +4,45 @@
 ## TODOs
 
 - Clean up work title and movement name (spaces, punctuation)
-- Feature detectors for
-    + Op #
-    + Piece type
-    + key
-    + arranger/is arrangement
-    + final parenthetical notes
+- Spotify Scraping
+
+
+## Model Structure
+
+- Data: 
+    + DataFrame of ConcertSelections (rows)
+    + indexed by \[Concert.id, Selection.id\]
+    + `weight` field to hold count of occurrences
+    + 1 or more columns of categorical features to model
+
+- Training:
+    + for each categorical feature:
+        * split by concert, interpolate begin/end flags, collapse
+        * prune to feature values with adequate representation
+        * train a markov chain of counts, then convert to probabilities
+
+- Prediction:
+    + options for case weighting or non-linear probability adjustments?
+    + Dedupe training data to unique selections marked for prediction
+    + for each feature/sub-model:
+        * apply model pruning
+        * apply (feature=value prediction) divided by (count of feature=value) to each feature=value record
+    + result is DataFrame of records with one column per each feature probability prediction
+    + Append record for BREAK
+    + sum weighted probabilities into a final record probability
+    + sample a record from the weighted probability sum
+    + repeat until BREAK marker predicted
+
+- Sub-models:
+    + Composer Nationality
+    + Composer Era
+    + Imputed Composer Nationality/Era
+    + Performer cluster/types
+    + Piece seasonality
+
+- Dynamic Weighting:
+    + Down-weight recently chosen pieces
+    + Exclude for X number of programs and then recover to full weighting over Y generations
 
 
 ## Data structure
@@ -70,40 +103,3 @@ ConcertSelectionPerformer
 
 - Delete Intermissions from concert_selection where intermission is last (because it splits movements of a complete work)
 
-
-## Model Structure
-
-- Data: 
-    + DataFrame of ConcertSelections (rows)
-    + indexed by \[Concert.id, Selection.id, ConcertSelection.id\]
-    + column for inclusion in final prediction
-    + 1 or more columns of categorical features to model
-
-- Training:
-    + for each categorical feature:
-        * split by concert, interpolate intermission and begin/end flags, collapse
-        * prune to feature values with adequate representation
-        * train a markov chain of counts, then convert to probabilities
-    + options for case weighting or non-linear probability adjustments?
-
-- Prediction:
-    + Dedupe training data to unique selections marked for prediction
-    + for each feature/sub-model:
-        * apply model pruning
-        * apply (feature=value prediction) divided by (count of feature=value) to each feature=value record
-    + result is DataFrame of records with one column per each feature probability prediction
-    + Append record for BREAK
-    + sum weighted probabilities into a final record probability
-    + sample a record from the weighted probability sum
-    + repeat until BREAK marker predicted
-
-- Sub-models:
-    + Composer Nationality
-    + Composer Era
-    + Imputed Composer Nationality/Era
-    + Performer cluster/types
-    + Piece seasonality
-
-- Dynamic Weighting:
-    + Down-weight recently chosen pieces
-    + Exclude for X number of programs and then recover to full weighting over Y generations
