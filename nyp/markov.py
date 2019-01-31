@@ -6,7 +6,6 @@ from typing import Union
 BREAK = "___BREAK__"
 MINOR = "___MINOR__"
 INTERMISSION = "___INTERMISSION__"
-BREAK_IDX = 999999
 
 
 def _internal_defaultdict_int():
@@ -150,113 +149,16 @@ class Chain(object):
         return new_data
 
 
-class ChainEnsembleScoreData(object):
-
-    def __init__(self, training_data: pd.DataFrame, break_weight: int = 100):
-        """
-        create and manage the scoring set used in a ChainEnsemble
-
-        :param training_data: the full training data frame from a parent ChainEnsemble
-        :param break_weight: weight at which to set BREAK (compared to other selections' actual performance instances)
-        """
-        self.break_weight: int = break_weight
-        self.break_idx: int = None
-        self.data: pd.DataFrame = self.collapse_training_data(training_data)
-        self.intermission_idx = self.find_intermission_idx()
-        self.score_cols: list = None  # hold the column names for scores to be used in the current generation
-        self.total_weight: float = None  # hold the current total weight of all scoring columns
-        self.final_scores: pd.Series = None
-
-    def collapse_training_data(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Collapse a full training dataset down to the unique selections that will be scored,
-        add a row representing the end of a program
-        """
-        data = data.reset_index() \
-            .drop('concert_id', axis=1) \
-            .drop_duplicates('selection_id') \
-            .set_index('selection_id') \
-            .copy()
-        self.break_idx = data.index.max() + 1
-        break_row = pd.Series({c: BREAK for c in data.columns}, name=self.break_idx)
-        break_row['weight'] = self.break_weight
-        data = data.append(break_row)
-        return data
-
-    def find_intermission_idx(self) -> int:
-        """locate the row index representing intermission"""
-        return self.data.loc[self.data[self.data.columns[-1]] == INTERMISSION].index[0]
-
-    def apply_chain_transformations(self, chains: dict):
-        """apply each chain's pre-processing transformation to it's column on the score data frame"""
-        for c in chains:
-            self.data[c] = chains[c].transform_scoring_series(self.data[c])
-        return self
-
-    def scrub(self, selection_id: int = None, feature_values: dict = None):
-        """cumulatively scrub rows from the scoring data frame by selection_id and/or by feature value
-
-        :param selection_id: an index integer to remove from the scoring set
-        :param feature_values: a dictionary keyed by column name with lists of values that should be
-            removed from scoring
-        :return: self
-        """
-        if selection_id:
-            if selection_id in self.data.index:
-                self.data = self.data.drop(selection_id, axis=0)
-
-        if feature_values:
-            # TODO: transition to a cumulative index that's sliced only once
-            for feature in feature_values:
-                for val in feature:
-                    self.data = self.data.loc[self.data[feature] != val]
-
-        return self
-
-    def get_selection_features(self, selection_id: int) -> pd.Series:
-        """return a series representing of a selection's feature values"""
-        return self.data.loc[selection_id]
-
-    def fill_score_columns(self, state: dict, chains: dict, weights: dict):
-
-        self.score_cols = []  # wipe in case weights have changed
-        self.total_weight = 0
-        for col in weights:
-            if weights[col] <= 0:
-                continue
-            score_col = col + '___score__'
-            self.score_cols.append(score_col)
-            self.total_weight += weights[col]
-            self.data[score_col] = chains[col].score_series(self.data[col], state[col]).values * weights[col]
-
-        return self
-
-    def aggregate_final_score(self, weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0):
-        selection_usable_idx = (self.data[self.score_cols] == 0).sum(axis=1) == 0
-        average_weighted_scores = self.data.loc[selection_usable_idx, self.score_cols].sum(axis=1) / self.total_weight
-        case_weights = self.data.loc[selection_usable_idx, 'weight']
-        self.final_scores = (
-                average_weighted_scores.pow(weighted_average_exponent) * case_weights.pow(case_weight_exponent)
-        )
-        return self
-
-    def sample(self) -> int:
-        return int(self.final_scores.sample(weights=self.final_scores).index[0])
-
-
 class ChainEnsemble(object):
 
     def __init__(self, chain_configs: dict, base_chain_config: dict, train_backwards: bool = True):
         self.train_backwards = train_backwards
         self.chain_configs: dict = self.initialize_chain_configs(chain_configs, base_chain_config)
 
-        # initialize state
-        self.state: dict = {}
-        self.reset_state()
-
         # create slots for trained models and data
+        self.is_fit: bool = False
         self.chains: dict = None
         self.train_data: pd.DataFrame = None
-        self.score_data: ChainEnsembleScoreData = None
 
     def initialize_chain_configs(self, chain_configs: dict, base_chain_config: dict) -> dict:
         """initialize chain config dicts, filling in with base config and overwriting ensemble-wide train_backwards"""
@@ -268,19 +170,6 @@ class ChainEnsemble(object):
             final_configs[col]['train_backwards'] = self.train_backwards
         return final_configs
 
-    def reset_state(self):
-        """initialize or reset state based on each config's state_size"""
-        self.state = {k: (BREAK,) * self.chain_configs[k].get('state_size') for k in self.chain_configs}
-        return self
-
-    def update_state(self, selection_id: int):
-        """update state with the feature values of the most recent selection"""
-        selection_features = self.score_data.get_selection_features(selection_id)
-        for k in self.state:
-            # the 1: slice allows for chains of varying state_sizes
-            self.state[k] = self.state[k][1:] + (selection_features[k],)
-        return self
-
     def validate_training_args(self):
         """ensure indexes, columns, and chain config keys are all as expected"""
         assert all(k in self.train_data.columns for k in self.chain_configs.keys())
@@ -290,45 +179,170 @@ class ChainEnsemble(object):
             "Data must contain a weight field"
 
     def train(self, data: pd.DataFrame, n_jobs: int = cpu_count()):
-        """fit the chain models defined by chain_configs; collapse score_data and transform per the chains"""
+        """fit the chain models defined by chain_configs"""
         self.train_data = data
         self.validate_training_args()
 
         with Pool(n_jobs) as pool:
-            # list of tuples of (series, kwargs)
             job_data = [(self.train_data[col], kwargs) for col, kwargs in self.chain_configs.items()]
             chains = pool.map(Chain.from_tuple, job_data, chunksize=1)
 
         self.chains = {c.name: c for c in chains}
+        self.is_fit = True
 
         return self
 
-    def generate_program(self, feature_weights: dict,  # feature_limits: dict,
-                         break_weight: int = 100,
-                         weighted_average_exponent: float = 1.0,
-                         case_weight_exponent: float = 1.0):
 
+class ChainEnsembleScorer(object):
+
+    def __init__(self, model: ChainEnsemble, default_break_weight: int = 1):
+        if not model.is_fit:
+            raise ValueError('ChainEnsemble model must be fit before being passed to ChainEnsembleScorer')
+        self.model = model
+        self.default_break_weight = default_break_weight
+
+        # metadata on our scoring data frame
+        self.break_idx: int = None  # filled by collapse_training_data
+        self.intermission_idx = None  # ''  ''
+        self.raw_data: pd.DataFrame = self.collapse_training_data()
+
+        # initialize state
+        self.state: dict = {}
+        self.score_data: pd.DataFrame = None
+        self.is_clean_start: bool = False
+        self.initialize_score_state()
+        self.set_break_weight(self.default_break_weight)
+
+    def collapse_training_data(self) -> pd.DataFrame:
+        """Collapse the full training dataset down to the unique selections that will be scored,
+        add a row representing the end of a program
+        """
+        data = self.model.train_data.reset_index() \
+            .drop('concert_id', axis=1) \
+            .drop_duplicates('selection_id') \
+            .set_index('selection_id') \
+            .copy()
+
+        # handle the break record
+        self.break_idx = data.index.max() + 1
+        break_row = pd.Series({c: BREAK for c in data.columns}, name=self.break_idx)
+        break_row['weight'] = 1
+        data = data.append(break_row)
+
+        # take note of the intermission idx
+        self.intermission_idx = data.loc[data[data.columns[-1]] == INTERMISSION].index[0]
+
+        return data
+
+    def reset_state(self):
+        """initialize or reset state based on each config's state_size"""
+        self.state = {k: (BREAK,) * self.model.chain_configs[k].get('state_size') for k in self.model.chain_configs}
+        return self
+
+    def initialize_score_state(self):
         self.reset_state()
-        self.score_data = ChainEnsembleScoreData(self.train_data, break_weight=break_weight)
-        self.score_data.apply_chain_transformations(self.chains)
+        self.score_data = self.raw_data.copy()
 
-        def next_idx() -> int:
-            return self.score_data \
-                .fill_score_columns(self.state, self.chains, feature_weights) \
-                .aggregate_final_score(weighted_average_exponent, case_weight_exponent) \
-                .sample()
+        for c in self.model.chains:
+            self.score_data[c] = self.model.chains[c].transform_scoring_series(self.score_data[c])
+
+        self.is_clean_start = True
+
+        return self
+
+    def set_break_weight(self, break_weight: int):
+        self.score_data.loc[self.break_idx, 'weight'] = break_weight
+        return self
+
+    def get_selection_features(self, selection_id: int) -> pd.Series:
+        """return a series representing of a selection's feature values"""
+        return self.score_data.loc[selection_id]
+
+    def update_state(self, selection_id: int):
+        """update state with the feature values of the most recent selection; accommodates chains of varying size"""
+        selection_features = self.get_selection_features(selection_id)
+        for k in self.state:
+            self.state[k] = self.state[k][1:] + (selection_features[k],)
+        return self
+
+    def scrub(self, selection_id: int = None):  # feature_values: dict = None):
+        """cumulatively scrub rows from the scoring data frame by selection_id and/or by feature value"""
+        if selection_id:
+            if selection_id in self.score_data.index:
+                self.score_data = self.score_data.drop(selection_id, axis=0)
+        #
+        # if feature_values:
+        #     # TODO: transition to a cumulative index that's sliced only once
+        #     for feature in feature_values:
+        #         for val in feature:
+        #             self.score_data = self.score_data.loc[self.score_data[feature] != val]
+
+        return self
+
+    def next_idx(self, feature_weights: dict,  # feature_limits: dict,
+                 weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0) -> int:
+
+        if self.is_clean_start:
+            self.is_clean_start = False
+
+        # accumulate score cols and total weight as we score each feature column with the current state
+        score_cols = []
+        total_weight = 0
+        for col in feature_weights:
+            if feature_weights[col] <= 0 or feature_weights[col] is None:
+                continue
+            score_col = col + '___score__'
+            score_cols.append(score_col)
+            total_weight += feature_weights[col]
+            self.score_data[score_col] = \
+                self.model.chains[col].score_series(self.score_data[col], self.state[col]).values * feature_weights[col]
+
+        # filter to rows with no model scored as 0
+        usable_idx = (self.score_data[score_cols] == 0).sum(axis=1) == 0
+        # take the weighted average score
+        average_weighted_scores = self.score_data.loc[usable_idx, score_cols].sum(axis=1) / total_weight
+        # apply non-linear transformations to the scores and to the case weights
+        final_scores = (
+            average_weighted_scores.pow(weighted_average_exponent) *
+            self.score_data.loc[usable_idx, 'weight'].pow(case_weight_exponent)
+        )
+
+        # sample an index
+        idx = int(final_scores.sample(weights=final_scores).index[0])
+
+        # update state, scrub the index from the score data, and return
+        # selection_features = self.get_selection_features(idx)  # for scrubbing later
+        self.update_state(idx)
+        self.scrub(selection_id=idx)
+
+        return idx
+
+    def generate_program(self, feature_weights: dict,  # feature_limits: dict,
+                         weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
+                         break_weight: int = None):
+
+        # initialize if `next_idx` has been called since last initialized
+        if not self.is_clean_start:
+            self.initialize_score_state()
+
+        # set break weight if it's not the default used in __init__
+        if break_weight is not None and break_weight != self.default_break_weight:
+            self.set_break_weight(break_weight)
+
+        def local_next_idx():
+            """helper to not pass the same options around everywhere"""
+            return self.next_idx(feature_weights=feature_weights,
+                                 weighted_average_exponent=weighted_average_exponent,
+                                 case_weight_exponent=case_weight_exponent)
 
         program: list = []
 
-        selection_idx: int = next_idx()
-        while selection_idx != self.score_data.break_idx:
-            # selection_features = self.score_data.get_selection_features(selection_idx)
-            self.update_state(selection_idx)
-            self.score_data.scrub(selection_id=selection_idx)
+        selection_idx: int = local_next_idx()
+        while selection_idx != self.break_idx:
             program.append(selection_idx)
-            selection_idx = next_idx()
+            selection_idx = local_next_idx()
 
-        if self.train_backwards:
+        if self.model.train_backwards:
             program = program[::-1]
 
         return program
