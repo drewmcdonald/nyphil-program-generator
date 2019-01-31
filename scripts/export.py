@@ -11,7 +11,7 @@ WORK_TYPES = OrderedDict({'symphony': ['SYMPHON(Y|I)'],
                           'dance': [r'DAN(S|C)E', 'WALTZ', 'VALSE', 'MINUET', 'TANGO', r'GALL?OP', 'POLKA',
                                     'TARANTELLA', 'BOLERO', 'BALLET'],
                           'suite': ['SUITE'],
-                          'overture': ['OVERTURE'],
+                          'overture': ['INTRODUCTION', 'OVERTURE'],
                           'march': ['MARCH']})
 
 OPUS_MARKERS = [r'BWV \d+', r'K\. ?\d+', r'OP\. ?\d+', r'D. ?\d+']
@@ -81,8 +81,12 @@ if __name__ == '__main__':
     from sqlalchemy.orm import sessionmaker, joinedload
     from nyp.models import Concert, ConcertSelection, EventType, Selection, Work, \
         Composer, ConcertSelectionPerformer
+    from dotenv import load_dotenv
+    from os import getenv
 
-    engine = create_engine("sqlite:///../data/raw.db", echo=False)
+    load_dotenv()
+
+    engine = create_engine(getenv('MYSQL_CON'))
     Session = sessionmaker(engine)
 
     s = Session()
