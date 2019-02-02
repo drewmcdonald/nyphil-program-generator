@@ -6,9 +6,16 @@ __pycache__/
 *credentials.py
 z_old/*
 *.ipynb_checkpoints
-.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+data/*.txt.gz
+data/original/*
+LICENSE
+notes.md
+README.md
+scripts/*
+.flaskenv
