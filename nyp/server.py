@@ -20,9 +20,9 @@ load_dotenv()
 application = Flask(__name__)
 application.secret_key = getenv('APP_SECRET')
 
-if application.env == 'production':
+if getenv('RDS_HOSTNAME'):
     connection_string = "mysql+pymysql://{}:{}@{}:{}/{}".format(
-        getenv('RDS_USERNAME'), getenv('RDS_PASSWORD'), getenv('RDS_HOSTNAME'), \
+        getenv('RDS_USERNAME'), getenv('RDS_PASSWORD'), getenv('RDS_HOSTNAME'),
         getenv('RDS_PORT'), getenv('RDS_DB_NAME')
     )
 else:
