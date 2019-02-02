@@ -143,7 +143,7 @@ def generate():
         'options': program_kwargs
     }
 
-    return jsonify(program)
+    return jsonify([program])
 
 
 if __name__ == '__main__':
