@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import cross_origin
 from nyp.markov import ChainEnsemble, ChainEnsembleScorer
 import random
 
@@ -117,6 +118,7 @@ def make_random_params():
 
 
 @application.route('/rand_compare', methods=['GET'])
+@cross_origin()
 def rand_compare_2_programs():
     programs = []
     for _ in range(2):
@@ -127,6 +129,7 @@ def rand_compare_2_programs():
 
 
 @application.route('/generate', methods=['GET'])
+@cross_origin()
 def generate():
 
     program_kwargs = DEFAULTS.copy()
