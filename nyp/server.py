@@ -17,9 +17,10 @@ from os import getenv
 
 load_dotenv()
 
-app = Flask(__name__)
+application = Flask(__name__)
+application.secret_key = getenv('APP_SECRET')
 
-if app.env == 'production':
+if application.env == 'production':
     connection_string = "mysql+pymysql://{}:{}@{}:{}/{}".format(
         getenv('RDS_USERNAME'), getenv('RDS_PASSWORD'), getenv('RDS_HOSTNAME'), \
         getenv('RDS_PORT'), getenv('RDS_DB_NAME')
@@ -116,7 +117,7 @@ def make_random_params():
     }
 
 
-@app.route('/rand_compare', methods=['GET'])
+@application.route('/rand_compare', methods=['GET'])
 def rand_compare_2_programs():
     programs = []
     for _ in range(2):
@@ -126,7 +127,7 @@ def rand_compare_2_programs():
     return jsonify(programs)
 
 
-@app.route('/generate', methods=['GET'])
+@application.route('/generate', methods=['GET'])
 def generate():
 
     program_kwargs = DEFAULTS.copy()
@@ -144,4 +145,4 @@ def generate():
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
