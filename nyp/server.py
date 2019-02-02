@@ -21,9 +21,8 @@ application = Flask(__name__)
 application.secret_key = getenv('APP_SECRET')
 
 if getenv('RDS_HOSTNAME'):
-    connection_string = "mysql+pymysql://{}:{}@{}:{}/{}".format(
-        getenv('RDS_USERNAME'), getenv('RDS_PASSWORD'), getenv('RDS_HOSTNAME'),
-        getenv('RDS_PORT'), getenv('RDS_DB_NAME')
+    connection_string = "mysql+pymysql://{}:{}@{}:{}/nyphil".format(
+        getenv('RDS_USERNAME'), getenv('RDS_PASSWORD'), getenv('RDS_HOSTNAME'), getenv('RDS_PORT')
     )
 else:
     connection_string = getenv('MYSQL_CON_DEV')
