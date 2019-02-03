@@ -5,14 +5,14 @@ import re
 import math
 
 
-WORK_TYPES = OrderedDict({'symphony': ['SYMPHON(Y|I)'],
-                          'concerto': ['CONCI?ERTO'],
+WORK_TYPES = OrderedDict({'concerto': ['CONCI?ERTO'],
                           'mass': ['MASS', 'REQUIEM', 'ORATORIO'],
                           'dance': [r'DAN(S|C)E', 'WALTZ', 'VALSE', 'MINUET', 'TANGO', r'GALL?OP', 'POLKA',
                                     'TARANTELLA', 'BOLERO', 'BALLET'],
                           'suite': ['SUITE'],
                           'overture': ['INTRODUCTION', 'OVERTURE'],
-                          'march': ['MARCH']})
+                          'march': ['MARCH'],
+                          'symphony': ['SYMPHON(Y|I)']})
 
 OPUS_MARKERS = [r'BWV \d+', r'K\. ?\d+', r'OP\. ?\d+', r'D. ?\d+']
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
     load_dotenv()
 
-    engine = create_engine(getenv('MYSQL_CON'))
+    engine = create_engine(getenv('MYSQL_CON_DEV'))
     Session = sessionmaker(engine)
 
     s = Session()
