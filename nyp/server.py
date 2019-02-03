@@ -73,8 +73,7 @@ def build_program(**kwargs):
             print(f"retrying!!! attempt #{attempts}")
         attempts += 1
 
-    s = Session
-    q = s.query(Selection)
+    q = Session.query(Selection)
 
     program_order = 1
     final_program = []
@@ -84,7 +83,7 @@ def build_program(**kwargs):
         final_program.append(this_record)
         program_order += 1
 
-    s.remove()
+    Session.remove()
     return final_program
 
 
