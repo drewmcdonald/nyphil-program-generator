@@ -1,7 +1,8 @@
 import pandas as pd
+import numpy as np
 from collections import defaultdict
 from multiprocessing import Pool, cpu_count
-from typing import Union
+from typing import Union, Callable
 
 BREAK = "___BREAK__"
 MINOR = "___MINOR__"
@@ -11,6 +12,21 @@ INTERMISSION = "___INTERMISSION__"
 def _internal_defaultdict_int():
     """module level function to make our defaultdict code pickle-able"""
     return defaultdict(int)
+
+
+def simple_weighted_avg(p: np.ndarray, w: np.ndarray) -> np.ndarray:
+    return np.sum(p * w, axis=1) / w.sum()
+
+
+def sum_weighted_log_odds(p: np.ndarray, w: np.ndarray) -> np.ndarray:
+    """calculate weighted odds by taking a weighted sum in log-odds space, then convert back to probability"""
+    weighted_odds = np.exp(np.sum(np.log(p / (1 - p)) * w, axis=1) / w.sum())
+    return weighted_odds / (1 + weighted_odds)
+
+
+def rescaled_power_weight(p: np.ndarray, w: np.ndarray) -> np.ndarray:
+    """for each row-like array of p, p0,0^w0 * p0,1^w1 ... * p0,x^wx"""
+    return np.power(np.prod(p ** w, axis=1), (1 / w.sum()))
 
 
 class Chain(object):
@@ -252,6 +268,7 @@ class ChainEnsembleScorer(object):
 
     def set_break_weight(self, break_weight: int):
         self.score_data.loc[self.break_idx, 'weight'] = break_weight
+        self.score_data.loc[self.intermission_idx, 'weight'] = break_weight
         return self
 
     def get_selection_features(self, selection_id: int) -> pd.Series:
@@ -281,35 +298,37 @@ class ChainEnsembleScorer(object):
 
     def next_idx(self, feature_weights: dict,  # feature_limits: dict,
                  weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                 random_state: int = None) -> int:
+                 random_state: int = None, summary_step: Callable = rescaled_power_weight) -> int:
 
         if self.is_clean_start:
             self.is_clean_start = False
 
-        # accumulate score cols and total weight as we score each feature column with the current state
+        # accumulate score cols and weights as we score each feature column with the current state
         score_cols = []
-        total_weight = 0
+        score_weights = np.array([], dtype=float)
         for col in feature_weights:
             if feature_weights[col] <= 0 or feature_weights[col] is None:
                 continue
             score_col = col + '___score__'
             score_cols.append(score_col)
-            total_weight += feature_weights[col]
+            score_weights = np.append(score_weights, feature_weights[col])
             self.score_data[score_col] = \
-                self.model.chains[col].score_series(self.score_data[col], self.state[col]).values * feature_weights[col]
+                self.model.chains[col].score_series(self.score_data[col], self.state[col]).values
 
         # filter to rows with no model scored as 0
-        usable_idx = (self.score_data[score_cols] == 0).sum(axis=1) == 0
-        # take the weighted average score
-        average_weighted_scores = self.score_data.loc[usable_idx, score_cols].sum(axis=1) / total_weight
-        # apply non-linear transformations to the scores and to the case weights
-        final_scores = (
-            average_weighted_scores.pow(weighted_average_exponent) *
-            self.score_data.loc[usable_idx, 'weight'].pow(case_weight_exponent)
-        )
+        scorable_ids = self.score_data.index[(self.score_data[score_cols] == 0).sum(axis=1) == 0]
 
-        # sample an index
-        idx = int(final_scores.sample(weights=final_scores, random_state=random_state).index[0])
+        summarized_scores = summary_step(self.score_data.loc[scorable_ids, score_cols].values, score_weights)
+        case_weights = self.score_data.loc[scorable_ids, 'weight']
+
+        # apply non-linear transformations to the scores and to the case weights; normalize result to sum to 1
+        final_scores = np.power(summarized_scores, weighted_average_exponent) \
+            * np.power(case_weights, case_weight_exponent)
+        final_scores = final_scores / final_scores.sum()
+
+        # sample an index, seeding np's random number generator if needed; cast to int for sqlalchemy lookups
+        np.random.seed(random_state)
+        idx = int(np.random.choice(scorable_ids, p=final_scores))
 
         # update state, scrub the index from the score data, and return
         # selection_features = self.get_selection_features(idx)  # for scrubbing later
@@ -320,7 +339,8 @@ class ChainEnsembleScorer(object):
 
     def generate_program(self, feature_weights: dict,  # feature_limits: dict,
                          weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                         break_weight: int = None, random_state: int = None):
+                         break_weight: int = None, random_state: int = None,
+                         summary_step: Callable = rescaled_power_weight):
 
         # initialize if `next_idx` has been called since last initialized
         if not self.is_clean_start:
@@ -335,7 +355,8 @@ class ChainEnsembleScorer(object):
             return self.next_idx(feature_weights=feature_weights,
                                  weighted_average_exponent=weighted_average_exponent,
                                  case_weight_exponent=case_weight_exponent,
-                                 random_state=random_state)
+                                 random_state=random_state,
+                                 summary_step=summary_step)
 
         program: list = []
 
