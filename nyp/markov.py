@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 from multiprocessing import Pool, cpu_count
-from typing import Union, Callable
+from typing import Union
 
 BREAK = "___BREAK__"
 MINOR = "___MINOR__"
@@ -27,6 +27,13 @@ def sum_weighted_log_odds(p: np.ndarray, w: np.ndarray) -> np.ndarray:
 def rescaled_power_weight(p: np.ndarray, w: np.ndarray) -> np.ndarray:
     """for each row-like array of p, p0,0^w0 * p0,1^w1 ... * p0,x^wx"""
     return np.power(np.prod(p ** w, axis=1), (1 / w.sum()))
+
+
+AVAILABLE_SUMMARY_FUNCTIONS = {
+    'simple_weighted_avg': simple_weighted_avg,
+    'sum_weighted_log_odds': sum_weighted_log_odds,
+    'rescaled_power_weight': rescaled_power_weight
+}
 
 
 class Chain(object):
@@ -211,11 +218,14 @@ class ChainEnsemble(object):
 
 class ChainEnsembleScorer(object):
 
-    def __init__(self, model: ChainEnsemble, default_break_weight: int = 1):
+    def __init__(self, model: ChainEnsemble, default_break_weight: int = 1, summary_function: str = 'rpw'):
         if not model.is_fit:
             raise ValueError('ChainEnsemble model must be fit before being passed to ChainEnsembleScorer')
         self.model = model
         self.default_break_weight = default_break_weight
+        if summary_function not in AVAILABLE_SUMMARY_FUNCTIONS:
+            raise ValueError(f'summary function unknown, please use one of ({", ".join(AVAILABLE_SUMMARY_FUNCTIONS)})')
+        self.summary_function = AVAILABLE_SUMMARY_FUNCTIONS[summary_function]
 
         # metadata on our scoring data frame
         self.break_idx: int = None  # filled by collapse_training_data
@@ -256,6 +266,7 @@ class ChainEnsembleScorer(object):
         return self
 
     def initialize_score_state(self):
+        """Set up a clean start of state and score_data"""
         self.reset_state()
         self.score_data = self.raw_data.copy()
 
@@ -298,9 +309,9 @@ class ChainEnsembleScorer(object):
 
     def next_idx(self, feature_weights: dict,  # feature_limits: dict,
                  weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                 random_state: int = None, summary_step: Callable = rescaled_power_weight) -> int:
+                 random_state: int = None) -> int:
 
-        if self.is_clean_start:
+        if self.is_clean_start:  # this method will dirty scorer state
             self.is_clean_start = False
 
         # accumulate score cols and weights as we score each feature column with the current state
@@ -318,7 +329,7 @@ class ChainEnsembleScorer(object):
         # filter to rows with no model scored as 0
         scorable_ids = self.score_data.index[(self.score_data[score_cols] == 0).sum(axis=1) == 0]
 
-        summarized_scores = summary_step(self.score_data.loc[scorable_ids, score_cols].values, score_weights)
+        summarized_scores = self.summary_function(self.score_data.loc[scorable_ids, score_cols].values, score_weights)
         case_weights = self.score_data.loc[scorable_ids, 'weight']
 
         # apply non-linear transformations to the scores and to the case weights; normalize result to sum to 1
@@ -339,8 +350,7 @@ class ChainEnsembleScorer(object):
 
     def generate_program(self, feature_weights: dict,  # feature_limits: dict,
                          weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                         break_weight: int = None, random_state: int = None,
-                         summary_step: Callable = rescaled_power_weight):
+                         break_weight: int = None, random_state: int = None) -> list:
 
         # initialize if `next_idx` has been called since last initialized
         if not self.is_clean_start:
@@ -355,8 +365,7 @@ class ChainEnsembleScorer(object):
             return self.next_idx(feature_weights=feature_weights,
                                  weighted_average_exponent=weighted_average_exponent,
                                  case_weight_exponent=case_weight_exponent,
-                                 random_state=random_state,
-                                 summary_step=summary_step)
+                                 random_state=random_state)
 
         program: list = []
 
