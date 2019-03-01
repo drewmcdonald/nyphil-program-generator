@@ -75,19 +75,21 @@ def build_program(**kwargs):
 
     q = Session.query(Selection)
 
-    program_order = 1
+    program_order = 0
     final_program = []
     for selection in program:
+        program_order += 1
         this_record = q.get(selection).to_dict()
         this_record['program_order'] = program_order
         final_program.append(this_record)
-        program_order += 1
 
     Session.remove()
     return final_program
 
 
 def make_random_params():
+    # TODO: move to instance method on scorer? or maybe on optimizer class
+    # scorer.make_random_params(features, max_single_weight, total_weight)
 
     features = FEATURES.copy()
     random.shuffle(features)
