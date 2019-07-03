@@ -9,7 +9,7 @@ end a program that began with Mozart's clarinet concerto.
 
 However, instead of generating Markov chains based on individual selections (which is prone to over-fitting and tends to
 hit dead ends via niche selections), the model develops probability estimates based off of individual models of
-selection meta data. 
+selection meta data.
 
 So, in the example above, the prediction of Beethoven's 5th Symphony would be the combination of the likelihood of a
 German composer following an Austrian composer, the probability of a symphony following a wind concerto, and the
