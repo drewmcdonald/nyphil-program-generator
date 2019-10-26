@@ -11,3 +11,4 @@ fmt:
 check:
 	isort --recursive --check-only .
 	black --check .
+	flake8 .

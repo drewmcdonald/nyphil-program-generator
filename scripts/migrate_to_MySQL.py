@@ -1,4 +1,3 @@
-# noinspection PyPackageRequirements
 from os import getenv
 
 from dotenv import load_dotenv
@@ -6,7 +5,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import joinedload, sessionmaker
 
 from nyp.models import (
-    Base,
     Composer,
     Concert,
     ConcertSelection,
@@ -20,7 +18,8 @@ load_dotenv()
 
 engine1 = create_engine("sqlite:////Users/drew/Desktop/nyp/data/raw.db", echo=True)
 engine2 = create_engine(
-    f'mysql+pymysql://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASS")}@{getenv("MYSQL_HOST")}/{getenv("MYSQL_DB")}'
+    f'mysql+pymysql://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASS")}'
+    f'@{getenv("MYSQL_HOST")}/{getenv("MYSQL_DB")}'
 )
 
 Session_sqlite = sessionmaker(engine1)

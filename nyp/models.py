@@ -290,11 +290,16 @@ class Concert(Base):
     concert_selections = relationship("ConcertSelection", back_populates="concert")
 
     def __repr__(self):
-        return f'<Concert {self.id}: {self.orchestra} at {self.venue} on {self.datetime.strftime("%d/%m/%Yl")}>'
+        return (
+            f"<Concert {self.id}: {self.orchestra} at {self.venue} "
+            f'on {self.datetime.strftime("%d/%m/%Yl")}>'
+        )
 
     @property
     def selections(self) -> [Selection]:
-        """shortcut to the actual selections instead of the concert_selection records (though this loses movements)"""
+        """shortcut to the actual selections instead of the concert_selection records
+        (though this loses movements)
+        """
         # noinspection PyTypeChecker
         return [cs.selection for cs in self.concert_selections]
 
@@ -613,7 +618,7 @@ class MBZComposer(Base):
 
 class MBZComposerSearch(MBZAPI):
     """MBZ Composer Lookup Data
-    NOTE: does not page through results. assumes if a good match isn't in the top 25 results, it doesn't exist"""
+    NOTE: does not page through results. assumes a good match would be in the top 25 results"""
 
     def __init__(self, composer: Composer):
         super(MBZComposerSearch, self).__init__(endpoint="artist")

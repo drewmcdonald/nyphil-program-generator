@@ -40,14 +40,14 @@ AVAILABLE_SUMMARY_FUNCTIONS = {
 class Chain(object):
     """
     build a Markov Chain from a categorical Series
-    
+
     - data: a pandas Series with an index that defines the unit of analysis (usually a concert)
     - state_size: MC depth (default 1)
     - train_backwards: fit chain in reverse program order (recommended)
     - cull: impute an 'other' value in place of values with very little usage (default True)
-    - cull_threshold: the floor below which a value is replaced with OTHER; interpreted as a percentage of total records
-         if between 0 and .999; otherwise interpreted as a count of appearances if greater than or equal to 1
-         (default .01)
+    - cull_threshold: the floor below which a value is replaced with OTHER; interpreted as a percentage of
+         total records if between 0 and .999; otherwise interpreted as a count of appearances if greater
+         than or equal to 1 (default .01)
     """
 
     def __init__(
@@ -126,14 +126,15 @@ class Chain(object):
 
     def fill_counts(self) -> dict:
         """collapse the categorical vector into a dict of probability lookups
-        loosely adapted from jsvine/markovify
-        major difference is that this is set to accept a full corpus all at once with beginning/end markers interpolated
+        loosely adapted from jsvine/markovify; major difference is that this is set to accept a full corpus
+        all at once with interpolated beginning/end markers
         """
         lookup = defaultdict(_internal_defaultdict_int)
 
         # accumulate counts of each input to output
         for i in range(len(self.data) - self.state_size):
-            in_val = tuple(self.data.iloc[i : (i + self.state_size)])
+            slice_end = i + self.state_size
+            in_val = tuple(self.data.iloc[i:slice_end])
             out_val = self.data.iloc[i + self.state_size]
 
             lookup[in_val][out_val] += 1
@@ -199,7 +200,7 @@ class ChainEnsemble(object):
     def initialize_chain_configs(
         self, chain_configs: dict, base_chain_config: dict
     ) -> dict:
-        """initialize chain config dicts, filling in with base config and overwriting ensemble-wide train_backwards"""
+        """initialize chain config dicts, filling in with base config and ensemble-wide `train_backwards`"""
         final_configs: dict = {c: base_chain_config for c in chain_configs}
         for col in final_configs:
             for key in chain_configs[col]:
@@ -323,7 +324,9 @@ class ChainEnsembleScorer(object):
         return self.score_data.loc[selection_id]
 
     def update_state(self, selection_id: int):
-        """update state with the feature values of the most recent selection; accommodates chains of varying size"""
+        """update state with the feature values of the most recent selection;
+        accommodates chains of varying size
+        """
         selection_features = self.get_selection_features(selection_id)
         for k in self.state:
             self.state[k] = self.state[k][1:] + (selection_features[k],)
@@ -379,7 +382,7 @@ class ChainEnsembleScorer(object):
         )
         case_weights = self.score_data.loc[scorable_ids, "weight"]
 
-        # apply non-linear transformations to the scores and to the case weights; normalize result to sum to 1
+        # apply non-linear transformations to the scores and case weights; normalize result to sum to 1
         final_scores = np.power(
             summarized_scores, weighted_average_exponent
         ) * np.power(case_weights, case_weight_exponent)
@@ -436,7 +439,7 @@ class ChainEnsembleScorer(object):
 
 
 if __name__ == "__main__":
-    data_train = "a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c".split()
+    data_train = "adabaababbcbadcedfbcaeebcbcaacbcbabdbdbbac".split()
     s_train = pd.Series(data_train, index=[1] * len(data_train), name="training")
     x = Chain(s_train, cull_threshold=4)
     s_score = x.transform_scoring_series(

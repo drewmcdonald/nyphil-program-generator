@@ -1,15 +1,11 @@
-# handle persistent model objects
 import pickle
 import random
 from copy import deepcopy
 from os import getenv
 
-# environment
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
-
-# database imports
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
