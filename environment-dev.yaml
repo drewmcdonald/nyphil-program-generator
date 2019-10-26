@@ -1,0 +1,10 @@
+name: nyphil-program-generator-dev
+channels:
+  - defaults
+dependencies:
+  - flake8
+  - isort
+  - pip
+  - pylint
+  - pip:
+    - black==19.3b0

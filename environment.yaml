@@ -1,0 +1,17 @@
+name: nyphil-program-generator
+channels:
+  - defaults
+dependencies:
+  - click
+  - flask
+  - flask-cors
+  - pandas
+  - pip
+  - python=3.7
+  - requests
+  - scikit-learn
+  - SQLAlchemy
+  - pip:
+    - fuzzywuzzy
+    - psycopg2-binary
+    - python-dotenv
