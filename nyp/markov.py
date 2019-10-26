@@ -31,9 +31,9 @@ def rescaled_power_weight(p: np.ndarray, w: np.ndarray) -> np.ndarray:
 
 
 AVAILABLE_SUMMARY_FUNCTIONS = {
-    'simple_weighted_avg': simple_weighted_avg,
-    'sum_weighted_log_odds': sum_weighted_log_odds,
-    'rescaled_power_weight': rescaled_power_weight
+    "simple_weighted_avg": simple_weighted_avg,
+    "sum_weighted_log_odds": sum_weighted_log_odds,
+    "rescaled_power_weight": rescaled_power_weight,
 }
 
 
@@ -50,9 +50,15 @@ class Chain(object):
          (default .01)
     """
 
-    def __init__(self, data: pd.Series, state_size: int = 1, train_backwards: bool = True,
-                 cull: bool = True, cull_threshold: Union[int, float] = 0.01):
-        self.name: str = data.name or 'unnamed'
+    def __init__(
+        self,
+        data: pd.Series,
+        state_size: int = 1,
+        train_backwards: bool = True,
+        cull: bool = True,
+        cull_threshold: Union[int, float] = 0.01,
+    ):
+        self.name: str = data.name or "unnamed"
         self.state_size: int = state_size
         self.train_backwards: bool = train_backwards
         self.cull: bool = cull
@@ -63,11 +69,12 @@ class Chain(object):
         new_data = data.copy()  # don't modify in place
         self.data: pd.Series = self.pre_process_data(new_data)
         self.counts: dict = self.fill_counts()
-        self.probas: dict = {k: self.counts_to_probabilities(v)
-                             for k, v in self.counts.items()}
+        self.probas: dict = {
+            k: self.counts_to_probabilities(v) for k, v in self.counts.items()
+        }
 
     def __repr__(self):
-        return f'<Chain ({self.name}): {{{self.sample_data_str}}}>'
+        return f"<Chain ({self.name}): {{{self.sample_data_str}}}>"
 
     @property
     def sample_data_str(self) -> str:
@@ -95,7 +102,7 @@ class Chain(object):
         if self.cull:
 
             if self.cull_threshold < 0:
-                raise ValueError('cull_threshold should be >= 0')
+                raise ValueError("cull_threshold should be >= 0")
 
             summary = values[values != BREAK].value_counts()
 
@@ -126,7 +133,7 @@ class Chain(object):
 
         # accumulate counts of each input to output
         for i in range(len(self.data) - self.state_size):
-            in_val = tuple(self.data.iloc[i:(i + self.state_size)])
+            in_val = tuple(self.data.iloc[i : (i + self.state_size)])
             out_val = self.data.iloc[i + self.state_size]
 
             lookup[in_val][out_val] += 1
@@ -137,14 +144,16 @@ class Chain(object):
         """fetch the probabilities for a given input"""
 
         if len(in_val) != self.state_size:
-            raise ValueError('Input value length does not equal Chain state size')
+            raise ValueError("Input value length does not equal Chain state size")
 
         # replace minor values with placeholder
         in_val = tuple(i if i not in self.minor_values else MINOR for i in in_val)
 
         # this has to be explicit since self.probas is now a default dict
         if in_val not in self.probas:
-            raise ValueError(f'Value {in_val} is not keyed in chain data for {self.name} chain')
+            raise ValueError(
+                f"Value {in_val} is not keyed in chain data for {self.name} chain"
+            )
 
         return self.probas[in_val]
 
@@ -174,33 +183,39 @@ class Chain(object):
 
 
 class ChainEnsemble(object):
-
-    def __init__(self, chain_configs: dict, base_chain_config: dict, train_backwards: bool = True):
+    def __init__(
+        self, chain_configs: dict, base_chain_config: dict, train_backwards: bool = True
+    ):
         self.train_backwards = train_backwards
-        self.chain_configs: dict = self.initialize_chain_configs(chain_configs, base_chain_config)
+        self.chain_configs: dict = self.initialize_chain_configs(
+            chain_configs, base_chain_config
+        )
 
         # create slots for trained models and data
         self.is_fit: bool = False
         self.chains: dict = None
         self.train_data: pd.DataFrame = None
 
-    def initialize_chain_configs(self, chain_configs: dict, base_chain_config: dict) -> dict:
+    def initialize_chain_configs(
+        self, chain_configs: dict, base_chain_config: dict
+    ) -> dict:
         """initialize chain config dicts, filling in with base config and overwriting ensemble-wide train_backwards"""
         final_configs: dict = {c: base_chain_config for c in chain_configs}
         for col in final_configs:
             for key in chain_configs[col]:
                 final_configs[col][key] = chain_configs[col][key]
             # this must agree across all chains
-            final_configs[col]['train_backwards'] = self.train_backwards
+            final_configs[col]["train_backwards"] = self.train_backwards
         return final_configs
 
     def validate_training_args(self):
         """ensure indexes, columns, and chain config keys are all as expected"""
         assert all(k in self.train_data.columns for k in self.chain_configs.keys())
-        assert self.train_data.index.names == ['concert_id', 'selection_id'], \
-            "Data must be indexed by concert_id and selection_id"
-        assert 'weight' in self.train_data.columns, \
-            "Data must contain a weight field"
+        assert self.train_data.index.names == [
+            "concert_id",
+            "selection_id",
+        ], "Data must be indexed by concert_id and selection_id"
+        assert "weight" in self.train_data.columns, "Data must contain a weight field"
 
     def train(self, data: pd.DataFrame, n_jobs: int = cpu_count()):
         """fit the chain models defined by chain_configs"""
@@ -208,7 +223,10 @@ class ChainEnsemble(object):
         self.validate_training_args()
 
         with Pool(n_jobs) as pool:
-            job_data = [(self.train_data[col], kwargs) for col, kwargs in self.chain_configs.items()]
+            job_data = [
+                (self.train_data[col], kwargs)
+                for col, kwargs in self.chain_configs.items()
+            ]
             chains = pool.map(Chain.from_tuple, job_data, chunksize=1)
 
         self.chains = {c.name: c for c in chains}
@@ -218,14 +236,22 @@ class ChainEnsemble(object):
 
 
 class ChainEnsembleScorer(object):
-
-    def __init__(self, model: ChainEnsemble, default_break_weight: int = 1, summary_function: str = 'rpw'):
+    def __init__(
+        self,
+        model: ChainEnsemble,
+        default_break_weight: int = 1,
+        summary_function: str = "rpw",
+    ):
         if not model.is_fit:
-            raise ValueError('ChainEnsemble model must be fit before being passed to ChainEnsembleScorer')
+            raise ValueError(
+                "ChainEnsemble model must be fit before being passed to ChainEnsembleScorer"
+            )
         self.model = model
         self.default_break_weight = default_break_weight
         if summary_function not in AVAILABLE_SUMMARY_FUNCTIONS:
-            raise ValueError(f'summary function unknown, please use one of ({", ".join(AVAILABLE_SUMMARY_FUNCTIONS)})')
+            raise ValueError(
+                f'summary function unknown, please use one of ({", ".join(AVAILABLE_SUMMARY_FUNCTIONS)})'
+            )
         self.summary_function = AVAILABLE_SUMMARY_FUNCTIONS[summary_function]
 
         # metadata on our scoring data frame
@@ -244,26 +270,33 @@ class ChainEnsembleScorer(object):
         """Collapse the full training dataset down to the unique selections that will be scored,
         add a row representing the end of a program
         """
-        data = self.model.train_data.reset_index() \
-            .drop('concert_id', axis=1) \
-            .drop_duplicates('selection_id') \
-            .set_index('selection_id') \
+        data = (
+            self.model.train_data.reset_index()
+            .drop("concert_id", axis=1)
+            .drop_duplicates("selection_id")
+            .set_index("selection_id")
             .copy()
+        )
 
         # handle the break record
         self.break_idx = data.index.max() + 1
         break_row = pd.Series({c: BREAK for c in data.columns}, name=self.break_idx)
-        break_row['weight'] = 1
+        break_row["weight"] = 1
         data = data.append(break_row)
 
         # take note of the intermission idx
-        self.intermission_idx = data.loc[data[data.columns[-1]] == INTERMISSION].index[0]
+        self.intermission_idx = data.loc[data[data.columns[-1]] == INTERMISSION].index[
+            0
+        ]
 
         return data
 
     def reset_state(self):
         """initialize or reset state based on each config's state_size"""
-        self.state = {k: (BREAK,) * self.model.chain_configs[k].get('state_size') for k in self.model.chain_configs}
+        self.state = {
+            k: (BREAK,) * self.model.chain_configs[k].get("state_size")
+            for k in self.model.chain_configs
+        }
         return self
 
     def initialize_score_state(self):
@@ -272,15 +305,17 @@ class ChainEnsembleScorer(object):
         self.score_data = self.raw_data.copy()
 
         for c in self.model.chains:
-            self.score_data[c] = self.model.chains[c].transform_scoring_series(self.score_data[c])
+            self.score_data[c] = self.model.chains[c].transform_scoring_series(
+                self.score_data[c]
+            )
 
         self.is_clean_start = True
 
         return self
 
     def set_break_weight(self, break_weight: int):
-        self.score_data.loc[self.break_idx, 'weight'] = break_weight
-        self.score_data.loc[self.intermission_idx, 'weight'] = break_weight
+        self.score_data.loc[self.break_idx, "weight"] = break_weight
+        self.score_data.loc[self.intermission_idx, "weight"] = break_weight
         return self
 
     def get_selection_features(self, selection_id: int) -> pd.Series:
@@ -308,9 +343,13 @@ class ChainEnsembleScorer(object):
 
         return self
 
-    def next_idx(self, feature_weights: dict,  # feature_limits: dict,
-                 weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                 random_state: int = None) -> int:
+    def next_idx(
+        self,
+        feature_weights: dict,  # feature_limits: dict,
+        weighted_average_exponent: float = 1.0,
+        case_weight_exponent: float = 1.0,
+        random_state: int = None,
+    ) -> int:
 
         if self.is_clean_start:  # this method will dirty scorer state
             self.is_clean_start = False
@@ -321,21 +360,29 @@ class ChainEnsembleScorer(object):
         for col in feature_weights:
             if feature_weights[col] <= 0 or feature_weights[col] is None:
                 continue
-            score_col = col + '___score__'
+            score_col = col + "___score__"
             score_cols.append(score_col)
             score_weights = np.append(score_weights, feature_weights[col])
-            self.score_data[score_col] = \
-                self.model.chains[col].score_series(self.score_data[col], self.state[col]).values
+            self.score_data[score_col] = (
+                self.model.chains[col]
+                .score_series(self.score_data[col], self.state[col])
+                .values
+            )
 
         # filter to rows with no model scored as 0
-        scorable_ids = self.score_data.index[(self.score_data[score_cols] == 0).sum(axis=1) == 0]
+        scorable_ids = self.score_data.index[
+            (self.score_data[score_cols] == 0).sum(axis=1) == 0
+        ]
 
-        summarized_scores = self.summary_function(self.score_data.loc[scorable_ids, score_cols].values, score_weights)
-        case_weights = self.score_data.loc[scorable_ids, 'weight']
+        summarized_scores = self.summary_function(
+            self.score_data.loc[scorable_ids, score_cols].values, score_weights
+        )
+        case_weights = self.score_data.loc[scorable_ids, "weight"]
 
         # apply non-linear transformations to the scores and to the case weights; normalize result to sum to 1
-        final_scores = np.power(summarized_scores, weighted_average_exponent) \
-            * np.power(case_weights, case_weight_exponent)
+        final_scores = np.power(
+            summarized_scores, weighted_average_exponent
+        ) * np.power(case_weights, case_weight_exponent)
         final_scores = final_scores / final_scores.sum()
 
         # sample an index, seeding np's random number generator if needed; cast to int for sqlalchemy lookups
@@ -349,9 +396,14 @@ class ChainEnsembleScorer(object):
 
         return idx
 
-    def generate_program(self, feature_weights: dict,  # feature_limits: dict,
-                         weighted_average_exponent: float = 1.0, case_weight_exponent: float = 1.0,
-                         break_weight: int = None, random_state: int = None) -> list:
+    def generate_program(
+        self,
+        feature_weights: dict,  # feature_limits: dict,
+        weighted_average_exponent: float = 1.0,
+        case_weight_exponent: float = 1.0,
+        break_weight: int = None,
+        random_state: int = None,
+    ) -> list:
 
         # initialize if `next_idx` has been called since last initialized
         if not self.is_clean_start:
@@ -363,10 +415,12 @@ class ChainEnsembleScorer(object):
 
         def local_next_idx():
             """helper to not pass the same options around everywhere"""
-            return self.next_idx(feature_weights=feature_weights,
-                                 weighted_average_exponent=weighted_average_exponent,
-                                 case_weight_exponent=case_weight_exponent,
-                                 random_state=random_state)
+            return self.next_idx(
+                feature_weights=feature_weights,
+                weighted_average_exponent=weighted_average_exponent,
+                case_weight_exponent=case_weight_exponent,
+                random_state=random_state,
+            )
 
         program: list = []
 
@@ -381,13 +435,15 @@ class ChainEnsembleScorer(object):
         return program
 
 
-if __name__ == '__main__':
-    data_train = 'a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c'.split()
-    s_train = pd.Series(data_train, index=[1] * len(data_train), name='training')
+if __name__ == "__main__":
+    data_train = "a d a b a a b a b b c b a d c e d f b c a e e b c b c a a c b c b a b d b d b b a c".split()
+    s_train = pd.Series(data_train, index=[1] * len(data_train), name="training")
     x = Chain(s_train, cull_threshold=4)
-    s_score = x.transform_scoring_series(pd.Series(['a', 'b', 'c', 'a', 'b', 'a', 'd', 'd', 'e', 'f']))
+    s_score = x.transform_scoring_series(
+        pd.Series(["a", "b", "c", "a", "b", "a", "d", "d", "e", "f"])
+    )
 
-    in_value = ('d',)
+    in_value = ("d",)
     print(x.get_probas(in_value))
     print(x.minor_values)
     print(x.score_series(s_score, in_value))

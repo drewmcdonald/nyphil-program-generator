@@ -12,7 +12,7 @@ from nyp.models import Base, Composer, MBZComposerSearch
 #     remove(test_data)
 # copy2(production_data, test_data)
 
-production_data = 'data/raw.db'
+production_data = "data/raw.db"
 
 engine = create_engine(f"sqlite:///{production_data}", echo=False)
 Base.metadata.bind = engine

@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from nyp.models import MBZAPI, Composer, MBZComposer
 
-production_data = 'data/raw.db'
+production_data = "data/raw.db"
 engine = create_engine(f"sqlite:///{production_data}", echo=False)
 
 Session = sessionmaker(engine)
@@ -22,8 +22,8 @@ s = Session()
 # where m.composer_id is null
 # group by 1, 2 order by 3 desc;
 
-df = pd.read_table('data/composers_unmatched.txt')
-df = df.loc[pd.notna(df.mbz_id), ['id', 'mbz_id']]
+df = pd.read_table("data/composers_unmatched.txt")
+df = df.loc[pd.notna(df.mbz_id), ["id", "mbz_id"]]
 
 for r in df.itertuples():
 
@@ -34,10 +34,10 @@ for r in df.itertuples():
     print(c)
 
     # use the low level API class to get the raw content needed for the MBZComposer constructor
-    x = MBZAPI(endpoint='artist', mbz_id=r.mbz_id)
-    x.add_params = {'inc': 'aliases+ratings+tags'}
+    x = MBZAPI(endpoint="artist", mbz_id=r.mbz_id)
+    x.add_params = {"inc": "aliases+ratings+tags"}
     x.retrieve()
-    x.content['score'] = 100  # fake the search score
+    x.content["score"] = 100  # fake the search score
 
     m = MBZComposer(c, x.content)
     m.is_best_match = True

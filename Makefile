@@ -6,6 +6,8 @@ install-dev: install
 
 fmt:
 	isort --recursive .
+	black .
 
-test:
+check:
 	isort --recursive --check-only .
+	black --check .
