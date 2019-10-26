@@ -1,4 +1,4 @@
-INSTRUMENT_CATEGORIES = {
+{
     "Actor": "Actor",
     "Mime": "Actor",
     "Actor and Dancer": "Actor",
@@ -15,26 +15,9 @@ INSTRUMENT_CATEGORIES = {
     "Choreographer": "Dancer",
     "Dancer; Choreographer": "Dancer",
     "Dancer; Dancer; Choreographer; Choreographer": "Dancer",
-    (
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Choreographer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Scenic Design"
-    ): "Dancer",
-    (
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer"
-    ): "Dancer",
-    (
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; "
-        "Dancer; Dancer; Dancer; Dancer; Dancer; Choreographer; Dancer; Dancer"
-    ): "Dancer",
+    "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Choreographer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Scenic Design": "Dancer",
+    "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer": "Dancer",
+    "Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Dancer; Choreographer; Dancer; Dancer": "Dancer",
     "Chorus": "Ensemble",
     "Ensemble": "Ensemble",
     "Boys Choir": "Ensemble",
@@ -113,5 +96,5 @@ INSTRUMENT_CATEGORIES = {
     "Baritone Saxophone": "Woodwind",
     "Flute/Piccolo": "Woodwind",
     "Oboe / English Horn": "Woodwind",
-    "Clarinet / Bass Clarinet": "Woodwind",
+    "Clarinet / Bass Clarinet": "Woodwind"
 }

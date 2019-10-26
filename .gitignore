@@ -1,7 +1,6 @@
 .idea
 venv/
 .DS_Store
-*.json
 __pycache__/
 *credentials.py
 z_old/*

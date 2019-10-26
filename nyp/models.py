@@ -25,7 +25,11 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-# Mix-Ins
+with open("data/manual_event_types.json", "r") as f:
+    EVENT_TYPE_EXTRAS = json.load(f)
+
+with open("data/manual_instrument_categories.json", "r") as f:
+    INSTRUMENT_CATEGORIES = json.load(f)
 
 
 class GetOrCreateMixin(object):
@@ -90,6 +94,12 @@ class EventType(GetOrCreateMixin, Base):
 
     concerts = relationship("Concert", back_populates="eventtype")
 
+    def __init__(self, name):
+        self.name = name
+        extras = EVENT_TYPE_EXTRAS[name]  # want a key error in case there's a new one
+        self.category = extras["category"]
+        self.is_modelable = extras["is_modelable"]
+
     def __repr__(self):
         return f"<EventType {self.id}: {self.name}>"
 
@@ -133,10 +143,16 @@ class Performer(GetOrCreateMixin, NameLookupMixin, Base):
     raw_name = Column(Text(1200), nullable=False)
     name = Column(Text(1200), nullable=False)
     instrument = Column(String(600))
+    instrument_category = Column(String(20))
 
     program_movements = relationship(
         "ConcertSelectionPerformer", back_populates="performer"
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # want a key error in case there's a new one
+        self.instrument_category = INSTRUMENT_CATEGORIES[self.instrument]
 
     def __repr__(self):
         return f"<Performer {self.id}: {self.name} ({self.instrument}>"
