@@ -1,9 +1,9 @@
+import math
+import re
 from collections import OrderedDict, namedtuple
+
 from nyp.lookups import INSTRUMENT_CATEGORIES
 from nyp.models import Composer
-import re
-import math
-
 
 WORK_TYPES = OrderedDict({'concerto': ['CONCI?ERTO'],
                           'mass': ['MASS', 'REQUIEM', 'ORATORIO'],

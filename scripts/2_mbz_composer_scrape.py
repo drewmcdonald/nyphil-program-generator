@@ -29,4 +29,3 @@ for c in s.query(Composer).filter(Composer.id != 4):  # no intermission
     if match:
         s.add(match)
         s.commit()
-

@@ -1,14 +1,23 @@
 
 from datetime import datetime as dt
-from .models import (
-    Orchestra, EventType, Composer, Venue, Performer,
-    Concert, ConcertSelection, ConcertSelectionMovement, 
-    ConcertSelectionPerformer, Movement, Work, Selection
-)
+from typing import List, Tuple, Union
 
 from sqlalchemy.orm import Session
 
-from typing import List, Union, Tuple
+from .models import (
+    Composer,
+    Concert,
+    ConcertSelection,
+    ConcertSelectionMovement,
+    ConcertSelectionPerformer,
+    EventType,
+    Movement,
+    Orchestra,
+    Performer,
+    Selection,
+    Venue,
+    Work,
+)
 
 
 class SoloistParser(object):

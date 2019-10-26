@@ -1,20 +1,19 @@
-from flask import Flask, jsonify, request
-from flask_cors import cross_origin
-from nyp.markov import ChainEnsemble, ChainEnsembleScorer
-import random
-
-# database imports
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session
-from nyp.models import Selection
-
 # handle persistent model objects
 import pickle
+import random
 from copy import deepcopy
+from os import getenv
 
 # environment
 from dotenv import load_dotenv
-from os import getenv
+from flask import Flask, jsonify, request
+from flask_cors import cross_origin
+# database imports
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+from nyp.markov import ChainEnsemble, ChainEnsembleScorer
+from nyp.models import Selection
 
 load_dotenv()
 

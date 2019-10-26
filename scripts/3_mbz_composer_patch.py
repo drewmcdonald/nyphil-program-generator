@@ -1,9 +1,8 @@
+import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-import pandas as pd
-
-from nyp.models import Composer, MBZComposer, MBZAPI
+from nyp.models import MBZAPI, Composer, MBZComposer
 
 production_data = 'data/raw.db'
 engine = create_engine(f"sqlite:///{production_data}", echo=False)

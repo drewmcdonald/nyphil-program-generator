@@ -1,13 +1,20 @@
 # noinspection PyPackageRequirements
-from dotenv import load_dotenv
 from os import getenv
 
-from nyp.models import ConcertSelection, Concert, Selection, Work, Composer, \
-    ConcertSelectionPerformer, ConcertSelectionMovement, Base
-
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, joinedload
+from sqlalchemy.orm import joinedload, sessionmaker
 
+from nyp.models import (
+    Base,
+    Composer,
+    Concert,
+    ConcertSelection,
+    ConcertSelectionMovement,
+    ConcertSelectionPerformer,
+    Selection,
+    Work,
+)
 
 load_dotenv()
 

@@ -1,16 +1,27 @@
-from sqlalchemy import Column, String, Text, Integer, DateTime, Boolean, \
-    ForeignKey, UniqueConstraint, Index, Date, Float
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-
 import json
 import os.path
+import re
 import time
-import requests
 import unicodedata
 from datetime import datetime as dt
+
+import requests
 from fuzzywuzzy import fuzz
-import re
+from sqlalchemy import (
+    Boolean,
+    Column,
+    Date,
+    DateTime,
+    Float,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+)
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
