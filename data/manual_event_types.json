@@ -1,0 +1,234 @@
+{
+  "Artist in Residence recital": {
+    "is_modelable": false,
+    "category": "Recital"
+  },
+  "Borough Concerts": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Carnegie Pop Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Chamber Concert (Private)": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Chamber": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Contact!": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Festival - Chamber": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Festival": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Hear & Now": {
+    "is_modelable": false,
+    "category": "Modern"
+  },
+  "Holiday Brass": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Horizons": {
+    "is_modelable": false,
+    "category": "Modern"
+  },
+  "Informal Evening": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Inside the Music": {
+    "is_modelable": false,
+    "category": "Symphonic"
+  },
+  "Insight Series": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Lecture": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Leinsdorf Lecture": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Master Class": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "New Year's Eve": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Non-Subscription": {
+    "is_modelable": false,
+    "category": "Symphonic"
+  },
+  "None": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "NY Phil Biennial": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Off the Grid": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Parks - Free Indoor Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Parks": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Pension Fund Benefit Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Pre-Concert Recital": {
+    "is_modelable": false,
+    "category": "Recital"
+  },
+  "Private Concert": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Promenade": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Prospective Encounters": {
+    "is_modelable": false,
+    "category": "Modern"
+  },
+  "Reading Rehearsal": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Recording Session Only": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Residency - Chamber": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Residency": {
+    "is_modelable": false,
+    "category": "Other"
+  },
+  "Rug Concerts": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Runout": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Rush Hour": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Saturday Matinee": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Soloist Recital": {
+    "is_modelable": false,
+    "category": "Recital"
+  },
+  "Special": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Sponsor Chamber Music": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "St. John the Divine": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Stadium Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Strike Concerts": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Student Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Subscription Season": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Summer Broadcast Concert": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Summertime Classics": {
+    "is_modelable": false,
+    "category": "Symphonic"
+  },
+  "Tour - Chamber": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Tour - Concert for Patrons": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "Tour - Young People's Concert": {
+    "is_modelable": false,
+    "category": "Young People's"
+  },
+  "Tour - Young People's Concerts for Schools": {
+    "is_modelable": false,
+    "category": "Young People's"
+  },
+  "Tour Very Young People's Concert": {
+    "is_modelable": false,
+    "category": "Young People's"
+  },
+  "Tour": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Very Young People's Concert": {
+    "is_modelable": false,
+    "category": "Young People's"
+  },
+  "World Trade Center - Chamber": {
+    "is_modelable": false,
+    "category": "Chamber"
+  },
+  "World's Fair": {
+    "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Young People's Concert": {
+    "is_modelable": false,
+    "category": "Young People's"
+  },
+  "Young People's Concerts for Schools": {
+    "is_modelable": false,
+    "category": "Young People's"
+  }
+}
