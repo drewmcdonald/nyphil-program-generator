@@ -1,0 +1,5924 @@
+[
+  {
+    "name": "Traditional",
+    "id": 31,
+    "n_works": 645,
+    "mbz_id": null
+  },
+  {
+    "name": "Haydn, Franz Joseph",
+    "id": 15,
+    "n_works": 116,
+    "mbz_id": "c130b0fb-5dce-449d-9f40-1437f889f7fe"
+  },
+  {
+    "name": "Stravinsky, Igor",
+    "id": 508,
+    "n_works": 107,
+    "mbz_id": "c278de2c-9696-4fdf-a919-0781cd945e2c"
+  },
+  {
+    "name": "Chopin, Fr\u00e9d\u00e9ric",
+    "id": 40,
+    "n_works": 92,
+    "mbz_id": "09ff1fe8-d61c-4b98-bb82-18487c74d7b7"
+  },
+  {
+    "name": "Anthem",
+    "id": 118,
+    "n_works": 54,
+    "mbz_id": null
+  },
+  {
+    "name": "Unspecified",
+    "id": 398,
+    "n_works": 53,
+    "mbz_id": null
+  },
+  {
+    "name": "Rimsky-Korsakov, Nikolai",
+    "id": 294,
+    "n_works": 43,
+    "mbz_id": "4cfe7051-f649-4d07-83b3-7a732abe7249"
+  },
+  {
+    "name": "Elgar, Sir Edward",
+    "id": 254,
+    "n_works": 32,
+    "mbz_id": "4e60a56a-514a-4a19-a3cc-49927c96b3cb"
+  },
+  {
+    "name": "Glazunov, Alexander",
+    "id": 275,
+    "n_works": 32,
+    "mbz_id": "5a0988a4-695c-4bff-bc68-4f312427495e"
+  },
+  {
+    "name": "Villa-Lobos, Heitor",
+    "id": 1051,
+    "n_works": 32,
+    "mbz_id": "a8dbf22f-9788-4cf6-a0df-c9244384f295"
+  },
+  {
+    "name": "Hadley, Henry Kimball",
+    "id": 337,
+    "n_works": 25,
+    "mbz_id": "d622a6fc-e05a-4e26-a535-68993f7dfb73"
+  },
+  {
+    "name": "Machado, Roger",
+    "id": 1440,
+    "n_works": 25,
+    "mbz_id": null
+  },
+  {
+    "name": "Unknown",
+    "id": 352,
+    "n_works": 23,
+    "mbz_id": null
+  },
+  {
+    "name": "MacDowell, Edward A.",
+    "id": 247,
+    "n_works": 18,
+    "mbz_id": "6bcbe65a-f7cb-4088-9883-c817a6458d6e"
+  },
+  {
+    "name": "Demonstration",
+    "id": 496,
+    "n_works": 16,
+    "mbz_id": null
+  },
+  {
+    "name": "Corigliano, John, Jr.",
+    "id": 1645,
+    "n_works": 16,
+    "mbz_id": "ead4efb5-f8d3-44d1-8a3f-a1cf24a0ccc9"
+  },
+  {
+    "name": "Pirani, Eugenio di",
+    "id": 321,
+    "n_works": 15,
+    "mbz_id": null
+  },
+  {
+    "name": "Lyadov, Anatoli",
+    "id": 350,
+    "n_works": 15,
+    "mbz_id": "27870fb6-347c-48b1-adf4-c7bf0f71513e"
+  },
+  {
+    "name": "Sullivan, Sir Arthur Seymour",
+    "id": 256,
+    "n_works": 14,
+    "mbz_id": "4b466f5e-4620-4084-8841-3fe4ea38e689"
+  },
+  {
+    "name": "Gretchaninoff, Alexander",
+    "id": 408,
+    "n_works": 14,
+    "mbz_id": "b1f170dd-cd12-4148-90f2-1e58aa5400f1"
+  },
+  {
+    "name": "Dubensky, Arkady",
+    "id": 821,
+    "n_works": 14,
+    "mbz_id": "de23e4ed-8e87-4655-b978-9bcd90bcf1fb"
+  },
+  {
+    "name": "Langley, Allan Lincoln",
+    "id": 697,
+    "n_works": 13,
+    "mbz_id": null
+  },
+  {
+    "name": "Previn, Sir Andr\u00e9",
+    "id": 1622,
+    "n_works": 13,
+    "mbz_id": "06538137-47eb-4dd6-bb78-5c8afa1a1885"
+  },
+  {
+    "name": "Gliere, Reinhold",
+    "id": 653,
+    "n_works": 11,
+    "mbz_id": "8b008af7-cdb9-4abe-baed-ba737622e310"
+  },
+  {
+    "name": "Labate, Bruno",
+    "id": 655,
+    "n_works": 11,
+    "mbz_id": null
+  },
+  {
+    "name": "Folk Song",
+    "id": 388,
+    "n_works": 10,
+    "mbz_id": null
+  },
+  {
+    "name": "VARIOUS",
+    "id": 472,
+    "n_works": 10,
+    "mbz_id": null
+  },
+  {
+    "name": "Kalman, Emmerich",
+    "id": 1067,
+    "n_works": 10,
+    "mbz_id": "636ae5e2-15df-4046-8ba1-c30da6365447"
+  },
+  {
+    "name": "Cella, Theodore",
+    "id": 882,
+    "n_works": 9,
+    "mbz_id": null
+  },
+  {
+    "name": "McDonald, Harl",
+    "id": 991,
+    "n_works": 9,
+    "mbz_id": "08a40499-1671-48dd-8ca4-dd00002fa5d5"
+  },
+  {
+    "name": "Kay, Ulysses Simpson",
+    "id": 1197,
+    "n_works": 9,
+    "mbz_id": "ab65524d-c26c-478e-9c09-f4c243ff9779"
+  },
+  {
+    "name": "Converse, Frederick S.",
+    "id": 381,
+    "n_works": 8,
+    "mbz_id": "81785663-55f5-4507-a560-da8ac48db13c"
+  },
+  {
+    "name": "Pizzetti, Ilderbando",
+    "id": 683,
+    "n_works": 8,
+    "mbz_id": "0ea32d88-f302-44e6-bd75-d73e4ad135a1"
+  },
+  {
+    "name": "Roger-Ducasse, Jean",
+    "id": 493,
+    "n_works": 7,
+    "mbz_id": "1eba38b8-7056-47ae-9c07-d9e7b85142ee"
+  },
+  {
+    "name": "Mercadante, Giuseppe Saverio",
+    "id": 30,
+    "n_works": 6,
+    "mbz_id": "f5509d70-5768-4701-bf6c-d1f91e0f24d4"
+  },
+  {
+    "name": "Volkmann, Friedrich Robert",
+    "id": 138,
+    "n_works": 6,
+    "mbz_id": "55f78522-aceb-4487-948b-e9967363471f"
+  },
+  {
+    "name": "Mackenzie, Alexander C.",
+    "id": 199,
+    "n_works": 6,
+    "mbz_id": "04fb2fd5-0aa9-4c7f-b1d4-068edfd0458a"
+  },
+  {
+    "name": "Rabaud, Henri",
+    "id": 576,
+    "n_works": 6,
+    "mbz_id": "7e4c5b76-d2e7-48f4-a46e-65d62c35288a"
+  },
+  {
+    "name": "Powell, John",
+    "id": 624,
+    "n_works": 6,
+    "mbz_id": "0214a285-589c-4ead-ae13-feab602d8004"
+  },
+  {
+    "name": "Rogers, Bernard",
+    "id": 631,
+    "n_works": 6,
+    "mbz_id": "cdd7eefd-c8d4-432e-9a01-45a4ecd93aba"
+  },
+  {
+    "name": "Berezowsky, Nicolai",
+    "id": 844,
+    "n_works": 6,
+    "mbz_id": null
+  },
+  {
+    "name": "Gillis, Don",
+    "id": 1263,
+    "n_works": 6,
+    "mbz_id": "c17177b2-c596-4d86-8bb3-350d3368d460"
+  },
+  {
+    "name": "Shchedrin, Rodion",
+    "id": 1653,
+    "n_works": 6,
+    "mbz_id": "09deb4a5-8746-47f8-b020-cde50023841d"
+  },
+  {
+    "name": "Maxwell Davies, Sir Peter",
+    "id": 1707,
+    "n_works": 6,
+    "mbz_id": "db16dadb-0024-4758-b35e-111ca52c53ea"
+  },
+  {
+    "name": "Dun, Tan",
+    "id": 2057,
+    "n_works": 6,
+    "mbz_id": "0a94a7ff-f7f4-4b07-8a3b-c3daa4ce2fb8"
+  },
+  {
+    "name": "Chaplin, Charles",
+    "id": 2150,
+    "n_works": 6,
+    "mbz_id": null
+  },
+  {
+    "name": "Eisfeld, Theodore",
+    "id": 79,
+    "n_works": 5,
+    "mbz_id": null
+  },
+  {
+    "name": "Scharwenka, Franz Xaver",
+    "id": 179,
+    "n_works": 5,
+    "mbz_id": "9737c5c6-8613-4d38-81dc-07561a512bc7"
+  },
+  {
+    "name": "Tommasini, Vincenzo",
+    "id": 645,
+    "n_works": 5,
+    "mbz_id": "b5fc52b9-114c-4804-be56-68335077ac29"
+  },
+  {
+    "name": "Vivaldi-Bach",
+    "id": 771,
+    "n_works": 5,
+    "mbz_id": null
+  },
+  {
+    "name": "Kreutz, Arthur",
+    "id": 1218,
+    "n_works": 5,
+    "mbz_id": null
+  },
+  {
+    "name": "Scott, Raymond",
+    "id": 1246,
+    "n_works": 5,
+    "mbz_id": "1807480c-c81e-401a-8016-300758f51008"
+  },
+  {
+    "name": "Davis, Katherine",
+    "id": 2010,
+    "n_works": 5,
+    "mbz_id": "0a58d67d-7701-4910-bebe-d912c64ea607"
+  },
+  {
+    "name": "Dix, Brian",
+    "id": 2383,
+    "n_works": 5,
+    "mbz_id": null
+  },
+  {
+    "name": "No Composer",
+    "id": 4,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Kalliwoda, Johann W.",
+    "id": 7,
+    "n_works": 4,
+    "mbz_id": "ca00fa99-1b7b-491f-824c-32b9b3c627ce"
+  },
+  {
+    "name": "Schreiber, Louis",
+    "id": 81,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Ernst, Heinrich Wilhelm",
+    "id": 91,
+    "n_works": 4,
+    "mbz_id": "9777e544-cca0-45d7-b12a-eac58d8f38d7"
+  },
+  {
+    "name": "Henschel, Sir George",
+    "id": 202,
+    "n_works": 4,
+    "mbz_id": "b9f54ebe-7142-4eab-aff1-1d24c5668b7e"
+  },
+  {
+    "name": "Bayer, Joseph",
+    "id": 303,
+    "n_works": 4,
+    "mbz_id": "f139c412-10f9-484e-ab56-ae929aa23f7f"
+  },
+  {
+    "name": "Stahlberg, Fritz",
+    "id": 399,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Stock, Frederick A.",
+    "id": 420,
+    "n_works": 4,
+    "mbz_id": "e39863ed-0ab5-4dff-93b5-bf2adb121e7d"
+  },
+  {
+    "name": "Stojowski, Sigismond",
+    "id": 432,
+    "n_works": 4,
+    "mbz_id": "88646e58-ed0e-45fb-9da6-3a3cb57425e7"
+  },
+  {
+    "name": "Zimbalist, Efrem",
+    "id": 577,
+    "n_works": 4,
+    "mbz_id": "030c725e-f671-4c35-b283-8690ba6f3c4e"
+  },
+  {
+    "name": "Wetzler, Hermann Hans",
+    "id": 707,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Balakirev, Mily Alekseyevich",
+    "id": 848,
+    "n_works": 4,
+    "mbz_id": "482dc0a4-0c39-40dc-9d6d-ca250a5ef833"
+  },
+  {
+    "name": "Sanders, Robert L.",
+    "id": 926,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Pregel, Boris",
+    "id": 1471,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Goodman, Saul",
+    "id": 1487,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "McCartney, Sir Paul",
+    "id": 1666,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Crawford, Ruth Porter",
+    "id": 1694,
+    "n_works": 4,
+    "mbz_id": "bd108522-8856-4eba-8747-f38860a51818"
+  },
+  {
+    "name": "Matthus, Siegfried",
+    "id": 1897,
+    "n_works": 4,
+    "mbz_id": "3138937a-6aee-4b56-82ed-96f39dcb11c2"
+  },
+  {
+    "name": "Lunsqui, Alexandre",
+    "id": 2402,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "PUBLIQuartet",
+    "id": 2711,
+    "n_works": 4,
+    "mbz_id": null
+  },
+  {
+    "name": "Ries, Ferdinand",
+    "id": 27,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Benedict, Jules",
+    "id": 55,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Mollenhauer, Friedrich",
+    "id": 83,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Ritter, Frederic Louis",
+    "id": 131,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Rheinberger, Joseph",
+    "id": 192,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Strong, George Templeton",
+    "id": 239,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Parry, Sir Charles Hubert H.",
+    "id": 240,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Vilbac, Alphonse Charles Renaud de",
+    "id": 297,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Schenck, Elliott",
+    "id": 317,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Ries, Franz",
+    "id": 331,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Laucella, Nicola",
+    "id": 434,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Hue, Georges Adolphe",
+    "id": 451,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Leclair, Jean Marie",
+    "id": 459,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Green, Arthur N.",
+    "id": 500,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Falck, Edward",
+    "id": 515,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Kalinnikov, Vassili",
+    "id": 545,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Horsman, Edward Imeson, Jr.",
+    "id": 547,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Sibella, Gabrielle",
+    "id": 575,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Fourdrain, F\u00e9lix Alfred",
+    "id": 599,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Willis, Wallis",
+    "id": 832,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Nin, Joachin",
+    "id": 900,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Fiorillo, Dante",
+    "id": 959,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Dittersdorf, Karl Von",
+    "id": 979,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Johnson, Horace",
+    "id": 1000,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Kurthy, Zoltan",
+    "id": 1071,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Alabieff, Alexander",
+    "id": 1111,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Mohaupt, Richard",
+    "id": 1124,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Piket, Frederick",
+    "id": 1338,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Gaburo, Kenneth",
+    "id": 1466,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Harkness, Rebecca",
+    "id": 1472,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Arnold, Sir Malcolm",
+    "id": 1536,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Baker, David J.",
+    "id": 1737,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Picker, Tobias",
+    "id": 1941,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Tsypin, Vladimir",
+    "id": 2146,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Aizenstadt, David",
+    "id": 2175,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Sichel, John",
+    "id": 2190,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Rosenblatt, Y.",
+    "id": 2202,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "LeFrak, Karen",
+    "id": 2262,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Richard, Douglas A.",
+    "id": 2264,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Galesi, Julian",
+    "id": 2357,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Kurtag, Georgy",
+    "id": 2382,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Hague, Albert",
+    "id": 2400,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Adolphe, Julia",
+    "id": 2542,
+    "n_works": 3,
+    "mbz_id": null
+  },
+  {
+    "name": "Herold, Louis Joseph Ferdinand",
+    "id": 21,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Maurer, Ludwig Wilhelm",
+    "id": 54,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Fuchs, H.",
+    "id": 56,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Wallace",
+    "id": 113,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Bulow, Hans Von",
+    "id": 161,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Bronsart, Hans Von",
+    "id": 169,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Wilhelmj, August Daniel Ferdinand",
+    "id": 170,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Van Der Stucken, Frank",
+    "id": 285,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Loewe, Johann Carl",
+    "id": 295,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Burckhardt, J.",
+    "id": 324,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Johns, Clayton",
+    "id": 329,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Improvisation",
+    "id": 357,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Vidal, Paul Antonin",
+    "id": 371,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Lvov, Alexey",
+    "id": 389,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Broome, Edward",
+    "id": 443,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Nowowiejski, Felix",
+    "id": 450,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Rubetz, A. T.",
+    "id": 505,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Rogers, James H.",
+    "id": 531,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Dargomiszky, Alexander",
+    "id": 535,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Chiaffarelli, Albert",
+    "id": 605,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Sweet, Reginald",
+    "id": 616,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Yon, Pietro Alessandro",
+    "id": 656,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Berners, Lord",
+    "id": 668,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Vittoria, Tomasso",
+    "id": 679,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Hosmer, Lucius",
+    "id": 692,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Novick, Nathan",
+    "id": 719,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Schroeder, William",
+    "id": 726,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Mengelberg, Rudolf",
+    "id": 735,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Raisin, A.",
+    "id": 787,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Striegler, Kurt",
+    "id": 814,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Nanino, Giovanni Maria",
+    "id": 823,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "De Lamarter, Eric",
+    "id": 857,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Riegel, Heinrich Joseph",
+    "id": 862,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Joslyn, Henry",
+    "id": 870,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Stringham, Edwin S.",
+    "id": 936,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Kelley, Daniel",
+    "id": 940,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Sonzogno, Giulio Cesare",
+    "id": 942,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Palau Boix, Manuel",
+    "id": 943,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Kozeluch, Leopold Anton",
+    "id": 963,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "White, Paul",
+    "id": 969,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Stamitz, Johann Wenzel Anton",
+    "id": 978,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Andrico, Michel G.",
+    "id": 1013,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Lee, Dai-Keong",
+    "id": 1115,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Violette, Wesley La",
+    "id": 1150,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Lessner, George",
+    "id": 1163,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Cohan, George Michael",
+    "id": 1204,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Schuyler, Philippa Duke",
+    "id": 1220,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Rose, David",
+    "id": 1225,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Anderson, Paquita",
+    "id": 1248,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Rolla, Allesandro",
+    "id": 1272,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Benda, Jir\u00ed (Georg) Anton\u00edn (Anton)",
+    "id": 1331,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Barraud, Henri",
+    "id": 1343,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Minkus, Leon",
+    "id": 1353,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Perpessas, Harilaos",
+    "id": 1365,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Balendonck, Armand",
+    "id": 1375,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Clapp, Philip Greeley",
+    "id": 1393,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Lewis, George",
+    "id": 1488,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Zeller, Karl",
+    "id": 1574,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Smit, Leo",
+    "id": 1609,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Ran, Shulamit",
+    "id": 1627,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Chen, N.",
+    "id": 1656,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Wilensky, Moshe",
+    "id": 1658,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Cunningham, Arthur",
+    "id": 1762,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Fisher, Fred",
+    "id": 1795,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "King, Karl Lawrence",
+    "id": 1797,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Doppler, (Albert) Franz",
+    "id": 1813,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Holyoke, Samuel",
+    "id": 1825,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Hoeller, York",
+    "id": 1849,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Rex, Charles Gordon",
+    "id": 1908,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Dawson, Mary Cardwell",
+    "id": 2005,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Svane, Randall",
+    "id": 2055,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Shaw, Lowell",
+    "id": 2099,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Gannon, James \"Kim\"",
+    "id": 2103,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Morricone, Andrea and Ennio",
+    "id": 2155,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Taslima, Farah",
+    "id": 2195,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Mendelssohn Hensel, Fanny",
+    "id": 2223,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Zelenaia, Margarita",
+    "id": 2254,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Carrick, Richard",
+    "id": 2271,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Bass, Randol Alan",
+    "id": 2333,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Pola",
+    "id": 2345,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Friedsell, Louis",
+    "id": 2379,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Perlmutter",
+    "id": 2380,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Poniewozik, Milo",
+    "id": 2410,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Hanson, Graydon",
+    "id": 2457,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Micic, Mia",
+    "id": 2458,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Sakho, Hawa",
+    "id": 2462,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Moske, Nina",
+    "id": 2502,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "O'Brien, Jake",
+    "id": 2504,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Ozone, Makato",
+    "id": 2512,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Detrick, Zachary",
+    "id": 2539,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Nathan, Eric",
+    "id": 2549,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Cheung, Anthony",
+    "id": 2564,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Ezekwenna, Chibuzo \"Chi-chi\"",
+    "id": 2595,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Ergun, Cenk",
+    "id": 2658,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Frankel, Ari",
+    "id": 2690,
+    "n_works": 2,
+    "mbz_id": null
+  },
+  {
+    "name": "Bochsa, Robert N. C.",
+    "id": 22,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Loder, George, Jr.",
+    "id": 34,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Reissiger, Karl Gottlieb",
+    "id": 36,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schmitz, Henry",
+    "id": 50,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Heinemeyer, Ernst Wilhelm",
+    "id": 60,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dancla, Jean Charles",
+    "id": 61,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Haase, Carl F.W.",
+    "id": 65,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gumbert, Friedrich Adolf",
+    "id": 67,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lobe, Johann Christian",
+    "id": 70,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gockel, August",
+    "id": 72,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schneider, Johann C. Friedrich",
+    "id": 77,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Baumann, F.",
+    "id": 78,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rode, Jacques Pierre Joseph",
+    "id": 87,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schindelmeisser, Ludwig",
+    "id": 90,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Topliffe",
+    "id": 96,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Napoleon, Arthur",
+    "id": 101,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stigelli, Giorgio",
+    "id": 102,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Satter, Gustave",
+    "id": 103,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Haertel, A.",
+    "id": 105,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lubeck, Ernst",
+    "id": 109,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Saar, Wiiliam",
+    "id": 110,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shaw, David T.",
+    "id": 112,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Otten, William F.",
+    "id": 115,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Verzano",
+    "id": 117,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Neukirchner, Wenzel",
+    "id": 121,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lipinsky, Karl Joseph",
+    "id": 122,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Clapisson, Antoine Louis",
+    "id": 123,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bergner, Frederick",
+    "id": 124,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Esser, Heinrich",
+    "id": 127,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hohnstock, Carl",
+    "id": 130,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Prume, Jehin",
+    "id": 135,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wehli, James M.",
+    "id": 136,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Veit, Wenzel Heinrich",
+    "id": 140,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bergmann, Carl",
+    "id": 148,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dachauer, Louis",
+    "id": 150,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Heinefetter, Wilhelm",
+    "id": 151,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Frey, M.",
+    "id": 153,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Erdmannsdorfer, Max Von",
+    "id": 154,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pinsoti",
+    "id": 155,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Matzka, George",
+    "id": 156,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dietrich, Albert Hermann",
+    "id": 158,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pfeffer, Walter",
+    "id": 162,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Metzdorff, Richard",
+    "id": 163,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kiel, Friedrich",
+    "id": 181,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bruckler, Hugo",
+    "id": 185,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fischer, Adolf",
+    "id": 189,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gradener, Hermann",
+    "id": 197,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Scholz, Bernhard E.",
+    "id": 213,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Franchetti, Baron Alberto",
+    "id": 218,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Koch, Friedrich E.",
+    "id": 234,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Korbray, Francis Alexander",
+    "id": 241,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Haynes, Walter Battison",
+    "id": 245,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rucken",
+    "id": 257,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Storck",
+    "id": 258,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zoellner, Heinrich",
+    "id": 266,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Novacek, Ottokar (Eugen)",
+    "id": 273,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alsneff",
+    "id": 286,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Saar, Louis Victor",
+    "id": 288,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kretschmar, Edmund",
+    "id": 320,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nesvadba, Josef",
+    "id": 326,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Popp",
+    "id": 328,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Klein, Bruno Oscar",
+    "id": 347,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Artsibushev, Nikolai Vassilievitch",
+    "id": 348,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "De Fontenailles, Henri",
+    "id": 374,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wekerlin, Jean-Baptiste",
+    "id": 375,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Weber-Berlioz",
+    "id": 377,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Metzl, Vladimir",
+    "id": 387,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stewart, Humphrey J.",
+    "id": 391,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wolff",
+    "id": 394,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Glaassen, A.",
+    "id": 395,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wengert, Jules",
+    "id": 396,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pache, J.",
+    "id": 397,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Scudrei, Salvatore",
+    "id": 409,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pluddemann",
+    "id": 417,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Corner, Dr. David Gregor",
+    "id": 423,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schjelderup, Gerhard",
+    "id": 438,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Van Der Pals, Leopold",
+    "id": 439,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tertius-Noble, Thomas",
+    "id": 441,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pointer, John",
+    "id": 442,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lie, Sigurd",
+    "id": 465,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Glibert",
+    "id": 466,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rathbone, George",
+    "id": 475,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Harris, Joel Chandler",
+    "id": 486,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rickett, Edmond",
+    "id": 488,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ingraham, George",
+    "id": 489,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lang, Margaret R.",
+    "id": 495,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fleck, Fritz",
+    "id": 497,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Costa, G.",
+    "id": 501,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sullivan, Archibald Beresford",
+    "id": 512,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sendrey, Alfred",
+    "id": 513,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Peel",
+    "id": 516,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Burck, Henry",
+    "id": 521,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wolff, Eric",
+    "id": 522,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rummel, Walter Morse",
+    "id": 524,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Brewer, Sir Alfred Herbert",
+    "id": 527,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maryon, Edward",
+    "id": 533,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Barnaby, Gunn",
+    "id": 537,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sharp, Earl Cranston",
+    "id": 549,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Riedel, Karl Heinrich",
+    "id": 556,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rogers, Frederic",
+    "id": 563,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Leroux, Xavier Henry Napoleon",
+    "id": 573,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Reinthaler, Karl",
+    "id": 579,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Elsenheimer, N. J.",
+    "id": 581,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vogrich, Max Wilhelm Karl",
+    "id": 583,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Otterstrom, Thorvald",
+    "id": 585,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "McCabe, James J.",
+    "id": 586,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Osgood, James R.",
+    "id": 592,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stillman-Kelley, Edgar",
+    "id": 598,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "McFadyen",
+    "id": 602,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sans Souci, Gertrude",
+    "id": 603,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dvorsky, Michel",
+    "id": 607,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lisle, Claude-Joseph R. De",
+    "id": 608,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Geral",
+    "id": 610,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Messager, Andre Charles Prosper",
+    "id": 612,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bourk, Richard C.",
+    "id": 614,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lorenziti, Bernard",
+    "id": 618,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Morris, Harold",
+    "id": 626,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cutler, Henry Stephen",
+    "id": 627,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pierce, Seneca",
+    "id": 636,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maxwell, Elsa",
+    "id": 640,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "X, Alfonso",
+    "id": 642,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maloof, A.",
+    "id": 647,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sachnowsky, G.",
+    "id": 648,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lieber, Arthur",
+    "id": 649,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kekeu",
+    "id": 651,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Parbury",
+    "id": 659,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Williams, John Gerard",
+    "id": 673,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Philippe",
+    "id": 675,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hammond, William G.",
+    "id": 676,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kallinnikof, Ivanof",
+    "id": 680,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Waddington, Samuel P.",
+    "id": 681,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rogers",
+    "id": 682,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dopper, Cornelius",
+    "id": 684,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Goudoever, H.D. van",
+    "id": 686,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Watts, Wintter",
+    "id": 690,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dunham, Henry M.",
+    "id": 691,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Breil, Joseph C.",
+    "id": 693,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Savine, Alexander",
+    "id": 699,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Donostia, Padre (San Sebastian, P. Jose Antonio ne Zulaica)",
+    "id": 704,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Romen, Louis",
+    "id": 705,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Burgmein, J.",
+    "id": 709,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kidder, Max",
+    "id": 717,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Marcelli, Nino",
+    "id": 720,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bach, J. S. -Gounod",
+    "id": 721,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dale, Benjamin James",
+    "id": 723,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Geissel, J.",
+    "id": 727,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gallico, Paolo",
+    "id": 733,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Luzzi, Luigi",
+    "id": 744,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lvovsky",
+    "id": 745,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bergson, Michal",
+    "id": 750,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alvars, Paris",
+    "id": 753,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ilgenfritz, McNair",
+    "id": 758,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Horst, Louis",
+    "id": 759,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mowrey, Dent",
+    "id": 760,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Valverde, Joaquin",
+    "id": 762,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Frey, Hugo",
+    "id": 763,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gebhard, Heinrich",
+    "id": 765,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Harling, William Franke",
+    "id": 777,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rehfeld",
+    "id": 779,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Axt, William",
+    "id": 781,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "McCoy, William J.",
+    "id": 782,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Edelshtadt",
+    "id": 786,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shaeffer, Joseph",
+    "id": 788,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Luther, Martin",
+    "id": 800,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sonnett",
+    "id": 803,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tuerck",
+    "id": 804,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sturm-Biel",
+    "id": 805,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Curti",
+    "id": 806,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mero, Yolanda",
+    "id": 809,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Brucken Fock, Gerardus Hubertus Galenus von",
+    "id": 813,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stearns, Theodor",
+    "id": 815,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bensman, M.",
+    "id": 818,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Yasinowski, P.",
+    "id": 819,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schaeffer, J.",
+    "id": 820,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ehrenberg, Carl Emil Theodor",
+    "id": 822,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Darcieux, Francisque",
+    "id": 824,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Goublier",
+    "id": 836,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stoughton, Roy Spaulding",
+    "id": 840,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Berg\u00e9, Ir\u00e9n\u00e9e",
+    "id": 852,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Paer, Ferdinando",
+    "id": 856,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Clement, Charles Francois",
+    "id": 858,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Guion, David Wendel F.",
+    "id": 860,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cohen, Sol B",
+    "id": 866,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maduro, Charles",
+    "id": 871,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Noskowski, Sigismund",
+    "id": 877,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sammartini, Giovanni B.",
+    "id": 878,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hively, Wells",
+    "id": 885,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stoughton, Roy",
+    "id": 886,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Strauss, Johann, Jr. & Josef",
+    "id": 887,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Eichheim, Henry",
+    "id": 888,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Corby, Mabelanna",
+    "id": 890,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jensen, Ludwig Irgens",
+    "id": 898,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ettinger, Max",
+    "id": 902,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shepherd, Arthur",
+    "id": 904,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Weprik, Alexander",
+    "id": 906,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Braine, Robert",
+    "id": 909,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Barnett, David",
+    "id": 910,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Redman, Donald Matthew",
+    "id": 913,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Humphrey, Doris",
+    "id": 918,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pimsleur, Solomon",
+    "id": 920,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Franckenstein, Clemens Freiherr von und zu",
+    "id": 927,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blumer, Theodore",
+    "id": 929,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gasco, Alberto",
+    "id": 934,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Barlow, Samuel Latham Mitchell",
+    "id": 938,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Noble, T. Tertius",
+    "id": 939,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Piccinni, Nicola",
+    "id": 951,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Helfter, Walter",
+    "id": 960,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Diamond, Walter",
+    "id": 961,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Curran, Pearl",
+    "id": 971,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Del Riego, Theresa Clotilde",
+    "id": 972,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rosenmuller, Johannes",
+    "id": 976,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Otesco, Nonna",
+    "id": 984,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nordoff, Paul",
+    "id": 986,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blanchet, Emile R.",
+    "id": 989,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Acqua, Eva dell'",
+    "id": 992,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Soler, Padre",
+    "id": 993,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fuerst, Eugene",
+    "id": 994,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kerr, Harrison",
+    "id": 998,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Camilieri, Lorenzo",
+    "id": 1009,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alessandresco, Alfred",
+    "id": 1010,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Glantz, Harry",
+    "id": 1014,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gilardi, Girado",
+    "id": 1017,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rybicki, Wojciech",
+    "id": 1020,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blose, Johann M",
+    "id": 1021,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Biber, Heinrich von",
+    "id": 1022,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rosenthal, Moritz",
+    "id": 1024,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gutman, Arthur H",
+    "id": 1026,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schoenherr, Max",
+    "id": 1028,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kearney, Peadar",
+    "id": 1030,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pillois, Jacques",
+    "id": 1033,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gregorian Chant",
+    "id": 1034,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dragoi, Sabin V(asile)",
+    "id": 1039,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bonner, Eugene MacDonald",
+    "id": 1043,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cesana, Otto",
+    "id": 1044,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wiechowicz, Stanislaw",
+    "id": 1048,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zemachson, Arnold",
+    "id": 1064,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Robinson, Earl",
+    "id": 1073,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Garcia-Estrada",
+    "id": 1075,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Troiani-Bandini",
+    "id": 1076,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lopez-Buchardo",
+    "id": 1077,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Oyanguren, Julio Martinez",
+    "id": 1078,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ugarte, Floro M(elit\u00f3n)",
+    "id": 1080,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hummel, Ferdinand B.",
+    "id": 1081,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Becker, John J.",
+    "id": 1082,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Spier, La Salle",
+    "id": 1083,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Woltmann, Frederick",
+    "id": 1089,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Portnoff, Mischa",
+    "id": 1096,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Davies, Sir Walford",
+    "id": 1103,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Baxter, Phil",
+    "id": 1108,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hasselmans, Alphonse Jean",
+    "id": 1119,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vosgerchien, Luise",
+    "id": 1127,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gooch, William",
+    "id": 1128,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dodworth, Allen",
+    "id": 1129,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sapp, Allen D.",
+    "id": 1130,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stor, Jean",
+    "id": 1133,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Garat, Pierre",
+    "id": 1135,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Elwell, Herbert",
+    "id": 1138,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Semmler, Alexander",
+    "id": 1140,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Enthoven, Henri Emile",
+    "id": 1142,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tuthill, Burnet",
+    "id": 1143,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tavares, Hekel",
+    "id": 1147,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nassara-Barroso",
+    "id": 1148,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Crist, Bainbridge",
+    "id": 1155,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Leonard, Clair",
+    "id": 1156,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Borguno, A.",
+    "id": 1164,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Font, M.",
+    "id": 1167,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Proch, Heinrich",
+    "id": 1168,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Farnon, Robert J.",
+    "id": 1169,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mueller, Florian F.",
+    "id": 1170,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Heusen, James Van",
+    "id": 1175,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ganin, Kim",
+    "id": 1176,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hill, Patty and Mildred",
+    "id": 1181,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Beckett, Wheeler",
+    "id": 1187,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lutkin, Peter Christian",
+    "id": 1190,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Labunski, Felix",
+    "id": 1192,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Verley, Albert",
+    "id": 1194,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tchesnokoff, Pavel",
+    "id": 1195,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tajtchevitch, Marko",
+    "id": 1200,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schenk, Robert C.",
+    "id": 1203,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wagner, Joseph",
+    "id": 1205,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wooldridge, John",
+    "id": 1207,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Meck, Josef",
+    "id": 1209,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Menasce, Jacques De",
+    "id": 1215,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Earle, Edward",
+    "id": 1221,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Listov, K.",
+    "id": 1223,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Turlet, A.",
+    "id": 1233,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ravina",
+    "id": 1235,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Malats, Joaquin",
+    "id": 1237,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lorenz, Carl",
+    "id": 1239,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Adair, Dorothy W.",
+    "id": 1241,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Barrymore, Lionel",
+    "id": 1243,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Amanuensis, A. N.",
+    "id": 1244,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Andre",
+    "id": 1249,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gogliano",
+    "id": 1250,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Penella, Manuel",
+    "id": 1257,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Larregla, Joaquin",
+    "id": 1259,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Don Alfonso-Carriola",
+    "id": 1262,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kosakoff, Reuven",
+    "id": 1265,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stix, Carl",
+    "id": 1267,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Napravnik (N\u00e1pravn\u00edk), Eduard Frantsovitch",
+    "id": 1269,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bodge",
+    "id": 1270,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ronald, Langdon",
+    "id": 1274,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tarenghi, Mario",
+    "id": 1276,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "MacHugh, Jimmy",
+    "id": 1278,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vitalis, George",
+    "id": 1279,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Meacham, Frank W.",
+    "id": 1283,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Souvaine, Henry",
+    "id": 1284,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Reddick, William",
+    "id": 1288,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Eiger",
+    "id": 1290,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bettorini",
+    "id": 1292,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Griselle, Thomas",
+    "id": 1301,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kowal, M",
+    "id": 1304,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Chemberdji, Katya",
+    "id": 1305,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Miliutin, Georgii Sergeevich",
+    "id": 1306,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lavalle, Paul",
+    "id": 1309,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bachelet, Alfred (Georges)",
+    "id": 1316,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Anderson, Florence",
+    "id": 1321,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "DuPage, Richard",
+    "id": 1322,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ratner, Leonard",
+    "id": 1324,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Block, Frederick",
+    "id": 1325,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mackenna, Carmela",
+    "id": 1326,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bosmans, Arturo",
+    "id": 1327,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Haggerty, Richard",
+    "id": 1329,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Work, John",
+    "id": 1330,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Guenther, Felix",
+    "id": 1332,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lucas, Mary Anderson",
+    "id": 1333,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mattfeld, Julius",
+    "id": 1337,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Biloti, Anton",
+    "id": 1340,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Turner, Godfrey",
+    "id": 1345,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sakovich",
+    "id": 1347,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hardelot, Guy d'",
+    "id": 1348,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gargiulo",
+    "id": 1350,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Grave, Maria",
+    "id": 1352,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bauer, Marion Eugenie",
+    "id": 1356,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "George, Earl",
+    "id": 1357,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Spielmann, Fritz",
+    "id": 1362,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Muradeli, Vano",
+    "id": 1367,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Baron, Maurice",
+    "id": 1368,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Starokadomsky, Michael L.",
+    "id": 1371,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vene, Ruggero",
+    "id": 1373,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Haussermann, John",
+    "id": 1374,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Panufnik, Sir Andrzej",
+    "id": 1379,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fitch, Theodore",
+    "id": 1380,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wesley, Mary Lou",
+    "id": 1381,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Morganstern",
+    "id": 1382,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Frazzi, Vito",
+    "id": 1396,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Soarez-Saveno",
+    "id": 1403,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Castellanos, Carlos",
+    "id": 1404,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Balazs, Frederic",
+    "id": 1405,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Firestone, Elizabeth",
+    "id": 1406,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alexander, Josef",
+    "id": 1408,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Koutzen, Boris",
+    "id": 1410,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Travis, Roy Elihu",
+    "id": 1415,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jackno, Ralph John",
+    "id": 1421,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Yaysnoff, June & Iris",
+    "id": 1425,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gesensway, Louis",
+    "id": 1427,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hill, Dorothy",
+    "id": 1431,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blasco, Ricardo",
+    "id": 1439,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lajarte, Theodore Eduard DuFaure",
+    "id": 1441,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kassern, Tadeusz",
+    "id": 1445,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dougherty, Celius (Hudson)",
+    "id": 1447,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Helm, Everett",
+    "id": 1449,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dalgleish, James",
+    "id": 1450,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Godfrey, Kathryn",
+    "id": 1451,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Font de Anda",
+    "id": 1453,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Miller",
+    "id": 1455,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zaritzky, Walt Barrows",
+    "id": 1462,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sihanouk, King Norodom",
+    "id": 1467,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ladmirault, Paul Emile",
+    "id": 1468,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sauter-Finegan",
+    "id": 1473,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Yradier, Sebastian",
+    "id": 1477,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "De Filippi, Amedeo",
+    "id": 1481,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Carrer [Karrer, Karreris], Pavlos",
+    "id": 1486,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hall, Reginald",
+    "id": 1489,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Marker",
+    "id": 1490,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Di Candriano, Prince Camillo Ruspoli",
+    "id": 1491,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bensussan, Menachem",
+    "id": 1492,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Landes",
+    "id": 1495,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Goehr",
+    "id": 1496,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mamorsky, Morris",
+    "id": 1497,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Burgess, Lord",
+    "id": 1498,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "De Banfield, Raffaello",
+    "id": 1500,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Williams, Hank",
+    "id": 1505,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "New Orleans Rhythm Kings",
+    "id": 1506,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Marquina, Pasquale",
+    "id": 1513,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mann, Robert",
+    "id": 1518,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Heiden, Bernhard",
+    "id": 1520,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Egge, Klauss",
+    "id": 1522,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sherwood, Gordon",
+    "id": 1523,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fernandez Arbos, Enrique",
+    "id": 1535,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bondeville, Emmanuel",
+    "id": 1538,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sicilianos, Yeorgo",
+    "id": 1545,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Merrick, Mahlon Legrand",
+    "id": 1546,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Borishansky, Elliot",
+    "id": 1549,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Yoder, Paul V.",
+    "id": 1550,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Chapi (y Lorente), Ruperto",
+    "id": 1551,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alamo, Lazaro del",
+    "id": 1553,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Arbo, Miguel Asins",
+    "id": 1554,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ferriz",
+    "id": 1555,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zafred, Mario",
+    "id": 1559,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Betti, Henry",
+    "id": 1564,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Franklin, Benjamin",
+    "id": 1568,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Beglarian, Grant",
+    "id": 1569,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Banfield, Raffaelo de",
+    "id": 1573,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Merceron",
+    "id": 1575,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pugatchov, Emanuel",
+    "id": 1576,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Monreal",
+    "id": 1589,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Solano",
+    "id": 1590,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maciste",
+    "id": 1591,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ovadia",
+    "id": 1592,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ferrao",
+    "id": 1593,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Parish, M",
+    "id": 1598,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ripoll, Michael Douglas",
+    "id": 1600,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blackburn, John M",
+    "id": 1601,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dor, Dani",
+    "id": 1610,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gold, Ernest",
+    "id": 1612,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gottlieb, Jack",
+    "id": 1616,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vetessy, George",
+    "id": 1625,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Reif",
+    "id": 1635,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gesualdo, Don Carlo",
+    "id": 1647,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Amiran, Emanuel",
+    "id": 1659,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Navon, Yitzchak Eliyahu",
+    "id": 1660,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bilik, Jerry",
+    "id": 1664,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Perusio, Matteus de",
+    "id": 1678,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Caserta, Anthonellus de",
+    "id": 1679,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Coperiario, Giovanni",
+    "id": 1681,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Li, Huanzhi",
+    "id": 1704,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Francoeur, Fran\u00e7ois",
+    "id": 1727,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Taxin, Ira",
+    "id": 1732,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Raposo, Joe",
+    "id": 1733,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jablonsky, Stephen",
+    "id": 1742,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Plante, Daniel",
+    "id": 1745,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Myers, Laurie",
+    "id": 1746,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Levine, Jeffrey",
+    "id": 1748,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Europe, James Reese",
+    "id": 1755,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fillmore, John Comfort",
+    "id": 1757,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hakim, Talib Rasul",
+    "id": 1760,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Anderson, T.J.",
+    "id": 1761,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Saint-Georges, Joseph Bologne Chevalier de",
+    "id": 1764,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Davison, Harriette",
+    "id": 1767,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dugger, Edwin",
+    "id": 1784,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Thomas, Andrew",
+    "id": 1787,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cohen, Edward",
+    "id": 1788,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Romero, Angel",
+    "id": 1792,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fischer, J.",
+    "id": 1793,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Meyers, Billy, Schoebel, Elmer and",
+    "id": 1796,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Taneyev, Sergei",
+    "id": 1800,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zagortsev, Vladimir",
+    "id": 1805,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schultze, Johann Christian",
+    "id": 1814,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kotzwara, Franz",
+    "id": 1822,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Herrick, Joseph",
+    "id": 1824,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Chowning, John MacLeod",
+    "id": 1853,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Albrechtsberger, Johann G.",
+    "id": 1866,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Karmen, Steve",
+    "id": 1872,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Subramaniam, Lakshminarayana",
+    "id": 1873,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Warshaw, Dalit Paz",
+    "id": 1875,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sinopoli, Giuseppe",
+    "id": 1877,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Novak, Jan",
+    "id": 1883,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "May, Robert C.",
+    "id": 1904,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gastaldon, Stanislas",
+    "id": 1914,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Coolidge, Peggy Stuart",
+    "id": 1918,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cerchio, Bruno",
+    "id": 1923,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Drattell, Deborah",
+    "id": 1927,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ge, Gangru",
+    "id": 1936,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Di Crescenza",
+    "id": 1949,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Meisel, Edmund",
+    "id": 1952,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Berwald, Franz Adolf",
+    "id": 1960,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blumenfeld, Felix",
+    "id": 1970,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Renwick, Wilke",
+    "id": 1976,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Milan, Luys",
+    "id": 1987,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Paz, Xavier de",
+    "id": 1992,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pleyel, Ignaz",
+    "id": 1997,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Koper, Karl-Heinz (K\u00f6per)",
+    "id": 1998,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hawkins, Walter",
+    "id": 1999,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Carter, Henry",
+    "id": 2006,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Holland, M. Roger, III",
+    "id": 2007,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wright, Rayburn",
+    "id": 2012,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cresswell & McNicholas, Luke & Steve",
+    "id": 2021,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "McGrimsey, Robert",
+    "id": 2031,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Maltsby, Carl",
+    "id": 2032,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Discussion",
+    "id": 2042,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hathaway and McKinnor, Donny and Nadine",
+    "id": 2049,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Premru, Raymond",
+    "id": 2050,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Flecha, Mateo, El Viejo",
+    "id": 2051,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sussan, Leo",
+    "id": 2059,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Baum, Parker",
+    "id": 2060,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Blaudziunas, Gabija",
+    "id": 2061,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mindlin, Samantha",
+    "id": 2062,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Spencer, Victoria",
+    "id": 2063,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hoover, Duke",
+    "id": 2064,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Held, Ilana",
+    "id": 2065,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Boyle-Cole, Cheyenne",
+    "id": 2066,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hirschhorn, Michelle",
+    "id": 2067,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Piot, Melhia",
+    "id": 2068,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sable, Lindsay",
+    "id": 2069,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Esman, Ilan",
+    "id": 2070,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gray, Aiesha",
+    "id": 2071,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rosario, Janis",
+    "id": 2072,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Baum, Sabrina",
+    "id": 2073,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Simonson, Victor",
+    "id": 2081,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Becton, Shelton L.",
+    "id": 2082,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Falcon Sanabria, Juan Jos\u00e9",
+    "id": 2085,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Masson, Askell",
+    "id": 2089,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bratton, John W.",
+    "id": 2100,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Southall, Mitchell B.",
+    "id": 2102,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Farrenc, Jeanne-Louise",
+    "id": 2109,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tsintsadze, Sulkhan Fyodorovich",
+    "id": 2112,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fruehling, Carl",
+    "id": 2113,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Coldplay",
+    "id": 2114,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rodriguez, Jasmin",
+    "id": 2115,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "James, Dijon",
+    "id": 2116,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vega, Arianna",
+    "id": 2117,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Paulino, Carlos",
+    "id": 2118,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vitrago, Roger",
+    "id": 2119,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Diaz, Stanly",
+    "id": 2121,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gomez, Cynthia",
+    "id": 2122,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Leger, Anabel",
+    "id": 2123,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lachert, Piotr",
+    "id": 2129,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lloyd Webber, Lord Andrew",
+    "id": 2130,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Javits, Joan Ellen",
+    "id": 2131,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Silver, Frederick",
+    "id": 2133,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "May, Billy & Kenton, Stan",
+    "id": 2137,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Harrison, Tim",
+    "id": 2139,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Elvey, Sir George",
+    "id": 2143,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Glisic, \u017divojin",
+    "id": 2163,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Valjean, Paul",
+    "id": 2167,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Perez Prado, Damaso",
+    "id": 2171,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sobol, Dr. Mordechai",
+    "id": 2173,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Levinson, Y. D.",
+    "id": 2174,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Odessaer, Bulgar",
+    "id": 2176,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nowakowsky, D.",
+    "id": 2177,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Koussevitzky, Moshe",
+    "id": 2178,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alter, I",
+    "id": 2179,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Talmud, Yaakov",
+    "id": 2180,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bogzester, William",
+    "id": 2181,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Grip, Eric",
+    "id": 2187,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Robinson, Kyla",
+    "id": 2191,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nunez, Ivan",
+    "id": 2192,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Willis, Annabel",
+    "id": 2193,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Petronio, Camilla",
+    "id": 2194,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fleming, Sarah",
+    "id": 2196,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Comstock, Jackson",
+    "id": 2197,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wong & Xiao, Patrick & Vincent",
+    "id": 2198,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wehrli, Werner",
+    "id": 2201,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kwartin, Zevulun",
+    "id": 2203,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schorr, Israel",
+    "id": 2204,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Chutiner, P.",
+    "id": 2205,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stern, I. & Moshe",
+    "id": 2206,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Brody, Josef",
+    "id": 2208,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hely-Hutchinson, Victor",
+    "id": 2209,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dworsky and Blaske, Richard and Lee",
+    "id": 2211,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shand, Terry & Eaton, Jimmy",
+    "id": 2212,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Charles, Dick and Marks, Larry",
+    "id": 2217,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bortz, Daniel",
+    "id": 2220,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Guang, Ren",
+    "id": 2225,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gerber, Stephen",
+    "id": 2226,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nissenson, Gloria",
+    "id": 2241,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Herbert, Rajon",
+    "id": 2243,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pichardo, Edward",
+    "id": 2244,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wegh, Claire",
+    "id": 2245,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pagan, Abraham",
+    "id": 2247,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zhang, Yijun",
+    "id": 2248,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lu, Cindy",
+    "id": 2250,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lu, Yiqing",
+    "id": 2251,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zhang, Yusong",
+    "id": 2252,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hoffman, Solomon",
+    "id": 2256,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Oberdier, Danielle Kerani",
+    "id": 2257,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tokke, Justin P.",
+    "id": 2258,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schubert - Berio, Franz - Luciano",
+    "id": 2261,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dixieland Jazz Band",
+    "id": 2269,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Louiguy, Louis",
+    "id": 2275,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ramos, Ben",
+    "id": 2278,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Turano, Olivia",
+    "id": 2279,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Williams, Aleaster",
+    "id": 2281,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hyland, Theoren",
+    "id": 2282,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Arotsky, Sheridan",
+    "id": 2283,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Frankle, George",
+    "id": 2284,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Quinlan, Caitlin",
+    "id": 2285,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wilson, Paul",
+    "id": 2286,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Corghi, Azio",
+    "id": 2297,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Anastasio, Trey, and Hart, Don",
+    "id": 2299,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Watanabe, Harumi",
+    "id": 2301,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tateno, Keito",
+    "id": 2302,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ashimine, Shuono",
+    "id": 2303,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tanabe, Aline Sauvegrain",
+    "id": 2304,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hiramoto, Wataru",
+    "id": 2305,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Okuyama, Marin",
+    "id": 2306,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sierra, Arlene Elizabeth",
+    "id": 2312,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Liang, Lei",
+    "id": 2313,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Winkler, David",
+    "id": 2316,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rodgers, Mary",
+    "id": 2319,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Parsons, Michael",
+    "id": 2323,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fiorenzoli, Stella",
+    "id": 2324,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "D'Ver, Ethan",
+    "id": 2325,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Draper, Isaac",
+    "id": 2326,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jimenez, Noah",
+    "id": 2327,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Durakovic, Amina",
+    "id": 2328,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nikocevic, Elmir",
+    "id": 2329,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Samerson, Brooke",
+    "id": 2330,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zhao, Guang",
+    "id": 2334,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kazik, James",
+    "id": 2337,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sydeman, William Jay",
+    "id": 2340,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wildmans, Friedrich",
+    "id": 2341,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jagoda, Flory",
+    "id": 2348,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Korzeniowsky, Julian",
+    "id": 2352,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ding, Qin",
+    "id": 2353,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jatta, Musa, Jr.",
+    "id": 2355,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dolby, Nuha",
+    "id": 2356,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Moors, Daniel",
+    "id": 2358,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pino, Maya",
+    "id": 2359,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Balbi, Ashley",
+    "id": 2360,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gaga, Lady",
+    "id": 2366,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kim, Sae-Young",
+    "id": 2374,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "ACT",
+    "id": 2375,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gaunt, Percy",
+    "id": 2377,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Minkowsky, Giacomo",
+    "id": 2378,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sager, Carol Bayer, Foster, David",
+    "id": 2387,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Choi, Sophia",
+    "id": 2391,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kotkin, Henry",
+    "id": 2392,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shmerler, Harry",
+    "id": 2393,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kim-Suzuki, Saya",
+    "id": 2394,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bryant, Calista",
+    "id": 2395,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Chough, Sara",
+    "id": 2396,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gardner, Danielle",
+    "id": 2397,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Park, Jong Eun Sylvia",
+    "id": 2398,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vistel, Douglas",
+    "id": 2399,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bao, Yuankai",
+    "id": 2403,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zhou, Chenglong",
+    "id": 2405,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sun, Yiqian",
+    "id": 2406,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tu, Emily",
+    "id": 2408,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Collings, Bryce",
+    "id": 2409,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Brooks, Calie",
+    "id": 2411,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Peterson, Timothy",
+    "id": 2412,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Landau, Jake",
+    "id": 2413,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sifuentes, Carol",
+    "id": 2414,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Garcia, Jean-Carlos",
+    "id": 2415,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alexander, Andre",
+    "id": 2416,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Valongo, Elijah",
+    "id": 2417,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Oliver, Melvin \"Sy\"",
+    "id": 2422,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kessler, James C.",
+    "id": 2423,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Keillor/Dworsky/Stein, Garrison/Rich/Andy",
+    "id": 2425,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fagin, Gary",
+    "id": 2426,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shea, Michael J.",
+    "id": 2428,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Robinson and White, William \"Smokey\" and Ronald",
+    "id": 2429,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mendoza y Cort\u00e9s, Quirino",
+    "id": 2431,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stein, Andy",
+    "id": 2432,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Peace, A. L.",
+    "id": 2433,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Shayne, Gloria",
+    "id": 2434,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Beal",
+    "id": 2436,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vaclavik, Jude",
+    "id": 2441,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zhang, Qianyi",
+    "id": 2444,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sang, Ruocuo",
+    "id": 2445,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ying, Qing",
+    "id": 2446,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bozza, Eugene Joseph",
+    "id": 2448,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Espiritusanto, Ashanti",
+    "id": 2456,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Braun, Aliyana Tedi",
+    "id": 2459,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Irfan, Tengku Ahmad",
+    "id": 2460,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gulielmetti, Jack",
+    "id": 2461,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Fig, Aaron Wolff",
+    "id": 2463,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rissmann, Paul",
+    "id": 2465,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Duery, Louis",
+    "id": 2468,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sandidge, Daniel",
+    "id": 2470,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rechtman, Elan",
+    "id": 2475,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Taylor, Brooks & Stanley",
+    "id": 2483,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kerr, Joseph Frizell",
+    "id": 2491,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Igudesman & Joo, Aleksey & Huyng-ki",
+    "id": 2493,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Perren, Fekaris, and Gaynor, Freddie, Dino, and Gloria",
+    "id": 2496,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Arancio, Julia",
+    "id": 2498,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Celestin, Austin",
+    "id": 2499,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Green, DeAnte",
+    "id": 2501,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Utagawa, Karin",
+    "id": 2505,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Iwamoto, Yuki",
+    "id": 2506,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Iwamoto, Hiroaki",
+    "id": 2507,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bai, Chengren",
+    "id": 2508,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Luo, Xiuying",
+    "id": 2509,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Xu, Peidong",
+    "id": 2510,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Senk, Olga",
+    "id": 2526,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Acosta, Daniel",
+    "id": 2531,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Darris, Samantha",
+    "id": 2532,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Choi, Elli",
+    "id": 2533,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Bridge to Nowhere",
+    "id": 2534,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jones, Jesse",
+    "id": 2545,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wang, Lu",
+    "id": 2546,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "McManus, Andrew",
+    "id": 2547,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kapica, Chris",
+    "id": 2553,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Eotvos, Melody",
+    "id": 2558,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rotolo, Kyle",
+    "id": 2561,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Stafylakis, Haralabos",
+    "id": 2562,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Green, Joe",
+    "id": 2565,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ray, Don",
+    "id": 2566,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Brock, Timothy",
+    "id": 2574,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Le Roy, Henri Leon",
+    "id": 2583,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Liao, Shuwen",
+    "id": 2584,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pato and Tong, Christina and Wu",
+    "id": 2587,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Yan, Hai-Deng",
+    "id": 2592,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kravath, Lilly",
+    "id": 2596,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lubetsky, Maya",
+    "id": 2597,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Siguencia, Marvin",
+    "id": 2598,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tom, Emma",
+    "id": 2599,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Zivkovic, Djuro",
+    "id": 2601,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Liu, Tianhua",
+    "id": 2613,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dessner and Parry, Bryce and Richard Reed",
+    "id": 2615,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mallonee, Caroline",
+    "id": 2618,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Heidelberger, Nathan",
+    "id": 2621,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Handel/ Mason, George/Lowell",
+    "id": 2630,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Coletti, Christopher",
+    "id": 2631,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hudson, Caleb",
+    "id": 2632,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Harris, Gavin",
+    "id": 2637,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Villegas, Mondriana",
+    "id": 2638,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Egan, Elizabeth",
+    "id": 2639,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rodine, Saevar",
+    "id": 2640,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Paunio, Pyry",
+    "id": 2641,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rankin, Rimari",
+    "id": 2642,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Juarez, Demicis",
+    "id": 2643,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gang and He, Chen and Zhanhao",
+    "id": 2645,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ewald, Victor",
+    "id": 2649,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cohen, Lenoard",
+    "id": 2651,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Page, Plant, and Bonham, Jimmy, Robert, and John",
+    "id": 2653,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mitchell, Willie",
+    "id": 2655,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Krawczyk, Franck",
+    "id": 2656,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Aucoin, Matthew",
+    "id": 2660,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Purrington, Hilary",
+    "id": 2666,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Johnson, John Rosamund",
+    "id": 2667,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Sivan, Noam",
+    "id": 2674,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Jacobson, Colin",
+    "id": 2680,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hartonen, Aino",
+    "id": 2681,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Won, Taehyun",
+    "id": 2682,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Ng, Aidan",
+    "id": 2683,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Andrade, Angie",
+    "id": 2685,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Vakeva, Kari",
+    "id": 2688,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Evans, Eric",
+    "id": 2695,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hirsch/Lanz, Shelley/Joke",
+    "id": 2698,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dempster, Thomas",
+    "id": 2699,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Laub, Fernando",
+    "id": 2702,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Babcock, Andrew",
+    "id": 2703,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hembree, Paul",
+    "id": 2705,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Patrono, Clelia",
+    "id": 2706,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Einbond, Aaron",
+    "id": 2708,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Schedel, Margaret",
+    "id": 2710,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cline, Nicholas",
+    "id": 2714,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Howe, Hurbert",
+    "id": 2718,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "von Reusner, Clemens",
+    "id": 2720,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Luhmann, Grant",
+    "id": 2721,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hass, Jeffrey",
+    "id": 2722,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Nichols, John",
+    "id": 2723,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cunningham, Stuart",
+    "id": 2725,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Dashow, James",
+    "id": 2726,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wang, Tuo",
+    "id": 2728,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gatti, Paolo",
+    "id": 2729,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Cerar/Borissov, Maja/Liubo",
+    "id": 2730,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Li, Wuan-chin",
+    "id": 2732,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Mailman, Joshua",
+    "id": 2733,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gogins, Michael",
+    "id": 2734,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kramer, Reiner",
+    "id": 2735,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Thomas, Paul David",
+    "id": 2737,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Clausen, Joshua",
+    "id": 2738,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Kotcheff, Thomas",
+    "id": 2739,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Alexander, Lucas",
+    "id": 2746,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Qian, Yibing",
+    "id": 2747,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Lenon/McCartney, John/Paul",
+    "id": 2749,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Pascuzzi, Gregory",
+    "id": 2752,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gates, Dorothy",
+    "id": 2753,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Anonymous",
+    "id": 2754,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Araujo, Benjamin",
+    "id": 2756,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Estrella, Marisol",
+    "id": 2757,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Hata, Yusei",
+    "id": 2758,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Rabiu, Isai",
+    "id": 2759,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Weerakkody, Suvani",
+    "id": 2760,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Gontarcyk, Nikita",
+    "id": 2761,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Malin and Cordero, Leslie and Percaiz",
+    "id": 2762,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Tzu, Huang",
+    "id": 2764,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Li, Qingzhu",
+    "id": 2765,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Wubbels, Eric",
+    "id": 2771,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Feng, Shuya",
+    "id": 2776,
+    "n_works": 1,
+    "mbz_id": null
+  },
+  {
+    "name": "Klein, Gideon",
+    "id": 2779,
+    "n_works": 1,
+    "mbz_id": null
+  }
+]
