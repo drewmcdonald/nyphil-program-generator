@@ -1,32 +1,32 @@
 import math
 import re
-from collections import OrderedDict, namedtuple
+from collections import namedtuple
+from typing import Optional
 
-from nyp.lookups import INSTRUMENT_CATEGORIES
 from nyp.models import Composer
 
-WORK_TYPES = OrderedDict(
-    {
-        "concerto": ["CONCI?ERTO"],
-        "mass": ["MASS", "REQUIEM", "ORATORIO"],
-        "dance": [
-            r"DAN(S|C)E",
-            "WALTZ",
-            "VALSE",
-            "MINUET",
-            "TANGO",
-            r"GALL?OP",
-            "POLKA",
-            "TARANTELLA",
-            "BOLERO",
-            "BALLET",
-        ],
-        "suite": ["SUITE"],
-        "overture": ["INTRODUCTION", "OVERTURE"],
-        "march": ["MARCH"],
-        "symphony": ["SYMPHON(Y|I)"],
-    }
-)
+INSTRUMENT_CATEGORIES = {"del": "me"}
+WORK_TYPES = {
+    "concerto": ["CONCI?ERTO"],
+    "mass": ["MASS", "REQUIEM", "ORATORIO"],
+    "dance": [
+        r"DAN(S|C)E",
+        "WALTZ",
+        "VALSE",
+        "MINUET",
+        "TANGO",
+        r"GALL?OP",
+        "POLKA",
+        "TARANTELLA",
+        "BOLERO",
+        "BALLET",
+    ],
+    "suite": ["SUITE"],
+    "overture": ["INTRODUCTION", "OVERTURE"],
+    "march": ["MARCH"],
+    "symphony": ["SYMPHON(Y|I)"],
+}
+
 
 OPUS_MARKERS = [r"BWV \d+", r"K\. ?\d+", r"OP\. ?\d+", r"D. ?\d+"]
 
@@ -39,7 +39,7 @@ def matches_any(input_string: str, patterns: list) -> str:
     return "no"
 
 
-def matches_which(input_string: str, patterns: OrderedDict) -> [str, None]:
+def matches_which(input_string: str, patterns: dict) -> Optional[str]:
     """given an input string and a dictionary of
     {'LABEL1': ['lab1pat1', 'lab1pat2'], 'LABEL2': ['lab2pat1', 'lab2pat2']},
     return 'LABEL1' if either 'lab1pat1' or 'lab1pat2' matches to input string, etc."""
@@ -73,7 +73,7 @@ def categorize_soloists(instruments: list) -> str:
     return "Multiple"
 
 
-def coalesce_country(composer: Composer) -> [str, None]:
+def coalesce_country(composer: Composer) -> Optional[str]:
     """coalesce a composer's mbz country codes if available"""
     mbz = composer.mbz_composer
     if not mbz:
@@ -86,7 +86,7 @@ def coalesce_country(composer: Composer) -> [str, None]:
     )
 
 
-def composer_birth_century(composer: Composer) -> [str, None]:
+def composer_birth_century(composer: Composer) -> Optional[str]:
     mbz = composer.mbz_composer
     if not mbz:
         return "Other"

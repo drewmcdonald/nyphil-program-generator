@@ -31,6 +31,10 @@
     "is_modelable": true,
     "category": "Symphonic"
   },
+  "Fundraising Concert": {
+    "is_modelable": false,
+    "category": "Symphonic"
+  },
   "Hear & Now": {
     "is_modelable": false,
     "category": "Modern"
@@ -71,6 +75,10 @@
     "is_modelable": true,
     "category": "Symphonic"
   },
+  "Nightcap": {
+    "is_modelable": false,
+    "category": "Other"
+  },
   "Non-Subscription": {
     "is_modelable": false,
     "category": "Symphonic"
@@ -97,6 +105,10 @@
   },
   "Pension Fund Benefit Concert": {
     "is_modelable": true,
+    "category": "Symphonic"
+  },
+  "Phil the Hall": {
+    "is_modelable": false,
     "category": "Symphonic"
   },
   "Pre-Concert Recital": {
@@ -150,6 +162,10 @@
   "Soloist Recital": {
     "is_modelable": false,
     "category": "Recital"
+  },
+  "Sound ON": {
+    "is_modelable": false,
+    "category": "Other"
   },
   "Special": {
     "is_modelable": true,

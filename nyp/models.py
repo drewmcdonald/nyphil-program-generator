@@ -1,11 +1,9 @@
 import json
-import os.path
 import re
-import time
 import unicodedata
 from datetime import datetime as dt
+from typing import Any, List, Optional
 
-import requests
 from fuzzywuzzy import fuzz
 from sqlalchemy import (
     Boolean,
@@ -17,13 +15,14 @@ from sqlalchemy import (
     Index,
     Integer,
     String,
-    Text,
     UniqueConstraint,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from nyp.musicbrainz import MBZAPI, MBZCounter
+
+Base: Any = declarative_base()
 
 with open("data/manual_event_types.json", "r") as f:
     EVENT_TYPE_EXTRAS = json.load(f)
@@ -32,7 +31,7 @@ with open("data/manual_instrument_categories.json", "r") as f:
     INSTRUMENT_CATEGORIES = json.load(f)
 
 
-class GetOrCreateMixin(object):
+class GetOrCreateMixin:
     """adapted from https://stackoverflow.com/questions/2546207"""
 
     @classmethod
@@ -47,7 +46,7 @@ class GetOrCreateMixin(object):
         return new_obj
 
 
-class NameLookupMixin(object):
+class NameLookupMixin:
     """mixin for easy lookups by cls.get_or_create(raw_name=LOOKUP)"""
 
     id = Column(Integer, primary_key=True)
@@ -55,9 +54,11 @@ class NameLookupMixin(object):
     name = Column(String(100), nullable=False)
 
     def __init__(self, raw_name: str, *args, **kwargs):
-        super(NameLookupMixin, self).__init__(*args, **kwargs)
         self.raw_name = raw_name
         self.name = self.clean_name()
+
+    def __repr__(self):
+        return f"<{self.__class__.__name__} {self.id}: {self.name}>"
 
     def clean_name(self) -> str:
         """Strips bracketed text and extra spaces out of composer names"""
@@ -68,9 +69,6 @@ class NameLookupMixin(object):
         return new.strip()
 
 
-# Lookup Tables
-
-
 class Orchestra(GetOrCreateMixin, NameLookupMixin, Base):
     """Simple lookup of orchestra names"""
 
@@ -78,27 +76,27 @@ class Orchestra(GetOrCreateMixin, NameLookupMixin, Base):
 
     programs = relationship("Concert", back_populates="orchestra")
 
-    def __repr__(self):
-        return f"<Orchestra {self.id}: {self.name}>"
-
 
 class EventType(GetOrCreateMixin, Base):
     """Simple lookup of event types"""
 
-    __tablename__ = "eventtype"
+    __tablename__ = "event_type"
 
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False, index=True)
     category = Column(String(15))
-    is_modelable = Column(Boolean)
+    is_modelable = Column(Boolean, default=False)
 
-    concerts = relationship("Concert", back_populates="eventtype")
+    concerts = relationship("Concert", back_populates="event_type")
 
     def __init__(self, name):
         self.name = name
-        extras = EVENT_TYPE_EXTRAS[name]  # want a key error in case there's a new one
-        self.category = extras["category"]
-        self.is_modelable = extras["is_modelable"]
+        try:
+            extras = EVENT_TYPE_EXTRAS[name]
+            self.category = extras["category"]
+            self.is_modelable = extras["is_modelable"]
+        except KeyError:
+            print(f"Event type {name} is not categorized")
 
     def __repr__(self):
         return f"<EventType {self.id}: {self.name}>"
@@ -128,9 +126,6 @@ class Composer(GetOrCreateMixin, NameLookupMixin, Base):
     works = relationship("Work", back_populates="composer")
     mbz_composer = relationship("MBZComposer", uselist=False, back_populates="composer")
 
-    def __repr__(self):
-        return f"<Composer {self.id}: {self.name}>"
-
     def to_dict(self):
         return {"id": self.id, "name": self.name}
 
@@ -139,11 +134,10 @@ class Performer(GetOrCreateMixin, NameLookupMixin, Base):
     """list of featured performers, including conductors"""
 
     __tablename__ = "performer"
+    __table_args__ = (Index("idx_performer_lookup", "raw_name", "instrument"),)
 
-    raw_name = Column(Text(1200), nullable=False)
-    name = Column(Text(1200), nullable=False)
-    instrument = Column(String(600))
-    instrument_category = Column(String(20))
+    instrument = Column(String(600), default=None)
+    instrument_category = Column(String(20), default=None)
 
     program_movements = relationship(
         "ConcertSelectionPerformer", back_populates="performer"
@@ -151,14 +145,16 @@ class Performer(GetOrCreateMixin, NameLookupMixin, Base):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # want a key error in case there's a new one
-        self.instrument_category = INSTRUMENT_CATEGORIES[self.instrument]
+        if self.instrument == "":
+            self.instrument = None
+        if self.instrument:
+            try:
+                self.instrument_category = INSTRUMENT_CATEGORIES[self.instrument]
+            except KeyError:
+                print(f"{self.instrument} not categorized")
 
     def __repr__(self):
         return f"<Performer {self.id}: {self.name} ({self.instrument}>"
-
-
-# Relationship Mapping Tables
 
 
 class ConcertSelection(Base):
@@ -216,9 +212,6 @@ class ConcertSelectionPerformer(Base):
 
     def __repr__(self):
         return f"<ConcertSelectionPerformer {self.id}: {self.performer} on {self.concert_selection}>"
-
-
-# Core Tables
 
 
 class Movement(GetOrCreateMixin, Base):
@@ -293,11 +286,11 @@ class Concert(Base):
 
     orchestra_id = Column(Integer, ForeignKey("orchestra.id"))
     venue_id = Column(Integer, ForeignKey("venue.id"))
-    eventtype_id = Column(Integer, ForeignKey("eventtype.id"))
+    event_type_id = Column(Integer, ForeignKey("event_type.id"))
 
     orchestra = relationship("Orchestra")
     venue = relationship("Venue", back_populates="concerts")
-    eventtype = relationship("EventType", back_populates="concerts")
+    event_type = relationship("EventType", back_populates="concerts")
 
     datetime = Column(DateTime, nullable=False)
 
@@ -312,135 +305,58 @@ class Concert(Base):
         )
 
     @property
-    def selections(self) -> [Selection]:
+    def selections(self) -> List[Selection]:
         """shortcut to the actual selections instead of the concert_selection records
         (though this loses movements)
         """
-        # noinspection PyTypeChecker
         return [cs.selection for cs in self.concert_selections]
 
 
-class MBZAPI(object):
-    """
-    Base class for all MusicBrainz API contact
-    """
+class MBZArea(MBZAPI, GetOrCreateMixin, Base):
 
-    BASE_URL = "https://musicbrainz.org/ws/2/"
-    APP_HEADERS = {
-        "User-Agent": "NYPhil Concert Builder/0.01 \
-                    (https://github.com/drewmcdonald/nyphil-program-generator)"
-    }
+    __tablename__ = "mbz_area"
 
-    def __init__(self, endpoint: str, mbz_id: str = None):
-        self.endpoint: str = endpoint
-        self.mbz_id: str = mbz_id
-        self.add_params: dict = {}
-        self.request_status_code: int = None
-        self.content: dict = None
+    endpoint = "area"
 
-    def __repr__(self):
-        return f"<MBZAPI at endpoint {self.endpoint}>"
-
-    @property
-    def is_retrieved(self):
-        return self.request_status_code == 200
-
-    @property
-    def request_url(self):
-        return os.path.join(self.BASE_URL, self.endpoint, self.mbz_id or "")
-
-    @property
-    def request_params(self) -> dict:
-        return {**{"fmt": "json"}, **self.add_params}
-
-    def post_retrieve(self):
-        pass
-
-    def retrieve(self) -> int:
-        """make an MBZ API Request, then call the class's post-retrieve method
-
-        :return: request's HTTP status code"""
-        time.sleep(0.3)
-
-        result = requests.get(
-            self.request_url, params=self.request_params, headers=self.APP_HEADERS
-        )
-
-        if result.status_code == 200:
-            self.content = json.loads(result.content)
-            self.request_status_code = 200
-            self.post_retrieve()
-        if result.status_code == 503:
-            print("request rejected. sleeping .3 another seconds")
-            self.retrieve()
-
-        return result.status_code
-
-
-class MBZCounter(MBZAPI):
-    """Base class for counting the number of records of type 'endpoint' affiliated with
-    'index_mbz_id' of type 'index_endpoint'
-    """
-
-    def __init__(self, endpoint: str, index_endpoint: str, index_mbz_id: str):
-        super(MBZCounter, self).__init__(endpoint=endpoint)
-        self.index_endpoint: str = index_endpoint
-        self.index_mbz_id: str = index_mbz_id
-        self.record_count: int = None
-        self.retrieve()
-
-    @property
-    def request_params(self) -> dict:
-        return {
-            "fmt": "json",
-            "limit": 1,
-            "offset": 0,
-            self.index_endpoint: self.index_mbz_id,
-        }
-
-    def post_retrieve(self):
-        """extract the count of the composer records"""
-        count_key = self.endpoint + "-count"
-        self.record_count = self.content[count_key]
-
-
-class MBZArea(MBZAPI):
-    """Object to represent an MBZ Area
-    recursively calls parent relationships to find the area's country
-    """
+    mbz_id = Column(String(36), primary_key=True)
+    name = Column(String(100))
+    area_type = Column(String(100))
+    sort_name = Column(String(100))
+    iso_1_code = Column(String(2))
+    iso_2_code = Column(String(6))
 
     def __init__(self, mbz_id: str):
-        super(MBZArea, self).__init__(endpoint="area", mbz_id=mbz_id)
-        self.name = None
-        self.sort_name = None
-        self.iso_1_code: str = None
-        self.iso_2_code: str = None
+        super().__init__(mbz_id=mbz_id)
+        self.parent_area_ids: List[str] = []
+        self.ancestors: List[MBZArea] = []
         self.retrieve()
         self.recurse_parents()
 
     def __repr__(self):
-        return f"<MBZAreaLookup for {self.name}>"
+        return f"<MBZArea {self.sort_name} ({self.area_type})>"
 
     @property
-    def request_params(self) -> dict:
-        return {"fmt": "json", "inc": "area-rels"}
+    def add_params(self):
+        return {"inc": "area-rels"}
+
+    def get_parent_ids(self):
+        relations = self.content.get("relations")
+        if relations:
+            return [
+                x["area"]["id"] for x in relations if x.get("direction") == "backward"
+            ]
+        return []
 
     def post_retrieve(self):
         """Fill object attributes from the json response"""
-
-        if not self.is_retrieved:
-            raise ValueError("No data yet retrieved")
+        super().post_retrieve()
 
         self.name = self.content.get("name")
         self.sort_name = self.content.get("sort-name")
-
-        iso_1_codes: list = self.content.get("iso-3166-1-codes", [])
-        iso_2_codes: list = self.content.get("iso-3166-2-codes", [])
-
-        if len(iso_1_codes) > 0:
-            self.iso_1_code = iso_1_codes[0]
-        if len(iso_2_codes) > 0:
-            self.iso_2_code = iso_2_codes[0]
+        self.area_type = self.content.get("type")
+        self.iso_1_code = self.content.get("iso-3166-1-codes", [None])[0]
+        self.iso_2_code = self.content.get("iso-3166-2-codes", [None])[0]
+        self.parent_area_ids = self.get_parent_ids()
 
     def recurse_parents(self):
         """go up the chain of parent areas until we can fill out
@@ -450,17 +366,10 @@ class MBZArea(MBZAPI):
         if self.iso_1_code:
             return
 
-        # filter to up-hierarchy relationships
-        if self.content.get("relations"):
-            parent_rels = [
-                x for x in self.content["relations"] if x.get("direction") == "backward"
-            ]
-        else:
-            return
-
         # push down any iso codes found in the parent
-        for parent_rel in parent_rels:
-            parent_obj = MBZArea(parent_rel["area"]["id"])
+        for parent_id in self.parent_area_ids:
+            parent_obj = MBZArea(parent_id)
+            self.ancestors += [parent_obj, *parent_obj.ancestors]
 
             # country areas do not have regional codes, and vice versa, so we have to check
             # these each independently to avoid overwriting data from further down the hierarchy
@@ -474,6 +383,9 @@ class MBZComposer(Base):
     """
 
     __tablename__ = "mbz_composer"
+    __tableargs__ = (
+        Index("ix_mbz_composer_composer_best_match", "composer_id", "is_best_match"),
+    )
 
     id = Column(Integer, primary_key=True)
     mbz_id = Column(String(36), nullable=False, index=True)
@@ -482,16 +394,16 @@ class MBZComposer(Base):
     score = Column(Integer)
     country = Column(String(2))
     gender = Column(String(6))
-    sort_name = Column(String(50))
-    area_name = Column(String(50))
-    begin_area_name = Column(String(50))
-    end_area_name = Column(String(50))
-    area_id = Column(String(36))
-    begin_area_id = Column(String(36))
-    end_area_id = Column(String(36))
+    sort_name = Column(String(200))
     lifespan_begin = Column(Date)
     lifespan_end = Column(Date)
     lifespan_ended = Column(Boolean, default=False)
+    area_id = Column(String(36), ForeignKey("mbz_area.mbz_id"), nullable=True)
+    begin_area_id = Column(String(36), ForeignKey("mbz_area.mbz_id"), nullable=True)
+    end_area_id = Column(String(36), ForeignKey("mbz_area.mbz_id"), nullable=True)
+    area = relationship("MBZArea", foreign_keys=[area_id])
+    begin_area = relationship("MBZArea", foreign_keys=[begin_area_id])
+    end_area = relationship("MBZArea", foreign_keys=[end_area_id])
 
     n_aliases = Column(Integer, default=0)
     n_tags = Column(Integer, default=0)
@@ -500,21 +412,18 @@ class MBZComposer(Base):
     match_token_sort_ratio = Column(Float)
     match_partial_ratio = Column(Float)
     match_average_ratio = Column(Float)
-    area_iso_1_code = Column(String(2))
-    area_iso_2_code = Column(String(6))
-    begin_area_iso_1_code = Column(String(2))
-    begin_area_iso_2_code = Column(String(6))
-    end_area_iso_1_code = Column(String(2))
-    end_area_iso_2_code = Column(String(6))
 
-    is_best_match = Column(Boolean, default=False)
+    is_best_match = Column(Boolean, default=False, index=True)
 
     n_works = Column(Integer)
     n_recordings = Column(Integer)
     n_releases = Column(Integer)
 
     def __init__(self, composer: Composer, record: dict):
-        self.composer: Composer = composer
+        self._area_id = None
+        self._begin_area_id = None
+        self._end_area_id = None
+        self.composer = composer
         self.parse_base_record(record)
         self.score_name_match()
 
@@ -550,22 +459,14 @@ class MBZComposer(Base):
     def parse_base_record(self, record: dict) -> None:
         """parse a composer search api json result into a flattened object"""
         self.mbz_id = record.get("id")
-        self.score = int(record.get("score"))
+        self.score = int(record.get("score", "0"))
         self.country = record.get("country")
         self.gender = record.get("gender")
         self.sort_name = record.get("sort-name")
 
-        if record.get("area"):
-            self.area_name = record.get("area").get("name")
-            self.area_id = record.get("area").get("id")
-
-        if record.get("begin-area"):
-            self.begin_area_name = record.get("begin-area").get("name")
-            self.begin_area_id = record.get("begin-area").get("id")
-
-        if record.get("end-area"):
-            self.end_area_name = record.get("end-area").get("name")
-            self.end_area_id = record.get("end-area").get("id")
+        self._area_id = record.get("area", {}).get("id")
+        self._begin_area_id = record.get("begin-area", {}).get("id")
+        self._end_area_id = record.get("end-area", {}).get("id")
 
         ls = record.get("life-span")
         if ls:
@@ -598,33 +499,22 @@ class MBZComposer(Base):
 
     def count_related_records(self, endpoint: str) -> int:
         return MBZCounter(
-            endpoint, index_endpoint="artist", index_mbz_id=self.mbz_id
+            count_endpoint=endpoint, index_endpoint="artist", index_mbz_id=self.mbz_id
         ).record_count
 
-    def fill_additional_data(self) -> None:
+    def resolve_area(self, session, attr_str: str):
+        mbz_id = getattr(self, "_" + attr_str + "_id")
+        if mbz_id:
+            area = MBZArea.get_or_create(session, mbz_id=mbz_id)
+            setattr(self, attr_str, area)
+            if hasattr(area, "ancestors"):
+                for ancestor in area.ancestors:
+                    MBZArea.get_or_create(session, mbz_id=ancestor.mbz_id)
 
+    def fill_additional_data(self, session) -> None:
         # gather country and region codes from areas
-        # TODO: this could be faster and cheaper with a cache of mbz_id to iso codes or a table of Areas
-        if self.area_id:
-            area: MBZArea = MBZArea(self.area_id)
-            self.area_iso_1_code, self.area_iso_2_code = (
-                area.iso_1_code,
-                area.iso_2_code,
-            )
-
-        if self.begin_area_id:
-            begin_area: MBZArea = MBZArea(self.begin_area_id)
-            self.begin_area_iso_1_code, self.begin_area_iso_2_code = (
-                begin_area.iso_1_code,
-                begin_area.iso_2_code,
-            )
-
-        if self.end_area_id:
-            end_area: MBZArea = MBZArea(self.end_area_id)
-            self.end_area_iso_1_code, self.end_area_iso_2_code = (
-                end_area.iso_1_code,
-                end_area.iso_2_code,
-            )
+        for area_key in ("area", "begin_area", "end_area"):
+            self.resolve_area(session, attr_str=area_key)
 
         # count number of works, number of recordings, and number of releases
         self.n_works = self.count_related_records("work")
@@ -636,33 +526,32 @@ class MBZComposerSearch(MBZAPI):
     """MBZ Composer Lookup Data
     NOTE: does not page through results. assumes a good match would be in the top 25 results"""
 
+    endpoint = "artist"
+
     def __init__(self, composer: Composer):
-        super(MBZComposerSearch, self).__init__(endpoint="artist")
+        super().__init__()
         self.composer: Composer = composer
         self.record_count: int = 0
-        self.objects: [MBZComposer] = []
-        self.best_match: MBZComposer = None
+        self.objects: List[MBZComposer] = []
         self.retrieve()
+        self.best_match: Optional[MBZComposer] = self.pick_best_match()
 
     def __repr__(self):
         return f"<MBZComposerSearch for {self.composer.name}>"
 
     @property
-    def request_params(self) -> dict:
-        return {
-            "query": "name:{} AND type:person".format(self.composer.name),
-            "fmt": "json",
-        }
+    def add_params(self):
+        return {"query": "name:{} AND type:person".format(self.composer.name)}
 
     def post_retrieve(self) -> None:
         """identify and count the records our search was interested in;
         convert them to MBZComposer objects"""
-        if not self.is_retrieved:
-            raise ValueError("No data yet retrieved, can't run post-retrieve")
+        super().post_retrieve()
 
-        self.record_count = self.content.get("count")
+        self.record_count = int(self.content.get("count", "0"))
         self.objects = [
-            MBZComposer(self.composer, r) for r in self.content.get(self.endpoint + "s")
+            MBZComposer(self.composer, r)
+            for r in self.content.get(self.endpoint + "s", [])
         ]
 
     @classmethod
@@ -674,29 +563,21 @@ class MBZComposerSearch(MBZAPI):
             and match.match_average_ratio >= 85
         )
 
-    def pick_best_match(self) -> MBZComposer:
+    def pick_best_match(self) -> Optional[MBZComposer]:
         """pick the best match among mbz results; first by token comparison scores
         then by whoever has the most aliases (most famous)
         then by whoever has a composer tag
         then by whoever has 'composer' in their disambiguation
         """
 
-        def exit_with_result(final_result):
-            """helper to finalize the result once we find it"""
-            if final_result:
-                final_result.fill_additional_data()
-                final_result.is_best_match = True
-            self.best_match = final_result
-            return final_result
-
         # filter to acceptable matches by token comparison scores
         acceptable_matches = list(filter(self.acceptable_match_filter, self.objects))
 
         # Take the match if there is only one; give up if there are none
         if len(acceptable_matches) == 1:
-            return exit_with_result(acceptable_matches[0])
+            return acceptable_matches[0]
         if len(acceptable_matches) == 0:
-            return exit_with_result(None)
+            return None
 
         # list of all records' number of aliases
         all_n_aliases = [rec.n_aliases for rec in acceptable_matches if rec.n_aliases]
@@ -708,18 +589,18 @@ class MBZComposerSearch(MBZAPI):
             )
             # if only one record with the max number of aliases, that's our best match
             if len(most_aliases) == 1:
-                return exit_with_result(most_aliases[0])
+                return most_aliases[0]
 
         # prefer the one result that's tagged as a composer if possible
         tagged_composer = list(filter(lambda rec: rec.tag_composer, acceptable_matches))
         if len(tagged_composer) == 1:
-            return exit_with_result(tagged_composer[0])
+            return tagged_composer[0]
 
         # prefer the one result that's disambiguated as a composer if possible
         disambiguated_composer = list(
             filter(lambda rec: rec.disambiguated_composer, acceptable_matches)
         )
         if len(disambiguated_composer) == 1:
-            return exit_with_result(disambiguated_composer[0])
+            return disambiguated_composer[0]
 
-        return exit_with_result(None)
+        return None

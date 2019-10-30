@@ -1,33 +1,20 @@
 import pickle
 import random
 from copy import deepcopy
-from os import getenv
 
-from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import cross_origin
-from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+from nyp.config import APP_SECRET
 from nyp.markov import ChainEnsemble, ChainEnsembleScorer
 from nyp.models import Selection
-
-load_dotenv()
+from nyp.util import engine
 
 application = Flask(__name__)
-application.secret_key = getenv("APP_SECRET")
+application.secret_key = APP_SECRET
 
-if getenv("RDS_HOSTNAME"):
-    connection_string = "mysql+pymysql://{}:{}@{}:{}/nyphil".format(
-        getenv("RDS_USERNAME"),
-        getenv("RDS_PASSWORD"),
-        getenv("RDS_HOSTNAME"),
-        getenv("RDS_PORT"),
-    )
-else:
-    connection_string = getenv("MYSQL_CON_DEV")
-
-Session = scoped_session(sessionmaker(create_engine(connection_string)))
+Session = scoped_session(sessionmaker(engine))
 
 
 # shared objects

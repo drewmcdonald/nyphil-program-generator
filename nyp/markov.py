@@ -1,6 +1,6 @@
 from collections import defaultdict
 from multiprocessing import Pool, cpu_count
-from typing import Union
+from typing import Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -20,7 +20,8 @@ def simple_weighted_avg(p: np.ndarray, w: np.ndarray) -> np.ndarray:
 
 
 def sum_weighted_log_odds(p: np.ndarray, w: np.ndarray) -> np.ndarray:
-    """calculate weighted odds by taking a weighted sum in log-odds space, then convert back to probability"""
+    """calculate weighted odds by taking a weighted sum in log-odds space,
+    then convert back to probability"""
     weighted_odds = np.exp(np.sum(np.log(p / (1 - p)) * w, axis=1) / w.sum())
     return weighted_odds / (1 + weighted_odds)
 
@@ -37,7 +38,7 @@ AVAILABLE_SUMMARY_FUNCTIONS = {
 }
 
 
-class Chain(object):
+class Chain:
     """
     build a Markov Chain from a categorical Series
 
@@ -92,12 +93,12 @@ class Chain(object):
 
         # initialize a receptacle and break values
         break_values = [BREAK] * self.state_size
-        values = break_values.copy()
+        raw_values = break_values.copy()
 
         for i, d in data.groupby(level=0):
-            values += d.values.tolist() + break_values
+            raw_values += d.values.tolist() + break_values
 
-        values = pd.Series(values)
+        values = pd.Series(raw_values)
 
         if self.cull:
 
@@ -129,7 +130,7 @@ class Chain(object):
         loosely adapted from jsvine/markovify; major difference is that this is set to accept a full corpus
         all at once with interpolated beginning/end markers
         """
-        lookup = defaultdict(_internal_defaultdict_int)
+        lookup: defaultdict = defaultdict(_internal_defaultdict_int)
 
         # accumulate counts of each input to output
         for i in range(len(self.data) - self.state_size):
@@ -183,7 +184,7 @@ class Chain(object):
         return new_data
 
 
-class ChainEnsemble(object):
+class ChainEnsemble:
     def __init__(
         self, chain_configs: dict, base_chain_config: dict, train_backwards: bool = True
     ):
@@ -194,8 +195,8 @@ class ChainEnsemble(object):
 
         # create slots for trained models and data
         self.is_fit: bool = False
-        self.chains: dict = None
-        self.train_data: pd.DataFrame = None
+        self.chains: dict = {}
+        self.train_data: pd.DataFrame = pd.DataFrame()
 
     def initialize_chain_configs(
         self, chain_configs: dict, base_chain_config: dict
@@ -236,7 +237,7 @@ class ChainEnsemble(object):
         return self
 
 
-class ChainEnsembleScorer(object):
+class ChainEnsembleScorer:
     def __init__(
         self,
         model: ChainEnsemble,
@@ -256,13 +257,13 @@ class ChainEnsembleScorer(object):
         self.summary_function = AVAILABLE_SUMMARY_FUNCTIONS[summary_function]
 
         # metadata on our scoring data frame
-        self.break_idx: int = None  # filled by collapse_training_data
+        self.break_idx: Optional[int] = None  # filled by collapse_training_data
         self.intermission_idx = None  # ''  ''
         self.raw_data: pd.DataFrame = self.collapse_training_data()
 
         # initialize state
         self.state: dict = {}
-        self.score_data: pd.DataFrame = None
+        self.score_data: pd.DataFrame = pd.DataFrame()
         self.is_clean_start: bool = False
         self.initialize_score_state()
         self.set_break_weight(self.default_break_weight)

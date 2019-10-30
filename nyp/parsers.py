@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from typing import List, Tuple, Union
+from typing import List, Optional, Tuple, Union
 
 from sqlalchemy.orm import Session
 
@@ -19,31 +19,38 @@ from .models import (
 )
 
 
-class SoloistParser(object):
+def clean_name_obj(name_obj):
+    """TODO: this needs to strip multiple spaces as well"""
+    if type(name_obj) is dict:
+        return f"{name_obj.get('_', '').strip()} {name_obj.get('em', '').strip()}"
+    return name_obj
+
+
+def parse_concert_datetime(date_str, time_str) -> dt:
+    date_str = date_str[0:10]
+    if time_str == "None":
+        time_str = "12:00AM"
+    return dt.strptime(f"{date_str} {time_str}", "%Y-%m-%d %I:%M%p")
+
+
+class SoloistParser:
+    def __init__(self, raw: dict, session: Session):
+        self.name = raw.get("soloistName")
+        self.instrument = raw.get("soloistInstrument")
+        self.role = raw.get("soloistRoles")
+        self.performer: Performer = Performer.get_or_create(
+            session, raw_name=self.name, instrument=self.instrument
+        )
+
+
+class WorkParser:
     def __init__(self, raw: dict, session: Session):
         self.raw = raw
         self.session = session
-        self.name, self.instrument, self.role = self.set_basics()
-        self.performer = self.get_performer()
-
-    def set_basics(self) -> Tuple[str, str, str]:
-        return (
-            self.raw.get("soloistName"),
-            self.raw.get("soloistInstrument"),
-            self.raw.get("soloistRoles"),
+        self.composer = Composer.get_or_create(
+            session, raw_name=raw.get("composerName", "No Composer")
         )
 
-    def get_performer(self) -> Performer:
-        return Performer.get_or_create(
-            self.session, raw_name=self.name, instrument=self.instrument
-        )
-
-
-class WorkParser(object):
-    def __init__(self, raw: dict, session: Session):
-        self.raw = raw
-        self.session = session
-        self.composer = self.set_composer()
         self.work = self.get_or_create_work()
         self.movement = self.get_or_create_movement()
         self.selection = self.get_or_create_selection()
@@ -52,81 +59,62 @@ class WorkParser(object):
     def __repr__(self):
         return f"<WorkParser for {self.work} movement {self.movement}>"
 
-    def set_composer(self) -> Composer:
-        return Composer.get_or_create(
-            self.session, raw_name=self.raw.get("composerName", "No Composer")
-        )
-
-    def parse_conductor(self) -> Union[Performer, None]:
-        conductor_name = self.raw.get("conductorName")
-        if conductor_name is None:
-            return None
-        return Performer.get_or_create(
-            self.session, instrument="Conductor", raw_name=conductor_name
-        )
-
-    def parse_soloists(self) -> List[Tuple[Performer, str]]:
-        soloist_performers = []
-        for s_data in self.raw.get("soloists"):
-            s_parser = SoloistParser(s_data, self.session)
-            soloist_performers.append((s_parser.performer, s_parser.role))
-        return soloist_performers
-
-    def set_performers(self) -> List[Tuple[Performer, str]]:
-        performers = []
-        conductor = self.parse_conductor()
-        if conductor:
-            performers.append((conductor, "C"))
-        performers += self.parse_soloists()
-        return performers
-
-    @classmethod
-    def clean_name(cls, name):
-        """TODO: this needs to strip multiple spaces as well"""
-        if type(name) is dict:
-            return f"{name.get('_', '').strip()} {name.get('em', '').strip()}"
-        return name
-
     def get_or_create_work(self) -> Work:
-        composer_id = self.composer.id
-        title = self.raw.get("workTitle")
-        if title is None:
-            title = self.raw.get("interval")
-        title = self.clean_name(title)
-
-        return Work.get_or_create(self.session, composer_id=composer_id, title=title)
+        title = clean_name_obj(self.raw.get("workTitle", self.raw.get("interval")))
+        return Work.get_or_create(
+            self.session, composer_id=self.composer.id, title=title
+        )
 
     def get_or_create_movement(self) -> Union[Movement, None]:
         name = self.raw.get("movement")
         if name is None:
             return None
-        name = self.clean_name(name)
 
-        work_movement_id = self.raw.get("ID").split("*")[1]
+        work_movement_id = self.raw.get("ID", "*").split("*")[1]
         work_movement_id = 0 if work_movement_id == "" else int(work_movement_id)
 
         return Movement.get_or_create(
             self.session,
             work_id=self.work.id,
             work_movement_id=work_movement_id,
-            name=name,
+            name=clean_name_obj(name),
         )
 
     def get_or_create_selection(self) -> Selection:
-        is_full_work = self.movement is None
         return Selection.get_or_create(
-            self.session, work_id=self.work.id, is_full_work=is_full_work
+            self.session, work_id=self.work.id, is_full_work=self.movement is None
         )
 
+    def set_performers(self) -> List[Tuple[Performer, Optional[str]]]:
+        performers: List[Tuple[Performer, Optional[str]]] = []
+        conductor_name = self.raw.get("conductorName")
+        soloists = self.raw.get("soloists", [])
 
-class ConcertParser(object):
+        if conductor_name:
+            conductor = Performer.get_or_create(
+                self.session, instrument="Conductor", raw_name=conductor_name
+            )
+            performers.append((conductor, "C"))
+
+        for soloist in soloists:
+            soloist_name = soloist.get("soloistName")
+            if soloist_name == "" or soloist_name is None:
+                continue
+            soloist_parser = SoloistParser(soloist, self.session)
+            performers.append((soloist_parser.performer, soloist_parser.role))
+
+        return performers
+
+
+class ConcertParser:
     def __init__(self, raw: dict, session: Session):
         self.raw = raw
-        # self.program_data = program_data
         self.session = session
-        self.datetime = self.parse_concert_datetime()
-        self.venue = self.set_venue()
-        self.eventtype = self.set_eventtype()
+        self.datetime = parse_concert_datetime(raw.get("Date"), raw.get("Time"))
+        self.venue = Venue.get_or_create(
+            session, location=raw.get("Location"), venue=raw.get("Venue")
+        )
+        self.event_type = EventType.get_or_create(session, name=raw.get("eventType"))
 
     def __repr__(self):
         return f"<ConcertParser for concert on {self.datetime}>"
@@ -136,102 +124,74 @@ class ConcertParser(object):
             season=season,
             orchestra=orchestra,
             venue=self.venue,
-            eventtype=self.eventtype,
+            event_type=self.event_type,
             datetime=self.datetime,
         )
         self.session.add(c)
         self.session.commit()
         return c
 
-    def parse_concert_datetime(self) -> dt:
-        concert_date = self.raw.get("Date")[0:10]
-        concert_time = self.raw.get("Time")
-        if concert_time == "None":
-            concert_time = "12:00AM"
-        return dt.strptime(f"{concert_date} {concert_time}", "%Y-%m-%d %I:%M%p")
 
-    def set_venue(self) -> Venue:
-        return Venue.get_or_create(
-            self.session, location=self.raw.get("Location"), venue=self.raw.get("Venue")
-        )
-
-    def set_eventtype(self) -> EventType:
-        return EventType.get_or_create(self.session, name=self.raw.get("eventType"))
-
-
-class ProgramParser(object):
+class ProgramParser:
     def __init__(self, raw: dict, session: Session):
         self.raw: dict = raw
         self.session = session
         self.guid = raw.get("id")
         self.season = raw.get("season")
-        self.orchestra = self.set_orchestra()
+        self.orchestra = Orchestra.get_or_create(
+            session, raw_name=raw.get("orchestra", "- No Orchestra -")
+        )
         self.concerts = self.parse_concerts()
-        self.works = self.load_works()
+        self.works = [WorkParser(w_data, session) for w_data in raw.get("works", [])]
 
     def __repr__(self):
         return f"<ProgramParser for program {self.guid}>"
 
-    def set_orchestra(self) -> Orchestra:
-        return Orchestra.get_or_create(
-            self.session, raw_name=self.raw.get("orchestra", "- No Orchestra -")
-        )
-
     def parse_concerts(self) -> List[Concert]:
-        concerts = []
-        for c_data in self.raw.get("concerts"):
-            c_parser = ConcertParser(c_data, self.session)
-            c = c_parser.new_concert_record(
-                season=self.season, orchestra=self.orchestra
+        return [
+            ConcertParser(c_data, self.session).new_concert_record(
+                self.season, self.orchestra
             )
-            concerts.append(c)
+            for c_data in self.raw.get("concerts", [])
+        ]
 
-        return concerts
-
-    def load_works(self) -> List[WorkParser]:
-        works = []
-        for w_data in self.raw.get("works"):
-            w_parser = WorkParser(w_data, self.session)
-            works.append(w_parser)
-        return works
-
-    def load_relationships(self) -> bool:
+    def load_relationships(self):
 
         for c in self.concerts:
-            c_id = c.id
-
+            concert_id = c.id
             concert_ord = 0
-            last_cs = None
+            last_concert_selection = None
 
-            for w in self.works:
+            for work in self.works:
 
-                s_id = w.selection.id
-
-                # add concert selection if not already existing
-                if last_cs is not None and s_id == last_cs.selection_id:
-                    cs = last_cs
+                selection_id = work.selection.id
+                if (
+                    last_concert_selection is not None
+                    and selection_id == last_concert_selection.selection_id
+                ):
+                    cs = last_concert_selection
                 else:
                     concert_ord += 1
                     cs = ConcertSelection(
-                        concert_id=c_id, selection_id=s_id, concert_order=concert_ord
+                        concert_id=concert_id,
+                        selection_id=selection_id,
+                        concert_order=concert_ord,
                     )
 
                 # add concert selection performers
-                for p, role in w.performers:
-                    csp = ConcertSelectionPerformer(role=role, performer=p)
-                    cs.performers += [csp]
+                cs.performers = [
+                    ConcertSelectionPerformer(role=role, performer=performer)
+                    for performer, role in work.performers
+                ]
 
                 # add concert selection movements
-                if w.movement:
+                if work.movement:
                     csm = ConcertSelectionMovement(
-                        movement_id=w.movement.id, concert_selection=cs
+                        movement_id=work.movement.id, concert_selection=cs
                     )
-                    cs.movements += [csm]
+                    cs.movements.append(csm)
 
-                # sync relationships
                 self.session.add(cs)
                 self.session.commit()
 
-                last_cs = cs
-
-        return True
+                last_concert_selection = cs
