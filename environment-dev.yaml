@@ -4,7 +4,9 @@ channels:
 dependencies:
   - flake8
   - isort
+  - jupyterlab
   - pip
   - pylint
   - pip:
     - black==19.3b0
+    - ipython-sql
